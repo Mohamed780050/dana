@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import NavLinks from "@/components/ui/NavLinks";
 import { SignOutButton } from "@clerk/nextjs";
 import { LogOut, Store } from "lucide-react";
@@ -23,18 +24,14 @@ export default function layout({ children }: { children: ReactNode }) {
         <NavLinks />
 
         <div className="p-4 border-t border-slate-200">
-          {/* <button
-            onClick={handleLogout}
-            className="w-full flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-red-50 hover:text-red-600 rounded-lg transition-all"
-          >
-            <LogOut className="w-5 h-5" />
-            <span>Logout</span>
-          </button> */}
           <SignOutButton>
-            <button className="w-full flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-red-50 hover:text-red-600 rounded-lg transition-all">
+            <Button
+              variant="ghost"
+              className="w-full flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-red-50 hover:text-red-600 rounded-lg transition-all justify-start cursor-pointer"
+            >
               <LogOut className="w-5 h-5" />
               <span>Logout</span>
-            </button>
+            </Button>
           </SignOutButton>
         </div>
       </aside>

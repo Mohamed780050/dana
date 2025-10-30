@@ -2,7 +2,6 @@
 import { navItems } from "@/data/static";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ModeToggle } from "../ModeToggle";
 
 export default function NavLinks() {
   const pathname = usePathname();
