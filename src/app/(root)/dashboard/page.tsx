@@ -1,7 +1,12 @@
+import PageTitle from "@/components/PageTitle";
+
 export default function page() {
   return (
     <div>
-      dashboard
+      <PageTitle
+        title="Dashboard"
+        description="Welcome back! Here's your restaurant overview."
+      />
     </div>
   );
-};
+}
