@@ -23,3 +23,20 @@ model SalesAnalytics {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model CardsStatus {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String @unique
+  totalOrders Int    @default(0)
+  salesVolume Int    @default(0)
+  menuItem    Int    @default(0)
+  views       Int    @default(0)
+}
+
+model totalOrders {
+  id         String @id @default(auto()) @map("_id") @db.ObjectId
+  userId     String @unique
+  pending    Int    @default(0)
+  processing Int    @default(0)
+  completed  Int    @default(0)
+}

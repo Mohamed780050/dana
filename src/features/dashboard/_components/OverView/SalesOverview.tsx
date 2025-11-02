@@ -1,7 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { Axios } from "@/lib/Axois";
-import { getSalesStatus } from "@/lib/sales";
-import axios from "axios";
+import { getSalesStatus } from "@/lib/dashboard";
 import { TrendingUp } from "lucide-react";
 
 export default async function SalesOverview() {
