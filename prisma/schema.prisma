@@ -15,12 +15,11 @@ datasource db {
 }
 
 model SalesAnalytics {
-  id           String   @id @default(auto()) @map("_id") @db.ObjectId
-  userId       String @unique
-  today        Float
-  thisWeek     Float
-  thisMonth    Float
-  totalRevenue Float
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String   @unique
+  today     Float    @default(0)
+  thisWeek  Float    @default(0)
+  thisMonth Float    @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

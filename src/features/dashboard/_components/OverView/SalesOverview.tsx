@@ -1,6 +1,8 @@
+import { Axios } from "@/lib/Axois";
 import { TrendingUp } from "lucide-react";
 
-export default function SalesOverview() {
+export default async function SalesOverview() {
+  const data = await Axios.get("/status/sales");
   return (
     <div className="bg-white rounded-xl border border-slate-200 p-6">
       <div className="flex items-center justify-between mb-6">
@@ -23,9 +25,7 @@ export default function SalesOverview() {
         <div className="pt-4 border-t border-slate-200">
           <div className="flex justify-between items-center">
             <span className="text-slate-600 font-medium">Total Revenue</span>
-            <span className="font-bold text-emerald-600 text-xl">
-              $200
-            </span>
+            <span className="font-bold text-emerald-600 text-xl">$200</span>
           </div>
         </div>
       </div>
