@@ -1,6 +1,8 @@
+import { getTotalOrdersStatus } from "@/lib/dashboard";
 import { ShoppingBag } from "lucide-react";
 
-export default function OrderOverview() {
+export default async function OrderOverview() {
+  const data = await getTotalOrdersStatus();
   return (
     <div className="bg-white rounded-xl border border-slate-200 p-6">
       <div className="flex items-center justify-between mb-6">
@@ -10,20 +12,24 @@ export default function OrderOverview() {
       <div className="space-y-4">
         <div className="flex justify-between items-center">
           <span className="text-slate-600">Pending</span>
-          <span className="font-semibold text-amber-600">12</span>
+          <span className="font-semibold text-amber-600">{data.pending}</span>
         </div>
         <div className="flex justify-between items-center">
           <span className="text-slate-600">Processing</span>
-          <span className="font-semibold text-blue-600">8</span>
+          <span className="font-semibold text-blue-600">{data.processing}</span>
         </div>
         <div className="flex justify-between items-center">
           <span className="text-slate-600">Completed</span>
-          <span className="font-semibold text-emerald-600">20</span>
+          <span className="font-semibold text-emerald-600">
+            {data.completed}
+          </span>
         </div>
         <div className="pt-4 border-t border-slate-200">
           <div className="flex justify-between items-center">
             <span className="text-slate-600 font-medium">All Orders</span>
-            <span className="font-bold text-slate-900 text-xl">20</span>
+            <span className="font-bold text-slate-900 text-xl">
+              {data.completed + data.pending + data.processing}
+            </span>
           </div>
         </div>
       </div>

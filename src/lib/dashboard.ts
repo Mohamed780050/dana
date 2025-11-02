@@ -58,3 +58,26 @@ export async function getCardsStatus() {
     throw new Error(error.message);
   }
 }
+
+export async function getTotalOrdersStatus() {
+  try {
+    const user = await currentUser();
+    if (!user) throw new Error("Not authorized");
+    const totalOrders = await db.totalOrders.findUnique({
+      where: { userId: user.id },
+    });
+
+    if (!totalOrders) {
+      const orders = await db.totalOrders.create({
+        data: {
+          userId: user.id,
+        },
+      });
+      return orders;
+    }
+    return totalOrders;
+  } catch (error: any) {
+    console.log(error);
+    throw new Error(error.message);
+  }
+}
