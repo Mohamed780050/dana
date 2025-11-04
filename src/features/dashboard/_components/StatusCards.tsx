@@ -12,8 +12,6 @@ export default async function StatusCards() {
           title={item.title}
           icon={item.icon}
           value={data[index]}
-          trend={item.trend}
-          trendUp={item.trendUp}
         />
       ))}
     </ul>
