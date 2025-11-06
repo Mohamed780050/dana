@@ -1,5 +1,6 @@
 import PageTitle from "@/components/PageTitle";
 import Filter from "@/features/Orders/_components/Filter";
+import OrderTable from "@/features/Orders/_components/OrderTable";
 
 export default function page() {
   return (
@@ -9,6 +10,7 @@ export default function page() {
         description="Manage and track all your restaurant orders."
       />
       <Filter />
+      <OrderTable />
     </div>
   );
 }
