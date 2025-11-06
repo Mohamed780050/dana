@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
 import NavLinks from "@/components/ui/NavLinks";
+import Aside from "@/features/_root/Aside";
+import BottomBar from "@/features/_root/BottomBar";
 import { SignOutButton } from "@clerk/nextjs";
 import { LogOut, Store } from "lucide-react";
 import type { Metadata } from "next";
@@ -12,29 +14,9 @@ export const metadata: Metadata = {
 
 export default function layout({ children }: { children: ReactNode }) {
   return (
-    <div className="flex h-screen bg-slate-50">
-      <aside className="w-64 bg-white border-r border-slate-200 flex flex-col">
-        <div className="p-6 border-b border-slate-200">
-          <div className="flex items-center gap-2">
-            <Store className="w-8 h-8 text-emerald-600" />
-            <h1 className="text-xl font-bold text-slate-800">RestaurantOS</h1>
-          </div>
-        </div>
-
-        <NavLinks />
-
-        <div className="p-4 border-t border-slate-200">
-          <SignOutButton>
-            <Button
-              variant="ghost"
-              className="w-full flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-red-50 hover:text-red-600 rounded-lg transition-all justify-start cursor-pointer"
-            >
-              <LogOut className="w-5 h-5" />
-              <span>Logout</span>
-            </Button>
-          </SignOutButton>
-        </div>
-      </aside>
+    <div className="flex h-screen bg-slate-50 pb-20 md:pb-0">
+      <Aside />
+      <BottomBar />
 
       <main className="flex-1 overflow-auto">
         <div className="p-8">{children}</div>

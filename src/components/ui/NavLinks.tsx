@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 
 export default function NavLinks() {
   const pathname = usePathname();
-  console.log(pathname);
   return (
     <nav className="flex-1 p-4 space-y-1">
       {navItems.map((item) => {
