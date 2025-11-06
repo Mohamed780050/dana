@@ -1,5 +1,6 @@
 import { Plus, Filter as FilterIcon } from "lucide-react";
 import CreateOrderModal from "./CreateOrderModal";
+import FiltersItem from "./FiltersItem";
 
 export default function Filter() {
   return (
@@ -19,6 +20,7 @@ export default function Filter() {
           </button>
         </CreateOrderModal>
       </div>
+      <FiltersItem/>
     </div>
   );
 }

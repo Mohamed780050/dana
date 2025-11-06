@@ -1,9 +1,5 @@
-import { Button } from "@/components/ui/button";
-import NavLinks from "@/components/ui/NavLinks";
 import Aside from "@/features/_root/Aside";
 import BottomBar from "@/features/_root/BottomBar";
-import { SignOutButton } from "@clerk/nextjs";
-import { LogOut, Store } from "lucide-react";
 import type { Metadata } from "next";
 import { ReactNode } from "react";
 
