@@ -11,7 +11,9 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { ShoppingBag, X } from "lucide-react";
 import { ReactNode } from "react";
+import CreationForm from "./CreationForm";
 
 export default function CreateOrderModal({
   children,
@@ -22,69 +24,26 @@ export default function CreateOrderModal({
     <Dialog>
       <form>
         <DialogTrigger asChild>{children}</DialogTrigger>
-        <DialogContent className="sm:max-w-[425px]">
+        <DialogContent className="max-h-[90vh] sm:max-w-[701px]">
           <DialogHeader>
-            <DialogTitle>Edit profile</DialogTitle>
+            <DialogTitle>
+              <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-100">
+                  <ShoppingBag className="h-6 w-6 text-emerald-600" />
+                </div>
+                <h2 className="text-2xl font-bold text-slate-900">
+                  Create New Order
+                </h2>
+              </div>
+            </DialogTitle>
             <DialogDescription>
-              Make changes to your profile here. Click save when you&apos;re
-              done.
+              Make changes to your order here
             </DialogDescription>
+            <div className="w-full border-b border-slate-200"></div>
           </DialogHeader>
-          <div className="grid gap-4">
-            <div className="grid gap-3">
-              <Label htmlFor="name-1">Name</Label>
-              <Input id="name-1" name="name" defaultValue="Pedro Duarte" />
-            </div>
-            <div className="grid gap-3">
-              <Label htmlFor="username-1">Username</Label>
-              <Input id="username-1" name="username" defaultValue="@peduarte" />
-            </div>
-          </div>
-          <DialogFooter>
-            <DialogClose asChild>
-              <Button variant="outline">Cancel</Button>
-            </DialogClose>
-            <Button type="submit">Save changes</Button>
-          </DialogFooter>
+          <CreationForm />
         </DialogContent>
       </form>
     </Dialog>
   );
 }
-
-// export function DialogDemo() {
-//   return (
-//     <Dialog>
-//       <form>
-//         <DialogTrigger asChild>
-//           <Button variant="outline">Open Dialog</Button>
-//         </DialogTrigger>
-//         <DialogContent className="sm:max-w-[425px]">
-//           <DialogHeader>
-//             <DialogTitle>Edit profile</DialogTitle>
-//             <DialogDescription>
-//               Make changes to your profile here. Click save when you&apos;re
-//               done.
-//             </DialogDescription>
-//           </DialogHeader>
-//           <div className="grid gap-4">
-//             <div className="grid gap-3">
-//               <Label htmlFor="name-1">Name</Label>
-//               <Input id="name-1" name="name" defaultValue="Pedro Duarte" />
-//             </div>
-//             <div className="grid gap-3">
-//               <Label htmlFor="username-1">Username</Label>
-//               <Input id="username-1" name="username" defaultValue="@peduarte" />
-//             </div>
-//           </div>
-//           <DialogFooter>
-//             <DialogClose asChild>
-//               <Button variant="outline">Cancel</Button>
-//             </DialogClose>
-//             <Button type="submit">Save changes</Button>
-//           </DialogFooter>
-//         </DialogContent>
-//       </form>
-//     </Dialog>
-//   )
-// }
