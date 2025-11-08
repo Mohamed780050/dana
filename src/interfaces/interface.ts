@@ -19,3 +19,16 @@ export interface OrderInterface {
   status: "Pending" | "Processing" | "Completed" | "Cancelled";
   payment_status: "Paid" | "unPaid";
 }
+
+export interface OrderState {
+  errors?: {
+    id?: string[];
+    userId?: string[];
+    customer_name?: string[];
+    customer_phone?: string[];
+    total_amount?: string[];
+    status?: string[];
+    payment_status?: string[];
+  };
+  message?: string | null;
+}

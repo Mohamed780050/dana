@@ -1,0 +1,54 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+"use server"
+import { OrderState } from "@/interfaces/interface";
+import { orderSchema } from "../schema/order";
+import z from "zod";
+import { db } from "@/lib/db";
+import { currentUser } from "@clerk/nextjs/server";
+
+export async function createOrder(
+  prevState: OrderState,
+  formData: FormData,
+): Promise<OrderState> {
+  try {
+    const user = await currentUser();
+    if (!user?.id) return { message: "Not authorized" };
+
+    const validate = orderSchema.safeParse({
+      customer_name: formData.get("customer_name"),
+      customer_phone: formData.get("customer_phone"),
+      total_amount: 50,
+      status: formData.get("status"),
+      payment_status: formData.get("payment_status"),
+    });
+
+    if (!validate.success)
+      return { errors: z.flattenError(validate.error).fieldErrors };
+
+    const {
+      customer_name,
+      customer_phone,
+      payment_status,
+      status,
+      total_amount,
+    } = validate.data;
+    await db.orders.create({
+      data: {
+        userId: user.id,
+        customer_name,
+        customer_phone,
+        payment_status,
+        status,
+        total_amount,
+      },
+    });
+    return { message: null, errors: undefined };
+  } catch (error: any) {
+    console.log(error);
+
+    return {
+      errors: undefined,
+      message: "Database Error: Failed to Create Invoice.",
+    };
+  }
+}
