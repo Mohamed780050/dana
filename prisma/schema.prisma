@@ -25,12 +25,14 @@ model SalesAnalytics {
 }
 
 model CardsStatus {
-  id          String @id @default(auto()) @map("_id") @db.ObjectId
-  userId      String @unique
-  totalOrders Int    @default(0)
-  salesVolume Int    @default(0)
-  menuItem    Int    @default(0)
-  views       Int    @default(0)
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String   @unique
+  totalOrders Int      @default(0)
+  salesVolume Int      @default(0)
+  menuItem    Int      @default(0)
+  views       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 model totalOrders {
@@ -39,4 +41,28 @@ model totalOrders {
   pending    Int    @default(0)
   processing Int    @default(0)
   completed  Int    @default(0)
+}
+
+enum OrderStatus {
+  Pending
+  Processing
+  Completed
+  Cancelled
+}
+
+enum PaymentStatus {
+  Paid
+  unPaid
+}
+
+model orders {
+  id             String        @id @default(auto()) @map("_id") @db.ObjectId
+  userId         String        @unique
+  customer_name  String
+  customer_phone String        @default("")
+  total_amount   Float
+  status         OrderStatus   @default(Pending)
+  payment_status PaymentStatus @default(unPaid)
+  created_at      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
 }

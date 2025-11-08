@@ -15,9 +15,9 @@ export default function BottomBar() {
           <Link
             href={item.id}
             key={item.id}
-            className={`flex-1 flex flex-col items-center justify-center py-5 px-2 transition-all ${
+            className={`flex-1 flex flex-col items-center border-t-0 justify-center py-5 px-2 transition-all  duration-200 ease-out ${
               active
-                ? "text-emerald-600 border-t-2 border-emerald-600"
+                ? "text-emerald-600 border-t-2 border-emerald-600 bg-emerald-50"
                 : "text-slate-600 hover:text-slate-900"
             }`}
           >

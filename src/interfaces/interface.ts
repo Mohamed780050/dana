@@ -10,10 +10,12 @@ export interface StatCardProps {
 
 export interface OrderInterface {
   id: string;
+  userId: string;
   customer_name: string;
-  customer_phone: number;
+  customer_phone: string;
   total_amount: number;
-  status: "Pending" | "Processing" | "Completed" | "Canceled";
+  created_at: Date | string;
+  updatedAt: Date;
+  status: "Pending" | "Processing" | "Completed" | "Cancelled";
   payment_status: "Paid" | "unPaid";
-  created_at: string;
 }
