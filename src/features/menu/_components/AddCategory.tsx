@@ -38,6 +38,7 @@ export default function AddCategory() {
             {item}
           </p>
         ))}
+      {state.message && <p className="text-red-500">{state.message}</p>}
     </div>
   );
 }

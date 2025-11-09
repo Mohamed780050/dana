@@ -2,6 +2,8 @@
 import z from "zod";
 import { MenuCategoryState } from "@/interfaces/interface";
 import { categorySchema } from "../schema/menuSchema";
+import { createCategory } from "@/lib/menus";
+import { revalidatePath } from "next/cache";
 
 export async function addCategory(
   prevState: MenuCategoryState,
@@ -13,7 +15,8 @@ export async function addCategory(
     });
     if (!validate.success)
       return { errors: z.flattenError(validate.error).fieldErrors };
-    await new Promise<void>((resolve) => setTimeout(resolve, 1000));
+    await createCategory(validate.data.category_name);
+    revalidatePath("/menu");
     return { message: null };
   } catch (error) {
     console.log(error);
