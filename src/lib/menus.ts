@@ -2,18 +2,20 @@
 import { db } from "./db";
 import { currentUser } from "@clerk/nextjs/server";
 
-// export async function getAllOrders() {
-//   try {
-//     const user = await currentUser();
-//     console.log(user?.id);
-//     if (!user) throw new Error("Not authorized");
-//     const findOrders = await db.orders.findMany({ where: { userId: user.id } });
-//     return findOrders;
-//   } catch (error: any) {
-//     console.log(error);
-//     throw new Error(error.message);
-//   }
-// }
+export async function getAllCategories() {
+  try {
+    const user = await currentUser();
+    if (!user) throw new Error("Not authorized");
+    const findCategories = await db.menu.findMany({
+      where: { userId: user.id },
+    });
+    return findCategories;
+  } catch (error: any) {
+    console.log(error);
+    throw new Error(error.message);
+  }
+}
+
 export async function createCategory(category_name: string) {
   try {
     const user = await currentUser();
