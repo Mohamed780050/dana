@@ -32,3 +32,10 @@ export interface OrderState {
   };
   message?: string | null;
 }
+
+export interface MenuCategoryState {
+  errors?: {
+    category_name?: string[];
+  };
+  message?: string | null;
+}

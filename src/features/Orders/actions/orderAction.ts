@@ -5,6 +5,7 @@ import { orderSchema } from "../schema/order";
 import z from "zod";
 import { db } from "@/lib/db";
 import { currentUser } from "@clerk/nextjs/server";
+import { revalidatePath } from "next/cache";
 
 export async function createOrder(
   prevState: OrderState,
@@ -42,6 +43,7 @@ export async function createOrder(
         total_amount,
       },
     });
+    revalidatePath("/orders")
     return { message: null, errors: undefined };
   } catch (error: any) {
     console.log(error);
