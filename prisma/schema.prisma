@@ -68,7 +68,18 @@ model orders {
 }
 
 model menu {
-  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  id     String     @id @default(auto()) @map("_id") @db.ObjectId
   userId String
-  name   String @unique
+  name   String     @unique
+  items  menuItem[] @relation("MenuItems")
+}
+
+model menuItem {
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  menuId      String  @db.ObjectId
+  menu        menu    @relation("MenuItems", fields: [menuId], references: [id], onDelete: Cascade) // Relation to menu
+  name        String
+  price       Float
+  description String
+  image       String?
 }

@@ -1,6 +1,7 @@
 import PageTitle from "@/components/PageTitle";
 import AddCategory from "@/features/menu/_components/AddCategory";
 import Categories from "@/features/menu/_components/Categories";
+import CategorySkeleton from "@/features/menu/skeletons/CategorySkeleton";
 import { Suspense } from "react";
 
 export default function page() {
@@ -11,7 +12,7 @@ export default function page() {
         description="Organize your menu with categories and items."
       />
       <AddCategory />
-      <Suspense fallback={<div>Is loading</div>}>
+      <Suspense fallback={<CategorySkeleton />}>
         <Categories />
       </Suspense>
     </div>

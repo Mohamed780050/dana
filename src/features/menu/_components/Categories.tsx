@@ -1,11 +1,12 @@
 import { getAllCategories } from "@/lib/menus";
 import { Plus, Trash2 } from "lucide-react";
 import CategoryItems from "./CategoryItems";
+import CategoryModalCreation from "./CategoryModalCreation";
 
 export default async function Categories() {
   const categories = await getAllCategories();
   return (
-    <ul className="space-x-6">
+    <ul className="space-y-6">
       {categories.map((item) => (
         <li
           key={item.id}
@@ -17,13 +18,15 @@ export default async function Categories() {
               {item.name}
             </h3>
             <div className="flex items-center gap-2">
-              <button
-                // onClick={() => startAddingItem(category.id)}
-                className="flex items-center gap-2 rounded-lg bg-emerald-600 px-4 py-2 font-semibold text-white transition-colors hover:bg-emerald-700"
-              >
-                <Plus className="h-4 w-4" />
-                Add Item
-              </button>
+              <CategoryModalCreation Category_id={item.id}>
+                <button
+                  //   onClick={() => onOpen()}
+                  className="flex items-center gap-2 rounded-lg bg-emerald-600 px-4 py-2 font-semibold text-white transition-colors hover:bg-emerald-700"
+                >
+                  <Plus className="h-4 w-4" />
+                  Add Item
+                </button>
+              </CategoryModalCreation>
               <button
                 // onClick={() => deleteCategory(category.id)}
                 className="rounded-lg p-2 text-red-600 transition-colors hover:bg-red-50"

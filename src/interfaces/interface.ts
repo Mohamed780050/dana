@@ -39,3 +39,12 @@ export interface MenuCategoryState {
   };
   message?: string | null;
 }
+export interface CategoryItemState {
+  errors?: {
+    category_name?: string[];
+    price?: string[];
+    description?: string[];
+    image?: string[]; 
+  };
+  message?: string | null;
+}
