@@ -53,9 +53,12 @@ export async function addCategoryItem(
         menuId: id,
       },
     });
+    revalidatePath("/menu");
     return { message: null };
   } catch (error) {
     console.log(error);
     return { message: "Internal server error." };
   }
 }
+
+

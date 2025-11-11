@@ -1,17 +1,23 @@
 import { create } from "zustand";
 
-interface itemModalInterface {
+interface itemModalDeletingInterface {
   isOpen: boolean;
   onOpen: () => void;
   onClose: () => void;
+  onOpenChange: () => void;
 }
 
-export const useItemModal = create<itemModalInterface>((set) => ({
-  isOpen: false,
-  onOpen: () => {
-    set({ isOpen: true });
-  },
-  onClose: () => {
-    set({ isOpen: false });
-  },
-}));
+export const useItemModalDeleting = create<itemModalDeletingInterface>(
+  (set) => ({
+    isOpen: false,
+    onOpen: () => {
+      set({ isOpen: true });
+    },
+    onClose: () => {
+      set({ isOpen: false });
+    },
+    onOpenChange: () => {
+      set((state) => ({ isOpen: !state.isOpen }));
+    },
+  }),
+);
