@@ -64,3 +64,20 @@ export async function deleteMenuItem(id: string) {
     throw new Error(error.message);
   }
 }
+
+export async function deleteCategory(id: string) {
+  try {
+    const user = await currentUser();
+
+    if (!user) throw new Error("Not authorized");
+    await db.menu.delete({
+      where: {
+        id,
+      },
+    });
+    revalidatePath("/menu");
+  } catch (error: any) {
+    console.log(error);
+    throw new Error(error.message);
+  }
+}

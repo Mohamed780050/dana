@@ -2,6 +2,7 @@ import { getAllCategories } from "@/lib/menus";
 import { Plus, Trash2 } from "lucide-react";
 import CategoryItems from "./CategoryItems";
 import CategoryModalCreation from "./CategoryModalCreation";
+import CategoryDeletingModal from "./CategoryDeletingModal";
 
 export default async function Categories() {
   const categories = await getAllCategories();
@@ -27,12 +28,11 @@ export default async function Categories() {
                   Add Item
                 </button>
               </CategoryModalCreation>
-              <button
-                // onClick={() => deleteCategory(category.id)}
-                className="rounded-lg p-2 text-red-600 transition-colors hover:bg-red-50"
-              >
-                <Trash2 className="h-5 w-5" />
-              </button>
+              <CategoryDeletingModal CategoryId={item.id}>
+                <button className="rounded-lg p-2 text-red-600 transition-colors hover:bg-red-50">
+                  <Trash2 className="h-5 w-5" />
+                </button>
+              </CategoryDeletingModal>
             </div>
           </div>
           <CategoryItems id={item.id} />

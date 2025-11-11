@@ -1,5 +1,4 @@
 import { getAllMenuItems } from "@/lib/menus";
-import { ImageIcon } from "lucide-react";
 import ItemImage from "./CategoryItem/ItemImage";
 import ItemDetails from "./CategoryItem/ItemDetails";
 import ItemsActionButtons from "./CategoryItem/ItemsActionButtons";

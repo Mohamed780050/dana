@@ -9,20 +9,20 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
-import { useItemModalDeleting } from "@/hooks/useItemModal";
-import { deleteMenuItem } from "@/lib/menus";
+import { useCategoryModalDeleting } from "@/hooks/useCategoryDeletingModal";
+import { deleteCategory, deleteMenuItem } from "@/lib/menus";
 import { ReactNode, useActionState } from "react";
 
-export default function DeleteDialog({
+export default function CategoryDeletingModal({
   children,
-  itemId,
+  CategoryId,
 }: {
   children: ReactNode;
-  itemId: string;
+  CategoryId: string;
 }) {
-  const deleteMenuWithId = deleteMenuItem.bind(null, itemId);
-  const [state, action, isPending] = useActionState(deleteMenuWithId, null);
-  const { isOpen, onClose, onOpenChange } = useItemModalDeleting();
+  const deleteCategoryWithId = deleteCategory.bind(null, CategoryId);
+  const [state, action, isPending] = useActionState(deleteCategoryWithId, null);
+  const { isOpen, onClose, onOpenChange } = useCategoryModalDeleting();
   return (
     <AlertDialog open={isOpen} onOpenChange={onOpenChange}>
       <AlertDialogTrigger asChild>{children}</AlertDialogTrigger>
