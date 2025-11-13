@@ -83,3 +83,20 @@ model menuItem {
   description String
   image       String?
 }
+
+enum Currency {
+  USD
+  EUR
+  GBP
+}
+
+model restaurant {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String   @unique
+  name        String
+  phone       String   @unique
+  description String
+  address     String
+  currency    Currency
+  wa_phone    String
+}

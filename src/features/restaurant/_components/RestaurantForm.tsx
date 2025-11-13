@@ -3,8 +3,24 @@ import { DetailsState } from "@/interfaces/interface";
 import { Save } from "lucide-react";
 import { EditRestaurantDetails } from "../action/restaurant";
 import { useActionState } from "react";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
-export default function RestaurantForm() {
+export default function RestaurantForm({
+  address,
+  currency,
+  name,
+  description,
+  phone,
+  wa_phone,
+}: {
+  phone: string;
+  name: string;
+  description: string;
+  address: string;
+  currency: "USD" | "EUR" | "GBP";
+  wa_phone: string;
+}) {
   const initialState: DetailsState = { message: null, errors: {} };
   const [state, formAction, isPending] = useActionState(
     EditRestaurantDetails,
@@ -17,12 +33,13 @@ export default function RestaurantForm() {
           <label className="mb-2 block text-sm font-medium text-slate-700">
             Restaurant Name
           </label>
-          <input
+          <Input
+            defaultValue={name || ""}
             disabled={isPending}
             name="name"
             type="text"
             placeholder="My Amazing Restaurant"
-            className="w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-emerald-500"
+            className="w-full rounded-lg border border-slate-300 px-4 py-3"
           />
           {state.errors?.name &&
             state.errors.name.map((text, index) => (
@@ -36,12 +53,13 @@ export default function RestaurantForm() {
           <label className="mb-2 block text-sm font-medium text-slate-700">
             Restaurant Phone
           </label>
-          <input
+          <Input
+            defaultValue={parseInt(phone) | 0}
             disabled={isPending}
             name="phone"
             type="tel"
             placeholder="+1 (555) 123-4567"
-            className="w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-emerald-500"
+            className="w-full rounded-lg border border-slate-300 px-4 py-3"
           />
           {state.errors?.phone &&
             state.errors.phone.map((text, index) => (
@@ -56,12 +74,13 @@ export default function RestaurantForm() {
         <label className="mb-2 block text-sm font-medium text-slate-700">
           Restaurant Description
         </label>
-        <textarea
+        <Textarea
+          defaultValue={description}
           disabled={isPending}
           name="description"
           placeholder="Tell customers about your restaurant..."
           rows={4}
-          className="w-full resize-none rounded-lg border border-slate-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-emerald-500"
+          className="w-full resize-none rounded-lg border border-slate-300 px-4 py-3 min-h-44"
         />
         {state.errors?.description &&
           state.errors.description.map((text, index) => (
@@ -75,12 +94,13 @@ export default function RestaurantForm() {
         <label className="mb-2 block text-sm font-medium text-slate-700">
           Restaurant Address
         </label>
-        <input
+        <Input
+          defaultValue={address}
           name="address"
           disabled={isPending}
           type="text"
           placeholder="123 Main Street, City, State 12345"
-          className="w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-emerald-500"
+          className="w-full rounded-lg border border-slate-300 px-4 py-3"
         />
 
         {state.errors?.address &&
@@ -97,9 +117,10 @@ export default function RestaurantForm() {
             Currency
           </label>
           <select
+            defaultValue={currency}
             name="currency"
             disabled={isPending}
-            className="w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-emerald-500"
+            className="w-full rounded-lg border border-slate-300 px-4 py-3"
           >
             <option value="USD">USD - US Dollar</option>
             <option value="EUR">EUR - Euro</option>
@@ -117,12 +138,13 @@ export default function RestaurantForm() {
           <label className="mb-2 block text-sm font-medium text-slate-700">
             WhatsApp Phone
           </label>
-          <input
+          <Input
+            defaultValue={wa_phone}
             name="wa_phone"
             disabled={isPending}
             type="tel"
             placeholder="+1 (555) 123-4567"
-            className="w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-emerald-500"
+            className="w-full rounded-lg border border-slate-300 px-4 py-3"
           />
           {state.errors?.wa_phone &&
             state.errors.wa_phone.map((text, index) => (
