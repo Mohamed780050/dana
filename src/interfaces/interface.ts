@@ -44,7 +44,19 @@ export interface CategoryItemState {
     category_name?: string[];
     price?: string[];
     description?: string[];
-    image?: string[]; 
+    image?: string[];
+  };
+  message?: string | null;
+}
+
+export interface DetailsState {
+  errors?: {
+    name?: string[];
+    phone?: string[];
+    description?: string[];
+    address?: string[];
+    currency?: string[];
+    wa_phone?: string[];
   };
   message?: string | null;
 }
