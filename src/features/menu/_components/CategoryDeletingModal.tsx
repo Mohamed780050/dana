@@ -9,9 +9,8 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
-import { useCategoryModalDeleting } from "@/hooks/useCategoryDeletingModal";
-import { deleteCategory, deleteMenuItem } from "@/lib/menus";
-import { ReactNode, useActionState } from "react";
+import { deleteCategory } from "@/lib/menus";
+import { ReactNode, useActionState, useState } from "react";
 
 export default function CategoryDeletingModal({
   children,
@@ -21,10 +20,11 @@ export default function CategoryDeletingModal({
   CategoryId: string;
 }) {
   const deleteCategoryWithId = deleteCategory.bind(null, CategoryId);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [state, action, isPending] = useActionState(deleteCategoryWithId, null);
-  const { isOpen, onClose, onOpenChange } = useCategoryModalDeleting();
+  const [open,setIsOpen]= useState(false);
   return (
-    <AlertDialog open={isOpen} onOpenChange={onOpenChange}>
+    <AlertDialog open={open} onOpenChange={setIsOpen} defaultOpen={false}>
       <AlertDialogTrigger asChild>{children}</AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
@@ -39,7 +39,7 @@ export default function CategoryDeletingModal({
               type="button"
               variant="outline"
               disabled={isPending}
-              onClick={onClose}
+              onClick={() => setIsOpen(false)}
             >
               Cancel
             </Button>

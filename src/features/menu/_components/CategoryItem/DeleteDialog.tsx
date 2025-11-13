@@ -11,7 +11,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { useItemModalDeleting } from "@/hooks/useItemModal";
 import { deleteMenuItem } from "@/lib/menus";
-import { ReactNode, useActionState } from "react";
+import { ReactNode, useActionState, useState } from "react";
 
 export default function DeleteDialog({
   children,
@@ -22,9 +22,9 @@ export default function DeleteDialog({
 }) {
   const deleteMenuWithId = deleteMenuItem.bind(null, itemId);
   const [state, action, isPending] = useActionState(deleteMenuWithId, null);
-  const { isOpen, onClose, onOpenChange } = useItemModalDeleting();
+  const [isOpen, setIsOpen] = useState(false);
   return (
-    <AlertDialog open={isOpen} onOpenChange={onOpenChange}>
+    <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
       <AlertDialogTrigger asChild>{children}</AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
@@ -39,7 +39,7 @@ export default function DeleteDialog({
               type="button"
               variant="outline"
               disabled={isPending}
-              onClick={onClose}
+              onClick={() => setIsOpen(false)}
             >
               Cancel
             </Button>
