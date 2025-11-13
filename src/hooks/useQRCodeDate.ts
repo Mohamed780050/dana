@@ -19,8 +19,8 @@ type QRCodeStore = QRCodeTypes & {
 export const useQRCode = create<QRCodeStore>((set) => ({
   fgColor: "#000000",
   bgColor: "#FFFFFF",
-  size: 250,
-  level: "M",
+  size: 350,
+  level: "Q",
   menuURL: "",
 
   // setters

@@ -13,7 +13,7 @@ export default function QRCodeEditing() {
     setSize,
     setLevel,
   } = useQRCode();
-
+  console.log(level);
   return (
     <div className="space-y-6">
       <div>
@@ -56,10 +56,8 @@ export default function QRCodeEditing() {
           <div className="flex-1">
             <input
               type="text"
-              // value={qrCustomization.bgColor}
-              // onChange={(e) =>
-              //   setQrCustomization({ ...qrCustomization, bgColor: e.target.value })
-              // }
+              value={bgColor}
+              onChange={(e) => setBgColor(e.target.value)}
               placeholder="#FFFFFF"
               className="w-full rounded-lg border border-slate-300 px-4 py-2.5 font-mono focus:border-transparent focus:ring-2 focus:ring-emerald-500"
             />

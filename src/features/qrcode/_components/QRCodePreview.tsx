@@ -14,9 +14,10 @@ export default function QRCodePreview() {
           //   style={{ backgroundColor: qrCustomization.bgColor }}
         >
           <QRCodeSVG
-            value={menuURL}
+            value={"https://www.google.com"}
             size={size}
             level={level}
+            boostLevel={false}
             fgColor={fgColor}
             bgColor={bgColor}
           />
