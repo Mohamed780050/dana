@@ -2,7 +2,11 @@ import { Palette, QrCode } from "lucide-react";
 import QRCodePreview from "./QRCodePreview";
 import QRCodeEditing from "./QRCodeEditing";
 
-export default function QRCodeComponent() {
+export default function QRCodeComponent({
+  restaurantId,
+}: {
+  restaurantId: string;
+}) {
   return (
     <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
       <div className="rounded-xl border border-slate-200 bg-white p-8">
@@ -11,7 +15,7 @@ export default function QRCodeComponent() {
           <h2 className="text-xl font-semibold text-slate-900">Your QR Code</h2>
         </div>
 
-        <QRCodePreview />
+        <QRCodePreview restaurantId={restaurantId} />
       </div>
 
       <div className="rounded-xl border border-slate-200 bg-white p-8">

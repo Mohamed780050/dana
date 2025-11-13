@@ -3,6 +3,7 @@ import RestaurantDetails from "./RestaurantDetails";
 import RestaurantWorkingTimes from "./RestaurantWorkingTimes";
 import { Clock, Store } from "lucide-react";
 import { Suspense } from "react";
+import RestaurantDetailsSkeleton from "../skeletons/RestaurantDetailsSkeleton";
 export default function RestaurantTabs() {
   return (
     <div className="flex w-full flex-col gap-6">
@@ -18,7 +19,7 @@ export default function RestaurantTabs() {
           </TabsTrigger>
         </TabsList>
         <TabsContent value="restaurant_details">
-          <Suspense fallback={<div>loading</div>}>
+          <Suspense fallback={<RestaurantDetailsSkeleton />}>
             <RestaurantDetails />
           </Suspense>
         </TabsContent>
