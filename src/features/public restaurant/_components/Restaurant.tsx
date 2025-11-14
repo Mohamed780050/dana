@@ -1,4 +1,5 @@
 import RestaurantDetails from "./RestaurantDetails";
+import RestaurantMenu from "./RestaurantMenu";
 
 export default function Restaurant({
   restaurant,
@@ -15,7 +16,7 @@ export default function Restaurant({
   };
 }) {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
+    <div className="min-h-screen bg-linear-to-br from-slate-50 to-slate-100">
       <RestaurantDetails
         name={restaurant.name}
         description={restaurant.description}
@@ -23,6 +24,7 @@ export default function Restaurant({
         phone={restaurant.phone}
         wa_phone={restaurant.wa_phone}
       />
+      <RestaurantMenu userId={restaurant.userId} />
     </div>
   );
 }

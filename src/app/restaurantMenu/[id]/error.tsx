@@ -23,7 +23,7 @@ export default function ErrorComponent({ error, reset }: Props) {
           Restaurant Not Found
         </h1>
         <p className="text-slate-600">
-          The restaurant you're looking for doesn't exist.
+          The restaurant you&apos;re looking for doesn&apos;t exist.
         </p>
       </div>
     </div>

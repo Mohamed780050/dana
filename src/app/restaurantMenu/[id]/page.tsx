@@ -1,5 +1,4 @@
 import Restaurant from "@/features/public restaurant/_components/Restaurant";
-import RestaurantDetails from "@/features/public restaurant/_components/RestaurantDetails";
 import { getRestaurantDetailsForPublicRoute } from "@/lib/restaurant";
 
 export default async function page({ params }: { params: { id: string } }) {
