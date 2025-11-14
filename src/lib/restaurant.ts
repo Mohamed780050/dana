@@ -15,3 +15,12 @@ export async function getRestaurantDetails() {
     throw new Error(error.message);
   }
 }
+
+export async function getRestaurantDetailsForPublicRoute(id: string) {
+  try {
+    return await db.restaurant.findUnique({ where: { id } });
+  } catch (error: any) {
+    console.log(error);
+    throw new Error(error.message);
+  }
+}
