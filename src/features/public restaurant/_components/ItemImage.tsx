@@ -1,0 +1,28 @@
+import { ImageIcon } from "lucide-react";
+import Image from "next/image";
+
+export default function ItemImage({
+  url,
+  alt,
+}: {
+  url?: string | null;
+  alt?: string;
+}) {
+  return (
+    <>
+      {url ? (
+        <div className="aspect-video overflow-hidden bg-slate-200">
+          <Image
+            src={url}
+            alt={alt || "Item"}
+            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+          />
+        </div>
+      ) : (
+        <div className="flex aspect-video items-center justify-center rounded-t-lg bg-slate-200">
+          <ImageIcon className="h-8 w-8 text-slate-400" />
+        </div>
+      )}
+    </>
+  );
+}

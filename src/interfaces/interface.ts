@@ -60,3 +60,10 @@ export interface DetailsState {
   };
   message?: string | null;
 }
+
+export enum Currency {
+  USD = "USD",
+  EUR = "EUR",
+  EGP = "EGP",
+  // …add whatever currencies you support
+}

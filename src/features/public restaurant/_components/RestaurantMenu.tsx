@@ -1,10 +1,10 @@
 import { db } from "@/lib/db";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@radix-ui/react-tabs";
+import RestaurantContent from "./RestaurantContent";
 
 export default async function RestaurantMenu({ userId }: { userId: string }) {
   const menus = await db.menu.findMany({ where: { userId } });
-//   const menuItems = await db.menuItem.findMany({where:{}})
-  console.log(menus);
+  //   const menuItems = await db.menuItem.findMany({where:{}})
   return (
     <>
       <div className="mx-auto max-w-7xl px-4 py-12">
@@ -29,47 +29,21 @@ export default async function RestaurantMenu({ userId }: { userId: string }) {
                 ))}
               </TabsList>
             </div>
-            <TabsContent value="all">
-
-              this is another all
-            </TabsContent>
-            <TabsContent value="Drink">
-              this is something
-            </TabsContent>
+            <div className="p-8">
+              <TabsContent value="all">this is another all</TabsContent>
+              {menus.map((item) => (
+                <RestaurantContent
+                  value={item.name}
+                  key={item.id}
+                  id={item.id}
+                />
+              ))}
+            </div>
           </Tabs>
         </div>
       </div>
       <div className="mx-auto max-w-7xl px-4 py-12">
         <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg">
-          <div className="overflow-x-auto border-b border-slate-200 bg-slate-50 p-4">
-            <div className="flex min-w-max gap-3">
-              {/* <button
-              onClick={() => setSelectedCategory("all")}
-              className={`rounded-xl px-6 py-3 font-semibold transition-all ${
-                selectedCategory === "all"
-                  ? "scale-105 bg-emerald-600 text-white shadow-lg shadow-emerald-600/30"
-                  : "border border-slate-200 bg-white text-slate-700 hover:bg-slate-100"
-              }`}
-            >
-              All Items
-            </button>
-
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => setSelectedCategory(category.id)}
-                className={`rounded-xl px-6 py-3 font-semibold transition-all ${
-                  selectedCategory === category.id
-                    ? "scale-105 bg-emerald-600 text-white shadow-lg shadow-emerald-600/30"
-                    : "border border-slate-200 bg-white text-slate-700 hover:bg-slate-100"
-                }`}
-              >
-                {category.name}
-              </button>
-            ))} */}
-            </div>
-          </div>
-
           {/* <div className="p-8">
           {filteredItems.length === 0 ? (
             <div className="py-16 text-center">
