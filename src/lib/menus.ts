@@ -81,3 +81,30 @@ export async function deleteCategory(id: string) {
     throw new Error(error.message);
   }
 }
+
+export async function addItemToCategory(
+  name: string,
+  description: string,
+  price: number,
+  menuId: string,
+) {
+  try {
+    const user = await currentUser();
+
+    if (!user) throw new Error("Not authorized");
+
+    await db.menuItem.create({
+      data: {
+        name,
+        description,
+        price,
+        menuId,
+        userId:user.id
+        
+      },
+    });
+  } catch (error: any) {
+    console.log(error);
+    throw new Error(error.message);
+  }
+}

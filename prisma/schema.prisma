@@ -76,6 +76,7 @@ model menu {
 
 model menuItem {
   id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String  
   menuId      String  @db.ObjectId
   menu        menu    @relation("MenuItems", fields: [menuId], references: [id], onDelete: Cascade) // Relation to menu
   name        String

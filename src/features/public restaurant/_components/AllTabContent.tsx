@@ -1,23 +1,19 @@
 import { db } from "@/lib/db";
 import { TabsContent } from "@radix-ui/react-tabs";
+import { currentUser } from "@clerk/nextjs/server";
 import { Utensils } from "lucide-react";
 import ItemImage from "./ItemImage";
 import ItemInfo from "./ItemInfo";
 
-export default async function RestaurantContent({
-  value,
-  id,
-}: {
-  value: string;
-  id: string;
-}) {
-  const MenuItems = await db.menuItem.findMany({ where: { menuId: id } });
-  console.log(MenuItems);
+export async function AllTabContent({ value }: { value: string }) {
+  const user = await currentUser();
+  if (!user) return null;
+  const menuItems = await db.menuItem.findMany({ where: { userId: user.id } });
   return (
     <TabsContent value={value}>
-      {MenuItems.length ? (
+      {menuItems.length ? (
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {MenuItems.map((item) => (
+          {menuItems.map((item) => (
             <div
               key={item.id}
               className="group rounded-xl border border-slate-200 bg-slate-50 transition-all duration-300 hover:border-emerald-300 hover:shadow-xl"

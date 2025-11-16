@@ -1,6 +1,8 @@
 import { db } from "@/lib/db";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@radix-ui/react-tabs";
 import RestaurantContent from "./RestaurantContent";
+import Cart from "./Cart/Cart";
+import { AllTabContent } from "./AllTabContent";
 
 export default async function RestaurantMenu({ userId }: { userId: string }) {
   const menus = await db.menu.findMany({ where: { userId } });
@@ -8,6 +10,7 @@ export default async function RestaurantMenu({ userId }: { userId: string }) {
   return (
     <>
       <div className="mx-auto max-w-7xl px-4 py-12">
+        <Cart />
         <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg">
           <Tabs defaultValue="all" className="w-full">
             <div className="overflow-x-auto border-b border-slate-200 bg-slate-50 p-4">
@@ -30,7 +33,7 @@ export default async function RestaurantMenu({ userId }: { userId: string }) {
               </TabsList>
             </div>
             <div className="p-8">
-              <TabsContent value="all">this is another all</TabsContent>
+              <AllTabContent value="all"/>
               {menus.map((item) => (
                 <RestaurantContent
                   value={item.name}

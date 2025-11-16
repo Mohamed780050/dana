@@ -1,16 +1,18 @@
 import { Currency } from "@/generated/prisma/enums";
-import AddToCart from "./AddToCart";
+import AddToCart from "./Cart/AddToCart";
 
 export default function ItemInfo({
   name,
   currency,
   price,
   description,
+  itemId,
 }: {
   name: string;
   price: number;
   currency: Currency;
   description: string;
+  itemId: string;
 }) {
   return (
     <div className="space-y-3 p-5">
@@ -30,7 +32,13 @@ export default function ItemInfo({
         {description}
       </p>
       <div className="border-t border-slate-200 pt-2">
-        <AddToCart />
+        <AddToCart
+          name={name}
+          description={description}
+          price={price}
+          currency="USD"
+          itemId={itemId}
+        />
       </div>
     </div>
   );

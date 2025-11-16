@@ -2,7 +2,7 @@
 import z from "zod";
 import { CategoryItemState, MenuCategoryState } from "@/interfaces/interface";
 import { categoryItem, categorySchema } from "../schema/menuSchema";
-import { createCategory } from "@/lib/menus";
+import { addItemToCategory, createCategory } from "@/lib/menus";
 import { revalidatePath } from "next/cache";
 import { db } from "@/lib/db";
 
@@ -45,20 +45,12 @@ export async function addCategoryItem(
       return { errors: z.flattenError(validate.error).fieldErrors };
 
     const { name, description, price } = validate.data;
-    await db.menuItem.create({
-      data: {
-        name,
-        description,
-        price,
-        menuId: id,
-      },
-    });
+    await addItemToCategory(name, description, price, id);
     revalidatePath("/menu");
+
     return { message: null };
   } catch (error) {
     console.log(error);
     return { message: "Internal server error." };
   }
 }
-
-
