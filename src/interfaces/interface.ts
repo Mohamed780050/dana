@@ -67,3 +67,16 @@ export enum Currency {
   EGP = "EGP",
   // …add whatever currencies you support
 }
+
+export interface CartState {
+  errors?: {
+    orders?: string[];
+    customer_name?: string[];
+    customer_phone?: string[];
+    total_amount?: string[];
+    status?: string[];
+    payment_status?: string[];
+    phone?: string[];
+  };
+  message?: string | null;
+}

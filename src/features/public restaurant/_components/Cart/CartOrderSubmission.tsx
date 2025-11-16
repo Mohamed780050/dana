@@ -14,8 +14,7 @@ export default function CartOrderSubmission() {
         </Label>
         <Input
           type="text"
-          // value={customerName}
-          // onChange={(e) => setCustomerName(e.target.value)}
+          name="name"
           placeholder="John Doe"
           className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-transparent focus:ring-2 focus:ring-emerald-500"
         />
@@ -27,8 +26,7 @@ export default function CartOrderSubmission() {
         </Label>
         <Input
           type="tel"
-          // value={customerPhone}
-          // onChange={(e) => setCustomerPhone(e.target.value)}
+          name="phone"
           placeholder="+1 (555) 123-4567"
           className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-transparent focus:ring-2 focus:ring-emerald-500"
         />
@@ -82,6 +80,7 @@ export default function CartOrderSubmission() {
           </button>
         </div>
       </div>
+      
       <button
         type="submit"
         className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-emerald-600 py-3 font-semibold text-white transition-all hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-50"

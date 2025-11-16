@@ -14,7 +14,7 @@ export default function CartItems() {
 
   return (
     <>
-      <div className="max-h-1/3 flex-1 space-y-4 overflow-y-auto p-6">
+      <div className="max-h-[350px] flex-1 space-y-4 overflow-y-auto p-6">
         {orders.map((item) => (
           <div
             key={item.id}
