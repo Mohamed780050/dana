@@ -1,5 +1,5 @@
 import { db } from "@/lib/db";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@radix-ui/react-tabs";
+import { Tabs, TabsList, TabsTrigger } from "@radix-ui/react-tabs";
 import RestaurantContent from "./RestaurantContent";
 import Cart from "./Cart/Cart";
 import { AllTabContent } from "./AllTabContent";

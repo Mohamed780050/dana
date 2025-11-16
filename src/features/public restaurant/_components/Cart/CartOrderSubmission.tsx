@@ -2,7 +2,7 @@
 
 import { Input } from "@/components/ui/input";
 import { Label } from "@radix-ui/react-label";
-import { CreditCard } from "lucide-react";
+import { CreditCard, ShoppingCart } from "lucide-react";
 
 export default function CartOrderSubmission() {
   const paymentMethod = "cash";
@@ -82,6 +82,22 @@ export default function CartOrderSubmission() {
           </button>
         </div>
       </div>
+      <button
+        type="submit"
+        className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-emerald-600 py-3 font-semibold text-white transition-all hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-50"
+      >
+        {false ? (
+          <>
+            <div className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
+            Processing...
+          </>
+        ) : (
+          <>
+            <ShoppingCart className="h-5 w-5" />
+            Place Order
+          </>
+        )}
+      </button>
     </form>
   );
 }

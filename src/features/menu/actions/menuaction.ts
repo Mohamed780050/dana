@@ -4,7 +4,6 @@ import { CategoryItemState, MenuCategoryState } from "@/interfaces/interface";
 import { categoryItem, categorySchema } from "../schema/menuSchema";
 import { addItemToCategory, createCategory } from "@/lib/menus";
 import { revalidatePath } from "next/cache";
-import { db } from "@/lib/db";
 
 export async function addCategory(
   prevState: MenuCategoryState,

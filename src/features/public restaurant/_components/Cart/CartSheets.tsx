@@ -16,7 +16,7 @@ export default function CartSheets({ children }: { children: ReactNode }) {
   return (
     <Sheet>
       <SheetTrigger asChild>{children}</SheetTrigger>
-      <SheetContent>
+      <SheetContent className="overflow-y-scroll">
         <SheetHeader className="sticky top-0 border-b border-slate-200 bg-white">
           <SheetTitle className="flex items-center space-x-3 pt-6">
             <ShoppingCart className="h-6 w-6 text-emerald-600" />
