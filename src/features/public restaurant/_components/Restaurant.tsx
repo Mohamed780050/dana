@@ -12,6 +12,9 @@ export default function Restaurant({
     description: string;
     address: string;
     // currency: Currency;
+    facebook: string | null;
+    instagram: string | null;
+    linkedIn: string | null;
     wa_phone: string;
   };
 }) {
@@ -23,6 +26,9 @@ export default function Restaurant({
         address={restaurant.address}
         phone={restaurant.phone}
         wa_phone={restaurant.wa_phone}
+        facebook={restaurant.facebook}
+        instagram={restaurant.instagram}
+        linkedIn={restaurant.linkedIn}
       />
       <RestaurantMenu userId={restaurant.userId} />
     </div>

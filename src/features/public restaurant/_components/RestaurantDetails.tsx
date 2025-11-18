@@ -1,4 +1,12 @@
-import { MapPin, MessageCircle, Phone, Utensils } from "lucide-react";
+import {
+  Facebook,
+  Instagram,
+  Linkedin,
+  MapPin,
+  MessageCircle,
+  Phone,
+  Utensils,
+} from "lucide-react";
 
 export default function RestaurantDetails({
   name,
@@ -6,12 +14,18 @@ export default function RestaurantDetails({
   address,
   phone,
   wa_phone,
+  facebook,
+  instagram,
+  linkedIn,
 }: {
   name: string;
   description: string;
   address: string;
   phone: string;
   wa_phone: string;
+  facebook: string | null;
+  instagram: string | null;
+  linkedIn: string | null;
 }) {
   return (
     <div className="bg-linear-to-br from-emerald-600 via-emerald-500 to-teal-500 px-4 py-24 text-white shadow-xl">
@@ -62,6 +76,43 @@ export default function RestaurantDetails({
             </a>
           )}
         </div>
+        {(facebook || instagram || linkedIn) && (
+          <div className="flex items-center justify-center gap-4 pt-2">
+            {facebook && (
+              <a
+                href={facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full border border-white/20 bg-white/10 p-3 backdrop-blur-sm transition-all hover:scale-110 hover:bg-white/20"
+                title="Visit Facebook"
+              >
+                <Facebook className="h-6 w-6" />
+              </a>
+            )}
+            {instagram && (
+              <a
+                href={instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full border border-white/20 bg-white/10 p-3 backdrop-blur-sm transition-all hover:scale-110 hover:bg-white/20"
+                title="Visit Instagram"
+              >
+                <Instagram className="h-6 w-6" />
+              </a>
+            )}
+            {linkedIn && (
+              <a
+                href={linkedIn}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full border border-white/20 bg-white/10 p-3 backdrop-blur-sm transition-all hover:scale-110 hover:bg-white/20"
+                title="Visit LinkedIn"
+              >
+                <Linkedin className="h-6 w-6" />
+              </a>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
