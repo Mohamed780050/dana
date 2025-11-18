@@ -61,13 +61,21 @@ export interface DetailsState {
   message?: string | null;
 }
 
+export interface SocialState {
+  errors?: {
+    facebook?: string[];
+    instagram?: string[];
+    linkedIn?: string[];
+  };
+  message?: string | null;
+}
+
 export enum Currency {
   USD = "USD",
   EUR = "EUR",
   EGP = "EGP",
   // …add whatever currencies you support
 }
-
 
 export interface CartState {
   errors?: {

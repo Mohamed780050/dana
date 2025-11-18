@@ -19,7 +19,7 @@ export default function CartOrderSubmission() {
     paymentMethod,
     // initialState,
   );
-  const [state, action, isPending] = useActionState<CartState>(
+  const [state, action, isPending] = useActionState<CartState,FormData>(
     saveOrderWithData,
     initialState,
   );

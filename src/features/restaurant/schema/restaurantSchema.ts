@@ -8,3 +8,9 @@ export const restaurantDetailsSchema = z.object({
   currency: z.enum(["USD", "EUR", "GBP"]),
   wa_phone: z.string().min(1, "Don't let this field empty."),
 });
+
+export const restaurantSocialSchema = z.object({
+  facebook: z.url().min(1, "Don't let this empty."),
+  instagram: z.url().min(1, "Don't let this empty."),
+  linkedIn: z.url().min(1, "Don't let this empty."),
+});

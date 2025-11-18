@@ -1,9 +1,9 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import RestaurantDetails from "./RestaurantDetails";
-import RestaurantWorkingTimes from "./RestaurantWorkingTimes";
-import { Clock, Store } from "lucide-react";
+import { Store, Network } from "lucide-react";
 import { Suspense } from "react";
 import RestaurantDetailsSkeleton from "../skeletons/RestaurantDetailsSkeleton";
+import RestaurantSocial from "./RestaurantSocial";
 export default function RestaurantTabs() {
   return (
     <div className="flex w-full flex-col gap-6">
@@ -13,9 +13,9 @@ export default function RestaurantTabs() {
             <Store className="h-5 w-5" />
             Restaurant Details
           </TabsTrigger>
-          <TabsTrigger value="restaurant_working">
-            <Clock className="h-5 w-5" />
-            Restaurant Working
+          <TabsTrigger value="restaurant_social_media">
+            <Network className="h-5 w-5" />
+            Restaurant social media
           </TabsTrigger>
         </TabsList>
         <TabsContent value="restaurant_details">
@@ -23,8 +23,8 @@ export default function RestaurantTabs() {
             <RestaurantDetails />
           </Suspense>
         </TabsContent>
-        <TabsContent value="restaurant_working">
-          <RestaurantWorkingTimes />
+        <TabsContent value="restaurant_social_media">
+          <RestaurantSocial />
         </TabsContent>
       </Tabs>
     </div>
