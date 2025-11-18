@@ -3,21 +3,45 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@radix-ui/react-label";
 import { CreditCard, ShoppingCart } from "lucide-react";
+import { useActionState, useState } from "react";
+import { saveOrder } from "../../action/cart";
+import { useOrdersStore } from "@/hooks/useCartItem";
+import { CartState } from "@/interfaces/interface";
 
 export default function CartOrderSubmission() {
-  const paymentMethod = "cash";
+  const initialState: CartState = { message: null, errors: {} };
+  const [paymentMethod, setPaymentMethod] = useState<"cash" | "Visa">("cash");
+  const { orders, totalPrice } = useOrdersStore();
+  const saveOrderWithData = saveOrder.bind(
+    null,
+    orders,
+    totalPrice,
+    paymentMethod,
+    // initialState,
+  );
+  const [state, action, isPending] = useActionState<CartState>(
+    saveOrderWithData,
+    initialState,
+  );
+  console.log(state);
   return (
-    <form className="space-y-3 pt-2">
+    <form className="space-y-3 pt-2" action={action}>
       <div>
         <Label className="mb-2 block text-sm font-medium text-slate-700">
           Your Name
         </Label>
         <Input
           type="text"
-          name="name"
+          name="category_name"
           placeholder="John Doe"
           className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-transparent focus:ring-2 focus:ring-emerald-500"
         />
+        {state.errors?.customer_name &&
+          state.errors.customer_name.map((text, index) => (
+            <p className="text-red-500" key={index}>
+              {text}
+            </p>
+          ))}
       </div>
 
       <div>
@@ -30,6 +54,12 @@ export default function CartOrderSubmission() {
           placeholder="+1 (555) 123-4567"
           className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-transparent focus:ring-2 focus:ring-emerald-500"
         />
+        {state.errors?.customer_phone &&
+          state.errors.customer_phone.map((text, index) => (
+            <p className="text-red-500" key={index}>
+              {text}
+            </p>
+          ))}
       </div>
 
       <div>
@@ -38,6 +68,7 @@ export default function CartOrderSubmission() {
         </label>
         <div className="space-y-2">
           <button
+            type="button"
             // onClick={() => setPaymentMethod("cash")}
             className={`flex w-full items-center gap-3 rounded-lg border-2 p-3 transition-all ${
               paymentMethod === "cash"
@@ -66,6 +97,7 @@ export default function CartOrderSubmission() {
           </button>
 
           <button
+            type="button"
             // onClick={() => setPaymentMethod("visa")}
             disabled
             className="flex w-full cursor-not-allowed items-center gap-3 rounded-lg border-2 border-slate-300 p-3 opacity-50"
@@ -80,12 +112,13 @@ export default function CartOrderSubmission() {
           </button>
         </div>
       </div>
-      
+
       <button
         type="submit"
+        disabled={isPending}
         className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-emerald-600 py-3 font-semibold text-white transition-all hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-50"
       >
-        {false ? (
+        {isPending ? (
           <>
             <div className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
             Processing...

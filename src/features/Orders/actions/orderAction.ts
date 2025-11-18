@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-"use server"
+"use server";
 import { OrderState } from "@/interfaces/interface";
 import { orderSchema } from "../schema/order";
 import z from "zod";
@@ -33,7 +33,7 @@ export async function createOrder(
       status,
       total_amount,
     } = validate.data;
-    await db.orders.create({
+    const order = await db.orders.create({
       data: {
         userId: user.id,
         customer_name,
@@ -43,7 +43,44 @@ export async function createOrder(
         total_amount,
       },
     });
-    revalidatePath("/orders")
+    await db.cardsStatus.update({
+      where: { userId: user.id },
+      data: {
+        totalOrders: { increment: 1 },
+      },
+    });
+
+    await db.cardsStatus.update({
+      where: { userId: user.id },
+      data: {
+        salesVolume: {
+          increment: order.total_amount,
+        },
+      },
+    });
+
+    const updateData: any = {};
+    if (order.status === "Completed") {
+      updateData.completed = { increment: 1 };
+    } else if (order.status === "Pending") {
+      updateData.pending = { increment: 1 };
+    } else if (order.status === "Processing") {
+      updateData.processing = { increment: 1 };
+    }
+    await db.totalOrders.update({
+      where: { userId: user.id },
+      data: updateData,
+    });
+
+    await db.salesAnalytics.update({
+      where: { userId: user.id },
+      data: {
+        today: { increment: order.total_amount },
+        thisWeek: { increment: order.total_amount },
+        thisMonth: { increment: order.total_amount },
+      },
+    });
+    revalidatePath("/orders");
     return { message: null, errors: undefined };
   } catch (error: any) {
     console.log(error);

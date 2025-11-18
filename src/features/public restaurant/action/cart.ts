@@ -1,20 +1,33 @@
 "use server";
 import { CartState } from "@/interfaces/interface";
 import z from "zod";
-import { cartSchema } from "../schema/shema";
-import { revalidatePath } from "next/cache";
+import { cartSchema } from "../schema/schema";
 
-export async function addCategory(
+interface OrderInterface {
+  id: string;
+  name: string;
+  price: number;
+  quantity: number;
+}
+
+export async function saveOrder(
+  orders: OrderInterface[],
+  total_amount: number,
+  paymentMethod: "cash" | "Visa",
   prevState: CartState,
   formData: FormData,
 ): Promise<CartState> {
   try {
     const validate = cartSchema.safeParse({
-      category_name: formData.get("category_name"),
+      orders,
+      customer_name: formData.get("category_name"),
+      customer_phone: formData.get("phone"),
+      total_amount,
     });
+    console.log(validate.data);
     if (!validate.success)
       return { errors: z.flattenError(validate.error).fieldErrors };
-    // await createCategory(validate.data.category_name);
+    
     return { message: null };
   } catch (error) {
     console.log(error);

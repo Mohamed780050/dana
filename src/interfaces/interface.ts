@@ -68,6 +68,7 @@ export enum Currency {
   // …add whatever currencies you support
 }
 
+
 export interface CartState {
   errors?: {
     orders?: string[];

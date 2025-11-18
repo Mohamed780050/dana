@@ -15,12 +15,12 @@ export default function ItemsActionButtons({ id }: { id: string }) {
       >
         {/* {item.is_available ? "Available" : "Unavailable"} */}
       </button>
-      <button
+      {/* <button
         // onClick={() => startEditingItem(item)}
         className="rounded-lg p-2 text-blue-600 transition-colors hover:bg-blue-50"
       >
         <Edit2 className="h-4 w-4" />
-      </button>
+      </button> */}
       <DeleteDialog itemId={id}>
         <button
           // onClick={() => deleteItem(item.id)}

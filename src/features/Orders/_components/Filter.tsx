@@ -20,7 +20,7 @@ export default function Filter() {
           </button>
         </CreateOrderModal>
       </div>
-      <FiltersItem/>
+      {/* <FiltersItem/> */}
     </div>
   );
 }

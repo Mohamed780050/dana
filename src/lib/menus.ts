@@ -58,6 +58,10 @@ export async function deleteMenuItem(id: string) {
         id,
       },
     });
+    await db.cardsStatus.update({
+      where: { userId: user.id },
+      data: { menuItem: { decrement: 1 } },
+    });
     revalidatePath("/menu");
   } catch (error: any) {
     console.log(error);
@@ -99,8 +103,15 @@ export async function addItemToCategory(
         description,
         price,
         menuId,
-        userId:user.id
-        
+        userId: user.id,
+      },
+    });
+    await db.cardsStatus.update({
+      where: {
+        userId: user.id,
+      },
+      data: {
+        menuItem: { increment: 1 },
       },
     });
   } catch (error: any) {

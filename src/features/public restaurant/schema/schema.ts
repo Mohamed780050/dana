@@ -8,10 +8,10 @@ const orderSchema = z.object({
 });
 
 export const cartSchema = z.object({
+  customer_name: z.string().min(1,"Put your name please."),
   orders: z.array(orderSchema),
   total_amount: z.number(),
-  customer_name: z.string(),
-  phone: z
+  customer_phone: z
     .string()
     .min(7, { message: "Phone number is too short" })
     .max(15, { message: "Phone number is too long" })
