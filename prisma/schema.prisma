@@ -71,7 +71,7 @@ model orders {
 model orderItems {
   id          String  @id @default(auto()) @map("_id") @db.ObjectId
   name        String
-  description String
+  description String  @default("")
   price       Float
   quantity    Int
   orders      orders? @relation(fields: [ordersId], references: [id])
