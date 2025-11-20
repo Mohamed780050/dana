@@ -10,7 +10,7 @@ export default async function RestaurantMenu({ userId }: { userId: string }) {
   return (
     <>
       <div className="mx-auto max-w-7xl px-4 py-12">
-        <Cart />
+        <Cart userId={userId}/>
         <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg">
           <Tabs defaultValue="all" className="w-full">
             <div className="overflow-x-auto border-b border-slate-200 bg-slate-50 p-4">

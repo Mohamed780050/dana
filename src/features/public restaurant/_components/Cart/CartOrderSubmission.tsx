@@ -8,7 +8,7 @@ import { saveOrder } from "../../action/cart";
 import { useOrdersStore } from "@/hooks/useCartItem";
 import { CartState } from "@/interfaces/interface";
 
-export default function CartOrderSubmission() {
+export default function CartOrderSubmission({ userId }: { userId: string }) {
   const initialState: CartState = { message: null, errors: {} };
   const [paymentMethod, setPaymentMethod] = useState<"cash" | "Visa">("cash");
   const { orders, totalPrice } = useOrdersStore();
@@ -17,9 +17,10 @@ export default function CartOrderSubmission() {
     orders,
     totalPrice,
     paymentMethod,
+    userId,
     // initialState,
   );
-  const [state, action, isPending] = useActionState<CartState,FormData>(
+  const [state, action, isPending] = useActionState<CartState, FormData>(
     saveOrderWithData,
     initialState,
   );

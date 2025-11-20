@@ -10,7 +10,13 @@ import { useOrdersStore } from "@/hooks/useCartItem";
 import { ShoppingCart } from "lucide-react";
 import { ReactNode } from "react";
 import CartContent from "./CartContent";
-export default function CartSheets({ children }: { children: ReactNode }) {
+export default function CartSheets({
+  children,
+  userId,
+}: {
+  children: ReactNode;
+  userId: string;
+}) {
   const { orders } = useOrdersStore();
 
   return (
@@ -24,7 +30,7 @@ export default function CartSheets({ children }: { children: ReactNode }) {
           </SheetTitle>
         </SheetHeader>
         {orders.length ? (
-          <CartContent />
+          <CartContent userId={userId} />
         ) : (
           <div className="flex flex-1 items-center justify-center p-6">
             <div className="text-center">

@@ -26,6 +26,7 @@ export default function RestaurantDetails({
   facebook: string | null;
   instagram: string | null;
   linkedIn: string | null;
+  
 }) {
   return (
     <div className="bg-linear-to-br from-emerald-600 via-emerald-500 to-teal-500 px-4 py-24 text-white shadow-xl">
