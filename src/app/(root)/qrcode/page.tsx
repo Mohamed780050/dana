@@ -2,6 +2,7 @@ import PageTitle from "@/components/PageTitle";
 import FindingQRCode from "@/features/qrcode/_components/FindingQRCode";
 import { Suspense } from "react";
 
+export const dynamic = "force-dynamic";
 export default function page() {
   return (
     <div className="space-y-6">

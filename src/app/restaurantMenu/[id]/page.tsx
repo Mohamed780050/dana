@@ -2,6 +2,7 @@ import Restaurant from "@/features/public restaurant/_components/Restaurant";
 import { db } from "@/lib/db";
 import { getRestaurantDetailsForPublicRoute } from "@/lib/restaurant";
 
+export const dynamic = "force-dynamic";
 export default async function page({ params }: { params: { id: string } }) {
   const { id } = await params;
   const restaurant = await getRestaurantDetailsForPublicRoute(id);

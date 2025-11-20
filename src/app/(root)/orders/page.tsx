@@ -2,6 +2,7 @@ import PageTitle from "@/components/PageTitle";
 import Filter from "@/features/Orders/_components/Filter";
 import OrderTable from "@/features/Orders/_components/OrderTable";
 
+export const dynamic = "force-dynamic";
 export default function page() {
   return (
     <div className="space-y-8">

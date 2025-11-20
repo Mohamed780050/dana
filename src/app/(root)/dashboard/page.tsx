@@ -6,6 +6,7 @@ import OverViewSkeleton from "@/features/dashboard/skeleton/OverViewSkeleton";
 import StatusCardSkeleton from "@/features/dashboard/skeleton/StatusCardSkeleton";
 import { Suspense } from "react";
 
+export const dynamic = "force-dynamic";
 export default function page() {
   return (
     <div className="space-y-8">

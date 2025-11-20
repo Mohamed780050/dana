@@ -4,6 +4,7 @@ import Categories from "@/features/menu/_components/Categories";
 import CategorySkeleton from "@/features/menu/skeletons/CategorySkeleton";
 import { Suspense } from "react";
 
+export const dynamic = "force-dynamic";
 export default function page() {
   return (
     <div className="space-y-8">
