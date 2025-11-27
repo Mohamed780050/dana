@@ -87,6 +87,8 @@ export async function EditRestaurantSocial(
       linkedIn: formData.get("linkedIn"),
     });
 
+    console.log(validate);
+
     if (!validate.success)
       return { errors: z.flattenError(validate.error).fieldErrors };
 

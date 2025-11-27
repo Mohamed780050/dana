@@ -10,7 +10,7 @@ export const restaurantDetailsSchema = z.object({
 });
 
 export const restaurantSocialSchema = z.object({
-  facebook: z.url().min(1, "Don't let this empty.").optional(),
-  instagram: z.url().min(1, "Don't let this empty.").optional(),
-  linkedIn: z.url().min(1, "Don't let this empty.").optional(),
+  facebook: z.string().url().or(z.literal("")).optional(),
+  instagram: z.string().url().or(z.literal("")).optional(),
+  linkedIn: z.string().url().or(z.literal("")).optional(),
 });
