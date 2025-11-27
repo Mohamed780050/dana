@@ -7,12 +7,14 @@ import ItemInfo from "./ItemInfo";
 export default async function RestaurantContent({
   value,
   id,
+  currency,
 }: {
   value: string;
   id: string;
+  currency: "USD" | "EUR" | "GBP" | "EGP";
 }) {
   const MenuItems = await db.menuItem.findMany({ where: { menuId: id } });
-  console.log(MenuItems);
+
   return (
     <TabsContent value={value}>
       {MenuItems.length ? (
@@ -27,7 +29,7 @@ export default async function RestaurantContent({
                 description={item.description}
                 name={item.name}
                 price={item.price}
-                currency="USD"
+                currency={currency}
                 itemId={item.id}
               />
             </div>

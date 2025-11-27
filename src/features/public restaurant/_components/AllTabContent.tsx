@@ -5,7 +5,13 @@ import { Utensils } from "lucide-react";
 import ItemImage from "./ItemImage";
 import ItemInfo from "./ItemInfo";
 
-export async function AllTabContent({ value }: { value: string }) {
+export async function AllTabContent({
+  value,
+  currency
+}: {
+  value: string;
+  currency: "USD" | "EUR" | "GBP" | "EGP";
+}) {
   const user = await currentUser();
   if (!user) return null;
   const menuItems = await db.menuItem.findMany({ where: { userId: user.id } });
@@ -23,7 +29,7 @@ export async function AllTabContent({ value }: { value: string }) {
                 description={item.description}
                 name={item.name}
                 price={item.price}
-                currency="USD"
+                currency={currency}
                 itemId={item.id}
               />
             </div>

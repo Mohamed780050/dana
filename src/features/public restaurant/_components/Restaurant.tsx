@@ -11,7 +11,7 @@ export default function Restaurant({
     name: string;
     description: string;
     address: string;
-    // currency: Currency;
+    currency: "USD" | "EUR" | "GBP" | "EGP";
     facebook: string | null;
     instagram: string | null;
     linkedIn: string | null;

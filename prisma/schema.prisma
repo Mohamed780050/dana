@@ -100,6 +100,7 @@ enum Currency {
   USD
   EUR
   GBP
+  EGP
 }
 
 model restaurant {

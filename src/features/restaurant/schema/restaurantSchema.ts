@@ -5,7 +5,7 @@ export const restaurantDetailsSchema = z.object({
   phone: z.string().min(1, "Don't let this field empty."),
   description: z.string().min(30, "less than 30 char."),
   address: z.string().min(1, "Don't let this field empty."),
-  currency: z.enum(["USD", "EUR", "GBP"]),
+  currency: z.enum(["USD", "EUR", "GBP","EGP"]),
   wa_phone: z.string().min(1, "Don't let this field empty."),
 });
 

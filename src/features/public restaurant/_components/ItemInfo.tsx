@@ -24,7 +24,8 @@ export default function ItemInfo({
           {currency === "USD" && "$"}
           {currency === "EUR" && "€"}
           {currency === "GBP" && "£"}
-          {!["USD", "EUR", "GBP"].includes(currency) && currency + " "}
+          {currency === "EGP" && "EGP "}
+          {!["USD", "EUR", "GBP", "EGP"].includes(currency) && currency + " "}
           {Number(price).toFixed(2)}
         </div>
       </div>

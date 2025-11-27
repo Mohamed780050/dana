@@ -18,7 +18,7 @@ export default function RestaurantForm({
   name: string;
   description: string;
   address: string;
-  currency: "USD" | "EUR" | "GBP";
+  currency: "USD" | "EUR" | "GBP" | "EGP";
   wa_phone: string;
 }) {
   const initialState: DetailsState = { message: null, errors: {} };
@@ -80,7 +80,7 @@ export default function RestaurantForm({
           name="description"
           placeholder="Tell customers about your restaurant..."
           rows={4}
-          className="w-full resize-none rounded-lg border border-slate-300 px-4 py-3 min-h-44"
+          className="min-h-44 w-full resize-none rounded-lg border border-slate-300 px-4 py-3"
         />
         {state.errors?.description &&
           state.errors.description.map((text, index) => (
@@ -125,6 +125,7 @@ export default function RestaurantForm({
             <option value="USD">USD - US Dollar</option>
             <option value="EUR">EUR - Euro</option>
             <option value="GBP">GBP - British Pound</option>
+            <option value="EGP">EGP - Egypt Pound</option>
           </select>
           {state.errors?.currency &&
             state.errors.currency.map((text, index) => (
