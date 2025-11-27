@@ -68,7 +68,7 @@ export default function OrderTableComponent({
               </td>
               <td className="px-6 py-4">
                 <span
-                  className={`{getPaymentBadge(order.payment_status)} inline-flex rounded-full px-3 py-1 text-xs font-medium`}
+                  className={`inline-flex rounded-full px-3 py-1 text-xs font-medium ${order.payment_status === "unPaid" ? "bg-red-200" : "bg-emerald-200"}`}
                 >
                   {order.payment_status}
                 </span>
