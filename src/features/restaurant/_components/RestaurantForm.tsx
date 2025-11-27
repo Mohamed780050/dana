@@ -5,6 +5,8 @@ import { EditRestaurantDetails } from "../action/restaurant";
 import { useActionState } from "react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { CldUploadWidget } from "next-cloudinary";
+import { Button } from "@/components/ui/button";
 
 export default function RestaurantForm({
   address,
@@ -155,7 +157,17 @@ export default function RestaurantForm({
             ))}
         </div>
       </div>
-
+      <div>
+        <CldUploadWidget uploadPreset="dana">
+          {({ open }) => {
+            return (
+              <Button type="button" onClick={() => open()}>
+                Upload yout logo
+              </Button>
+            );
+          }}
+        </CldUploadWidget>
+      </div>
       <div className="flex justify-end pt-4">
         <button
           type="submit"

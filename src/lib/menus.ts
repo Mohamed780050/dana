@@ -2,11 +2,13 @@
 "use server";
 import { revalidatePath } from "next/cache";
 import { db } from "./db";
-import { currentUser } from "@clerk/nextjs/server";
+import { currentUser, auth } from "@clerk/nextjs/server";
 
 export async function getAllCategories() {
   try {
     const user = await currentUser();
+    const myAuth = await auth();
+    console.log(myAuth);
     if (!user) throw new Error("Not authorized");
     const findCategories = await db.menu.findMany({
       where: { userId: user.id },

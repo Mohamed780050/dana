@@ -9,6 +9,7 @@ import {
   Store,
   TableProperties,
   UtensilsCrossed,
+  HardHat
 } from "lucide-react";
 
 export const navItems = [
@@ -17,6 +18,7 @@ export const navItems = [
   { id: "menu" as const, label: "Menu", icon: UtensilsCrossed },
   // { id: "tables" as const, label: "Tables", icon: TableProperties },
   { id: "restaurant" as const, label: "Restaurant", icon: Store },
+  { id: "employees" as const, label: "Employees", icon: HardHat },
   { id: "qrcode" as const, label: "QR Code", icon: QrCode },
 ];
 export const statCardsData: Omit<StatCardProps, "value">[] = [

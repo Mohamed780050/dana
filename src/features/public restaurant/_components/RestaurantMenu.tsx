@@ -42,7 +42,6 @@ export default async function RestaurantMenu({ userId }: { userId: string }) {
               {menus.map((item) => (
                 <RestaurantContent
                 currency={details?.currency || "USD"}
-
                   value={item.name}
                   key={item.id}
                   id={item.id}
