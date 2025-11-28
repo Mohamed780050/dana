@@ -89,3 +89,11 @@ export interface CartState {
   };
   message?: string | null;
 }
+
+export interface employees{
+  id:string;
+  name:string;
+  email:string;
+  role:string;
+  createdAt:string;
+}

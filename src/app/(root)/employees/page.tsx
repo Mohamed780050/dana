@@ -1,4 +1,6 @@
 import PageTitle from "@/components/PageTitle";
+import HaveAnOrg from "@/features/employees/HaveAnOrg";
+import { Suspense } from "react";
 
 export default function page() {
   return (
@@ -7,6 +9,9 @@ export default function page() {
         title="Employees"
         description="You can manage your employees from here."
       />
+      <Suspense fallback={<div>loading</div>}>
+        <HaveAnOrg />
+      </Suspense>
     </div>
   );
 }
