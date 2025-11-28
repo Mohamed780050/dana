@@ -1,3 +1,4 @@
+"use client"
 import { Button } from "@/components/ui/button";
 import { employees } from "@/interfaces/interface";
 import { Edit2, Trash2 } from "lucide-react";

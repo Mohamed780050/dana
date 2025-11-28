@@ -7,7 +7,7 @@ export default function BottomBar() {
   const pathname = usePathname();
 
   return (
-    <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 flex items-center justify-around">
+    <nav className="fixed right-0 bottom-0 left-0 flex items-center justify-around border-t border-slate-200 bg-white md:hidden">
       {navItems.map((item) => {
         const Icon = item.icon;
         const active = `/${item.id}` === pathname;
@@ -15,14 +15,14 @@ export default function BottomBar() {
           <Link
             href={item.id}
             key={item.id}
-            className={`flex-1 flex flex-col items-center border-t-0 justify-center py-5 px-2 transition-all  duration-200 ease-out ${
+            className={`flex flex-1 flex-col items-center justify-center border-t-0 px-2 py-5 transition-all duration-200 ease-out ${
               active
-                ? "text-emerald-600 border-t-2 border-emerald-600 bg-emerald-50"
+                ? "border-t-2 border-emerald-600 bg-emerald-50 text-emerald-600"
                 : "text-slate-600 hover:text-slate-900"
             }`}
           >
-            <Icon className="w-5 h-5" />
-            <span className="text-xs mt-1 font-medium truncate">
+            <Icon className="h-5 w-5" />
+            <span className="mt-1 truncate text-xs font-medium">
               {item.label === "QR Code" ? "QR" : item.label}
             </span>
           </Link>

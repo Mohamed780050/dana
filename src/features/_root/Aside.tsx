@@ -1,9 +1,12 @@
 import { Button } from "@/components/ui/button";
 import NavLinks from "@/components/ui/NavLinks";
 import { SignOutButton } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
 import { LogOut, Store } from "lucide-react";
 
-export default function Aside() {
+export default async function Aside() {
+    const { orgRole } = await auth();
+
   return (
     <aside className="w-64 bg-white border-r border-slate-200 md:flex flex-col hidden">
       <div className="p-6 border-b border-slate-200">
@@ -13,7 +16,7 @@ export default function Aside() {
         </div>
       </div>
 
-      <NavLinks />
+      <NavLinks orgRole={orgRole} />
 
       <div className="p-4 border-t border-slate-200">
         <SignOutButton>

@@ -1,5 +1,7 @@
+"use client";
 import { employees } from "@/interfaces/interface";
 import UserTable from "./UserTable";
+import { useOrganization } from "@clerk/clerk-react";
 
 export default function EmployeesTable({
   orgId,
@@ -8,6 +10,10 @@ export default function EmployeesTable({
   orgId: string;
   orgRole: string | null | undefined;
 }) {
+  const { isLoaded, memberships } = useOrganization({
+    memberships: { pageSize: 10 },
+  });
+  console.log(memberships);
   const users: employees[] = [
     {
       id: "1",

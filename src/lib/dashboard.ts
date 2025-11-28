@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // "use server";
 import { db } from "./db";
-import { currentUser } from "@clerk/nextjs/server";
+import { currentUser, auth } from "@clerk/nextjs/server";
 
 export async function getSalesStatus() {
   try {
     const user = await currentUser();
+    const { orgRole } = await auth();
 
     if (!user) throw new Error("Not authorized");
     const findSales = await db.salesAnalytics.findUnique({
