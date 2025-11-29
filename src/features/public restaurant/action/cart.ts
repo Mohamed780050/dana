@@ -3,6 +3,7 @@ import { CartState } from "@/interfaces/interface";
 import z from "zod";
 import { cartSchema } from "../schema/schema";
 import { db } from "@/lib/db";
+import { getUserOrgIds } from "@/lib/orgs";
 
 interface OrderInterface {
   id: string;
@@ -25,11 +26,12 @@ export async function saveOrder(
       customer_name: formData.get("category_name"),
       customer_phone: formData.get("phone"),
       total_amount,
+      location: formData.get("location"),
     });
     console.log(validate.data);
     if (!validate.success)
       return { errors: z.flattenError(validate.error).fieldErrors };
-
+    const orgId = await getUserOrgIds(userId);
     await db.orders.create({
       data: {
         customer_name: validate.data.customer_name,
@@ -37,6 +39,8 @@ export async function saveOrder(
         total_amount,
         items: { create: validate.data.orders },
         userId,
+        tableNumber: 1,
+        orgId,
       },
     });
     await db.cardsStatus.update({

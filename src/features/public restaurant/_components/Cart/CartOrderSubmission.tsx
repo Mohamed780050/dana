@@ -7,6 +7,15 @@ import { useActionState, useState } from "react";
 import { saveOrder } from "../../action/cart";
 import { useOrdersStore } from "@/hooks/useCartItem";
 import { CartState } from "@/interfaces/interface";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+  SelectItem,
+} from "@/components/ui/select";
 
 export default function CartOrderSubmission({ userId }: { userId: string }) {
   const initialState: CartState = { message: null, errors: {} };
@@ -113,6 +122,19 @@ export default function CartOrderSubmission({ userId }: { userId: string }) {
           </button>
         </div>
       </div>
+
+      <Select defaultValue="inSite" name="location" disabled={isPending}>
+        <SelectTrigger className="w-full">
+          <SelectValue placeholder="Select a fruit" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectGroup>
+            <SelectLabel>Location</SelectLabel>
+            <SelectItem value="inSite">In Site</SelectItem>
+            <SelectItem value="delivery">Delivery</SelectItem>
+          </SelectGroup>
+        </SelectContent>
+      </Select>
 
       <button
         type="submit"

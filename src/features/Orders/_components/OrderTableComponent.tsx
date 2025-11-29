@@ -1,5 +1,7 @@
 import { OrderInterface } from "@/interfaces/interface";
 import { Search } from "lucide-react";
+import Paid from "./Paid";
+import Delivered from "./Delivered";
 
 export default function OrderTableComponent({
   filteredOrders,
@@ -30,6 +32,9 @@ export default function OrderTableComponent({
           </th>
           <th className="px-6 py-4 text-left text-xs font-semibold tracking-wider text-slate-600 uppercase">
             Date
+          </th>
+          <th className="px-6 py-4 text-left text-xs font-semibold tracking-wider text-slate-600 uppercase">
+            Action
           </th>
         </tr>
       </thead>
@@ -75,6 +80,10 @@ export default function OrderTableComponent({
               </td>
               <td className="px-6 py-4 text-sm text-slate-600">
                 {new Date(order.created_at).toLocaleDateString()}
+              </td>
+              <td className="flex gap-2 px-6 py-4 text-sm text-slate-600">
+                <Paid id={order.id} />
+                <Delivered id={order.id} />
               </td>
             </tr>
           ))

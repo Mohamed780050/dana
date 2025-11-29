@@ -58,6 +58,11 @@ enum PaymentStatus {
   unPaid
 }
 
+enum location {
+  InSite
+  Delivery
+}
+
 model orders {
   id             String        @id @default(auto()) @map("_id") @db.ObjectId
   userId         String
@@ -70,6 +75,8 @@ model orders {
   updatedAt      DateTime      @updatedAt
   items          orderItems[]
   orgId          String        @unique
+  tableNumber    Int?
+  location       location
 }
 
 model orderItems {
