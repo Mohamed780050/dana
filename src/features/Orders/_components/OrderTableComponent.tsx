@@ -2,12 +2,14 @@ import { OrderInterface } from "@/interfaces/interface";
 import { Search } from "lucide-react";
 import Paid from "./Paid";
 import Delivered from "./Delivered";
+import { auth } from "@clerk/nextjs/server";
 
-export default function OrderTableComponent({
+export default async function OrderTableComponent({
   filteredOrders,
 }: {
   filteredOrders: OrderInterface[];
 }) {
+  const { orgRole } = await auth();
   return (
     <table className="w-full">
       <thead className="border-b border-slate-200 bg-slate-50 text-nowrap">
@@ -82,8 +84,14 @@ export default function OrderTableComponent({
                 {new Date(order.created_at).toLocaleDateString()}
               </td>
               <td className="flex gap-2 px-6 py-4 text-sm text-slate-600">
-                <Paid id={order.id} />
-                <Delivered id={order.id} />
+                {orgRole === "org:cashier" && <Paid id={order.id} />}
+                {orgRole === "org:delivery" && <Delivered id={order.id} />}
+                {orgRole === "org:admin" && (
+                  <>
+                    <Delivered id={order.id} />
+                    <Paid id={order.id} />
+                  </>
+                )}
               </td>
             </tr>
           ))

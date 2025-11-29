@@ -123,6 +123,18 @@ export default function CartOrderSubmission({ userId }: { userId: string }) {
         </div>
       </div>
 
+      <div>
+        <Label className="mb-2 block text-sm font-medium text-slate-700">
+          Table number
+        </Label>
+        <Input
+          type="number"
+          name="tableNumber"
+          placeholder="Table Number"
+          className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-transparent focus:ring-2 focus:ring-emerald-500"
+        />
+      </div>
+
       <Select defaultValue="inSite" name="location" disabled={isPending}>
         <SelectTrigger className="w-full">
           <SelectValue placeholder="Select a fruit" />

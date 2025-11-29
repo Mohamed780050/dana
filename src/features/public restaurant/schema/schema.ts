@@ -12,6 +12,7 @@ export const cartSchema = z.object({
   orders: z.array(orderSchema),
   total_amount: z.number(),
   location: z.enum(["inSite", "delivery"]),
+  tableNumber: z.number().min(1),
   customer_phone: z
     .string()
     .min(7, { message: "Phone number is too short" })
