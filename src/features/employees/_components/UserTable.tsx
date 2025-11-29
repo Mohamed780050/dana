@@ -1,16 +1,25 @@
-"use client"
+"use client";
 import { Button } from "@/components/ui/button";
-import { employees } from "@/interfaces/interface";
 import { Edit2, Trash2 } from "lucide-react";
 
-export default function UserTable({ users }: { users: employees[] }) {
+export default function UserTable({
+  users,
+}: {
+  users: {
+    userId: string;
+    identifier: string;
+    firstName: string | null;
+    lastName: string | null;
+    role: string;
+  }[];
+}) {
   const getRoleBadgeColor = (role: string) => {
     switch (role) {
-      case "admin":
+      case "org:admin":
         return "bg-purple-900 text-purple-200";
-      case "cashier":
+      case "org:cashier":
         return "bg-blue-900 text-blue-200";
-      case "delivery":
+      case "org:delivery":
         return "bg-green-900 text-green-200";
       default:
         return "bg-slate-700 text-slate-200";
@@ -31,21 +40,23 @@ export default function UserTable({ users }: { users: employees[] }) {
         <tbody>
           {users.map((user) => (
             <tr
-              key={user.id}
+              key={user.userId}
               className="border-b border-slate-700 transition-all duration-200 hover:from-slate-900/5"
               // onClick={() => onEdit(user)}
             >
-              <td className="px-6 py-4">{user.name}</td>
-              <td className="px-6 py-4">{user.email}</td>
+              <td className="px-6 py-4">
+                {user.firstName} {user.lastName}
+              </td>
+              <td className="px-6 py-4">{user.identifier}</td>
               <td className="px-6 py-4">
                 <span
                   className={`rounded-full px-3 py-1 text-sm font-medium capitalize ${getRoleBadgeColor(user.role)}`}
                 >
-                  {user.role}
+                  {user.role.split(":")[1]}
                 </span>
               </td>
               <td className="px-6 py-4">
-                {new Date(user.createdAt).toLocaleDateString()}
+                {/* {new Date(user.createdAt).toLocaleDateString()} */}
               </td>
               <td className="px-6 py-4 text-right">
                 <div className="flex justify-end gap-2">
