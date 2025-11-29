@@ -56,7 +56,7 @@ export default function RestaurantForm({
             Restaurant Phone
           </label>
           <Input
-            defaultValue={parseInt(phone) | 0}
+            defaultValue={parseInt(phone) || undefined}
             disabled={isPending}
             name="phone"
             type="tel"

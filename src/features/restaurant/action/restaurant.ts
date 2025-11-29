@@ -8,6 +8,7 @@ import {
 import z from "zod";
 import { db } from "@/lib/db";
 import { revalidatePath } from "next/cache";
+import { getUserOrgIds } from "@/lib/orgs";
 
 export async function EditRestaurantDetails(
   prevState: DetailsState,
@@ -29,6 +30,8 @@ export async function EditRestaurantDetails(
     if (!validate.success)
       return { errors: z.flattenError(validate.error).fieldErrors };
 
+    const orgId = await getUserOrgIds(user.id);
+
     const { name, phone, description, address, currency, wa_phone } =
       validate.data;
 
@@ -48,12 +51,13 @@ export async function EditRestaurantDetails(
           address,
           currency,
           wa_phone,
+          orgId
         },
       });
 
     await db.restaurant.update({
       where: {
-        userId: user.id,
+        orgId
       },
       data: {
         name,

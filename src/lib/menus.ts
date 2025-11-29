@@ -3,15 +3,15 @@
 import { revalidatePath } from "next/cache";
 import { db } from "./db";
 import { currentUser, auth } from "@clerk/nextjs/server";
+import { getUserOrgIds } from "./orgs";
 
 export async function getAllCategories() {
   try {
     const user = await currentUser();
-    const myAuth = await auth();
-    console.log(myAuth);
     if (!user) throw new Error("Not authorized");
+    const orgId = await getUserOrgIds(user.id);
     const findCategories = await db.menu.findMany({
-      where: { userId: user.id },
+      where: { orgId },
     });
     return findCategories;
   } catch (error: any) {
@@ -25,11 +25,13 @@ export async function createCategory(category_name: string) {
     const user = await currentUser();
 
     if (!user) throw new Error("Not authorized");
+    const orgId = await getUserOrgIds(user.id);
 
     await db.menu.create({
       data: {
         userId: user.id,
         name: category_name,
+        orgId,
       },
     });
   } catch (error: any) {
@@ -41,9 +43,11 @@ export async function createCategory(category_name: string) {
 export async function getAllMenuItems(id: string) {
   try {
     const user = await currentUser();
-
     if (!user) throw new Error("Not authorized");
-    return await db.menuItem.findMany({ where: { menuId: id } });
+
+    const orgId = await getUserOrgIds(user.id);
+
+    return await db.menuItem.findMany({ where: { orgId } });
   } catch (error: any) {
     console.log(error);
     throw new Error(error.message);
@@ -55,13 +59,15 @@ export async function deleteMenuItem(id: string) {
     const user = await currentUser();
 
     if (!user) throw new Error("Not authorized");
+
+    const orgId = await getUserOrgIds(user.id);
     await db.menuItem.delete({
       where: {
         id,
       },
     });
     await db.cardsStatus.update({
-      where: { userId: user.id },
+      where: { orgId },
       data: { menuItem: { decrement: 1 } },
     });
     revalidatePath("/menu");
@@ -98,6 +104,7 @@ export async function addItemToCategory(
     const user = await currentUser();
 
     if (!user) throw new Error("Not authorized");
+    const orgId = await getUserOrgIds(user.id);
 
     await db.menuItem.create({
       data: {
@@ -106,11 +113,12 @@ export async function addItemToCategory(
         price,
         menuId,
         userId: user.id,
+        orgId,
       },
     });
     await db.cardsStatus.update({
       where: {
-        userId: user.id,
+        orgId,
       },
       data: {
         menuItem: { increment: 1 },

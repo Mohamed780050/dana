@@ -88,7 +88,7 @@ model menu {
   userId String
   name   String     @unique
   items  menuItem[] @relation("MenuItems")
-  orgId  String?
+  orgId  String     @unique
 }
 
 model menuItem {
@@ -100,7 +100,7 @@ model menuItem {
   price       Float
   description String
   image       String?
-  orgId       String?
+  orgId       String  @unique
 }
 
 enum Currency {
@@ -122,5 +122,5 @@ model restaurant {
   facebook    String?
   instagram   String?
   linkedIn    String?
-  orgId       String?
+  orgId       String   @unique
 }
