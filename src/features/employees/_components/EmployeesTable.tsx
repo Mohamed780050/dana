@@ -21,22 +21,22 @@ export default async function EmployeesTable({
     identifier: string;
     firstName: string | null;
     lastName: string | null;
-    role: string;
+    // role: string;
   }[] = [];
 
-  data.map(async (user) => {
+  await data.map( (user) => {
     if (!user.publicUserData) return;
     const { firstName, lastName, userId, identifier } = user.publicUserData;
-    const { data } = await client.users.getOrganizationMembershipList({
-      userId,
-    });
+    // const { data } = await client.users.getOrganizationMembershipList({
+    //   userId,
+    // });
     if (
       myUsers.includes({
         firstName,
         lastName,
         identifier,
         userId,
-        role: data[0].role,
+        // role: data[0].role,
       })
     )
       return;
@@ -45,7 +45,7 @@ export default async function EmployeesTable({
       lastName,
       identifier,
       userId,
-      role: data[0].role,
+      // role: data[0].role,
     });
     console.log(myUsers);
   });

@@ -13,15 +13,19 @@ export async function addUser(
     const validate = userSchema.safeParse({
       email: formData.get("email"),
       password: formData.get("password"),
+      firstName: formData.get("firstName"),
+      lastName: formData.get("lastName"),
     });
     if (!validate.success)
       return { errors: flattenError(validate.error).fieldErrors };
     // your logic
     const { orgId } = await auth();
     if (!orgId) return { message: "Something went wrong." };
-    const { email, password } = validate.data;
+    const { email, password, firstName, lastName } = validate.data;
     const client = await clerkClient();
     const user = await client.users.createUser({
+      firstName,
+      lastName,
       emailAddress: [email],
       password,
     });

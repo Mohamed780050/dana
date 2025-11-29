@@ -1,6 +1,8 @@
 import z, { email } from "zod";
 
 export const userSchema = z.object({
+  firstName: z.string().min(1, "Don't let this empty."),
+  lastName: z.string().min(1, "Don't let this empty."),
   email: z.email().min(1, "don't let this empty"),
   password: z
     .string()

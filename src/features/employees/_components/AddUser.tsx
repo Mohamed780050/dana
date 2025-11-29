@@ -33,6 +33,28 @@ export default function AddUser({ children }: { children: ReactNode }) {
             </DialogDescription>
           </DialogHeader>
           <div className="grid gap-4">
+            <div className="flex items-center justify-between">
+              <div className="grid gap-3">
+                <Label htmlFor="firstName">First Name</Label>
+                <Input id="firstName" name="firstName" disabled={isPending} />
+                {state.errors?.firstName &&
+                  state.errors.firstName.map((text, index) => (
+                    <p className="text-sm text-red-600" key={index}>
+                      {text}
+                    </p>
+                  ))}
+              </div>
+               <div className="grid gap-3">
+                <Label htmlFor="lastName">Last Name</Label>
+                <Input id="lastName" name="lastName" disabled={isPending} />
+                {state.errors?.lastName &&
+                  state.errors.lastName.map((text, index) => (
+                    <p className="text-sm text-red-600" key={index}>
+                      {text}
+                    </p>
+                  ))}
+              </div>
+            </div>
             <div className="grid gap-3">
               <Label htmlFor="email">Email</Label>
               <Input id="email" name="email" disabled={isPending} />

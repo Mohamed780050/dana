@@ -101,6 +101,8 @@ export interface UserState {
   errors?: {
     email?: string[];
     password?: string[];
+    firstName?: string[];
+    lastName?: string[];
   };
   message?: string | null;
 }
