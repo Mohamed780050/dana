@@ -123,4 +123,5 @@ model restaurant {
   instagram   String?
   linkedIn    String?
   orgId       String   @unique
+  logo        String?  @default("")
 }

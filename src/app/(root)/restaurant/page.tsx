@@ -1,5 +1,6 @@
 import PageTitle from "@/components/PageTitle";
 import RestaurantTabs from "@/features/restaurant/_components/RestaurantTabs";
+import UploadYourLogo from "@/features/restaurant/_components/UploadYourLogo";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
@@ -13,10 +14,13 @@ export default async function page() {
 
   return (
     <div className="space-y-6">
-      <PageTitle
-        title="Restaurant Settings"
-        description="Manage your restaurant information and working hours."
-      />
+      <div className="flex items-center justify-between">
+        <PageTitle
+          title="Restaurant Settings"
+          description="Manage your restaurant information and working hours."
+        />
+        <UploadYourLogo />
+      </div>
       <RestaurantTabs />
     </div>
   );

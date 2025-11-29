@@ -16,6 +16,7 @@ export default function Restaurant({
     instagram: string | null;
     linkedIn: string | null;
     wa_phone: string;
+    logo: string | null;
   };
 }) {
   return (
@@ -29,6 +30,7 @@ export default function Restaurant({
         facebook={restaurant.facebook}
         instagram={restaurant.instagram}
         linkedIn={restaurant.linkedIn}
+        logo={restaurant.logo || ""}
       />
       <RestaurantMenu userId={restaurant.userId} />
     </div>

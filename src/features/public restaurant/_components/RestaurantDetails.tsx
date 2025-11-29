@@ -7,6 +7,7 @@ import {
   Phone,
   Utensils,
 } from "lucide-react";
+import Image from "next/image";
 
 export default function RestaurantDetails({
   name,
@@ -17,6 +18,7 @@ export default function RestaurantDetails({
   facebook,
   instagram,
   linkedIn,
+  logo,
 }: {
   name: string;
   description: string;
@@ -26,14 +28,19 @@ export default function RestaurantDetails({
   facebook: string | null;
   instagram: string | null;
   linkedIn: string | null;
-  
+  logo: string;
 }) {
+  console.log(logo);
   return (
     <div className="bg-linear-to-br from-emerald-600 via-emerald-500 to-teal-500 px-4 py-24 text-white shadow-xl">
       <div className="mx-auto max-w-5xl space-y-8 text-center">
         <div className="mb-8 flex justify-center">
           <div className="flex h-32 w-32 transform items-center justify-center rounded-3xl bg-white shadow-2xl transition-transform hover:scale-105">
-            <Utensils className="h-16 w-16 text-emerald-600" />
+            {logo ? (
+              <Image width={100} height={100} src={logo} alt="logo" />
+            ) : (
+              <Utensils className="h-16 w-16 text-emerald-600" />
+            )}
           </div>
         </div>
 
