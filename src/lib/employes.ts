@@ -1,4 +1,6 @@
+"use server";
 import { clerkClient, OrganizationMembership } from "@clerk/nextjs/server";
+import { revalidatePath } from "next/cache";
 
 export async function getAndOrderEmployees(data: OrganizationMembership[]) {
   const client = await clerkClient();
@@ -36,4 +38,14 @@ export async function getAndOrderEmployees(data: OrganizationMembership[]) {
     console.log(myUsers);
   });
   return myUsers;
+}
+
+export async function deleteUser(userId: string) {
+  try {
+    const client = await clerkClient();
+    await client.users.deleteUser(userId);
+    revalidatePath("/employees");
+  } catch (error) {
+    console.log(error);
+  }
 }

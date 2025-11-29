@@ -1,4 +1,4 @@
-import z, { email } from "zod";
+import z from "zod";
 
 export const userSchema = z.object({
   firstName: z.string().min(1, "Don't let this empty."),

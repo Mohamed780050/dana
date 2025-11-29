@@ -6,6 +6,7 @@ import z from "zod";
 import { db } from "@/lib/db";
 import { currentUser } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
+import { getUserOrgIds } from "@/lib/orgs";
 
 export async function createOrder(
   prevState: OrderState,
@@ -14,7 +15,7 @@ export async function createOrder(
   try {
     const user = await currentUser();
     if (!user?.id) return { message: "Not authorized" };
-
+    const orgId = await getUserOrgIds(user.id);
     const validate = orderSchema.safeParse({
       customer_name: formData.get("customer_name"),
       customer_phone: formData.get("customer_phone"),
@@ -41,17 +42,18 @@ export async function createOrder(
         payment_status,
         status,
         total_amount,
+        orgId,
       },
     });
     await db.cardsStatus.update({
-      where: { userId: user.id },
+      where: { orgId },
       data: {
         totalOrders: { increment: 1 },
       },
     });
 
     await db.cardsStatus.update({
-      where: { userId: user.id },
+      where: { orgId },
       data: {
         salesVolume: {
           increment: order.total_amount,
@@ -68,12 +70,12 @@ export async function createOrder(
       updateData.processing = { increment: 1 };
     }
     await db.totalOrders.update({
-      where: { userId: user.id },
+      where: { orgId },
       data: updateData,
     });
 
     await db.salesAnalytics.update({
-      where: { userId: user.id },
+      where: { orgId },
       data: {
         today: { increment: order.total_amount },
         thisWeek: { increment: order.total_amount },

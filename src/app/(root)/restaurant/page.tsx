@@ -6,6 +6,8 @@ import { redirect } from "next/navigation";
 export const dynamic = "force-dynamic";
 export default async function page() {
   const { orgRole } = await auth();
+  if (orgRole === undefined) return redirect("/employees");
+
   if (orgRole === "org:delivery" || orgRole === "org:cashier")
     return redirect("/orders");
 

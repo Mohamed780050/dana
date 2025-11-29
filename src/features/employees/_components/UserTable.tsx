@@ -1,7 +1,7 @@
-// "use client";
 import { Button } from "@/components/ui/button";
 import { clerkClient } from "@clerk/nextjs/server";
 import { Edit2, Trash2 } from "lucide-react";
+import UserDeleting from "./UserDeleting";
 
 export default function UserTable({
   users,
@@ -65,33 +65,21 @@ export default function UserTable({
                 {/* <td className="px-6 py-4">
                   {new Date(user.createdAt).toLocaleDateString()}
                 </td> */}
-                <td className="px-6 py-4 text-right">
-                  <div className="flex justify-end gap-2">
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      // onClick={(e) => {
-                      //   e.stopPropagation();
-                      //   onEdit(user);
-                      // }}
-                      className="text-blue-400 hover:bg-blue-900/20 hover:text-blue-300"
-                    >
-                      <Edit2 className="h-4 w-4" />
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      // onClick={(e) => {
-                      //   e.stopPropagation();
-                      //   handleDelete(user.id);
-                      // }}
-                      // disabled={deletingId === user.id}
-                      className="text-red-400 hover:bg-red-900/20 hover:text-red-300"
-                    >
-                      <Trash2 className="h-4 w-4" />
-                    </Button>
-                  </div>
-                </td>
+                {data[0].role !== "org:admin" && (
+                  <td className="px-6 py-4 text-right">
+                    <div className="flex justify-end gap-2">
+                      <UserDeleting userId={user.userId}>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="text-red-400 hover:bg-red-700/70 hover:text-red-100"
+                        >
+                          <Trash2 className="h-4 w-4" />
+                        </Button>
+                      </UserDeleting>
+                    </div>
+                  </td>
+                )}
               </tr>
             );
           })}

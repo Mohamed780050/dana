@@ -2,20 +2,21 @@
 // "use server";
 import { db } from "./db";
 import { currentUser, auth } from "@clerk/nextjs/server";
+import { getUserOrgIds } from "./orgs";
 
 export async function getSalesStatus() {
   try {
     const user = await currentUser();
-    const { orgRole } = await auth();
-
     if (!user) throw new Error("Not authorized");
+    const orgId = await getUserOrgIds(user.id);
     const findSales = await db.salesAnalytics.findUnique({
-      where: { userId: user.id },
+      where: { orgId },
     });
     if (!findSales) {
       const sales = await db.salesAnalytics.create({
         data: {
           userId: user.id,
+          orgId,
         },
       });
       return sales;
@@ -31,14 +32,16 @@ export async function getCardsStatus() {
   try {
     const user = await currentUser();
     if (!user) throw new Error("Not authorized");
+    const orgId = await getUserOrgIds(user.id);
     const findCardsStatus = await db.cardsStatus.findUnique({
-      where: { userId: user.id },
+      where: { orgId },
     });
 
     if (!findCardsStatus) {
       const cardsStatus = await db.cardsStatus.create({
         data: {
           userId: user.id,
+          orgId,
         },
       });
       return [
@@ -64,14 +67,16 @@ export async function getTotalOrdersStatus() {
   try {
     const user = await currentUser();
     if (!user) throw new Error("Not authorized");
+    const orgId = await getUserOrgIds(user.id);
     const totalOrders = await db.totalOrders.findUnique({
-      where: { userId: user.id },
+      where: { orgId },
     });
 
     if (!totalOrders) {
       const orders = await db.totalOrders.create({
         data: {
           userId: user.id,
+          orgId,
         },
       });
       return orders;

@@ -5,8 +5,8 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider      = "prisma-client"
-  output        = "../src/generated/prisma"
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
 }
 
 datasource db {
@@ -22,6 +22,7 @@ model SalesAnalytics {
   thisMonth Float    @default(0)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  orgId     String   @unique
 }
 
 model CardsStatus {
@@ -33,6 +34,7 @@ model CardsStatus {
   views       Int      @default(0)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  orgId       String   @unique
 }
 
 model totalOrders {
@@ -41,6 +43,7 @@ model totalOrders {
   pending    Int    @default(0)
   processing Int    @default(0)
   completed  Int    @default(0)
+  orgId      String @unique
 }
 
 enum OrderStatus {
@@ -66,6 +69,7 @@ model orders {
   created_at     DateTime      @default(now())
   updatedAt      DateTime      @updatedAt
   items          orderItems[]
+  orgId          String        @unique
 }
 
 model orderItems {
@@ -76,6 +80,7 @@ model orderItems {
   quantity    Int
   orders      orders? @relation(fields: [ordersId], references: [id])
   ordersId    String? @db.ObjectId
+  orgId       String?
 }
 
 model menu {
@@ -83,6 +88,7 @@ model menu {
   userId String
   name   String     @unique
   items  menuItem[] @relation("MenuItems")
+  orgId  String?
 }
 
 model menuItem {
@@ -94,6 +100,7 @@ model menuItem {
   price       Float
   description String
   image       String?
+  orgId       String?
 }
 
 enum Currency {
@@ -115,4 +122,5 @@ model restaurant {
   facebook    String?
   instagram   String?
   linkedIn    String?
+  orgId       String?
 }

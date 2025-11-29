@@ -11,7 +11,9 @@ import { Suspense } from "react";
 export const dynamic = "force-dynamic";
 export default async function page() {
   const { orgRole } = await auth();
-  if (orgRole === "org:delivery" || orgRole === "org:cashier") return redirect("/orders");
+  if (orgRole === undefined) return redirect("/employees");
+  if (orgRole === "org:delivery" || orgRole === "org:cashier")
+    return redirect("/orders");
   return (
     <div className="space-y-8">
       <PageTitle

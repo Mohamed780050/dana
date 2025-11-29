@@ -39,6 +39,6 @@ export async function addUser(
     return { message: null };
   } catch (error) {
     console.log(error);
-    return { message: "server Error" };
+    return { message: "Your password was found in data preach" };
   }
 }
