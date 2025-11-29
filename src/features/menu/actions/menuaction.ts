@@ -32,7 +32,7 @@ export async function addCategoryItem(
   try {
     const priceValue = formData.get("price") as string;
     const FormattedPrice = parseFloat(priceValue);
-    console.log(formData.get("name"));
+    console.log(formData.get("image"));
     const validate = categoryItem.safeParse({
       name: formData.get("name"),
       price: FormattedPrice,
@@ -43,8 +43,8 @@ export async function addCategoryItem(
     if (!validate.success)
       return { errors: z.flattenError(validate.error).fieldErrors };
 
-    const { name, description, price } = validate.data;
-    await addItemToCategory(name, description, price, id);
+    const { name, description, price, image } = validate.data;
+    await addItemToCategory(name, description, price, id, image);
     revalidatePath("/menu");
 
     return { message: null };

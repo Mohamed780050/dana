@@ -12,8 +12,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { CategoryItemState } from "@/interfaces/interface";
-import { ReactNode, useActionState } from "react";
+import { ReactNode, useActionState, useState } from "react";
 import { addCategoryItem } from "../actions/menuaction";
+import UploadItemImage from "./UploadItemImage";
 
 export default function CategoryModalCreation({
   children,
@@ -28,7 +29,7 @@ export default function CategoryModalCreation({
     addCategoryWithId,
     initialState,
   );
-
+  const [imgURL, setImgURL] = useState("");
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
@@ -83,7 +84,16 @@ export default function CategoryModalCreation({
             </div>
             <div className="grid gap-3">
               <Label htmlFor="image">Image (Optional)</Label>
-              <Input disabled={isPending} id="image" name="image" />
+              <div className="flex items-center justify-between gap-3">
+                <UploadItemImage setImgURL={setImgURL} />
+                <Input
+                  className="hidden"
+                  disabled={isPending}
+                  value={imgURL}
+                  id="image"
+                  name="image"
+                />
+              </div>
               {state.errors?.image &&
                 state.errors.image.map((text, index) => (
                   <p

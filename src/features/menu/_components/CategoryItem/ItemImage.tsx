@@ -12,8 +12,8 @@ export default function ItemImage({
     <>
       {url ? (
         <Image
-          width={50}
-          height={50}
+          width={80}
+          height={80}
           src={url}
           alt={name}
           className="rounded-lg object-cover"

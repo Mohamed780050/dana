@@ -1,8 +1,9 @@
 "use server";
 import { currentUser } from "@clerk/nextjs/server";
-import { v2 as cloudinary, UploadApiResponse } from "cloudinary";
+import { v2 as cloudinary } from "cloudinary";
 import { getUserOrgIds } from "./orgs";
 import { db } from "./db";
+import { revalidatePath } from "next/cache";
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -28,6 +29,24 @@ export async function uploadToCloudinaryLogoRestaurant(
       where: { id: findRestaurant.id },
       data: { logo: result.secure_url },
     });
+    revalidatePath("/");
+    return result.secure_url;
+  } catch (error) {
+    console.error("Error uploading to Cloudinary", error);
+    throw error;
+  }
+}
+
+export async function uploadToCloudinaryItemImage(
+  buffer: Buffer | string,
+): Promise<string> {
+  // Returns the secure URL string of the uploaded image
+  try {
+    const user = await currentUser();
+    if (!user) throw new Error("Not authorized");
+
+    const base64 = buffer.toString("base64");
+    const result = await cloudinary.uploader.upload(base64);
 
     return result.secure_url;
   } catch (error) {

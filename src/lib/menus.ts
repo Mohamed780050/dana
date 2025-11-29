@@ -99,6 +99,7 @@ export async function addItemToCategory(
   description: string,
   price: number,
   menuId: string,
+  image: string | undefined,
 ) {
   try {
     const user = await currentUser();
@@ -108,6 +109,7 @@ export async function addItemToCategory(
 
     await db.menuItem.create({
       data: {
+        image,
         name,
         description,
         price,
