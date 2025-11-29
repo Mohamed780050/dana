@@ -21,14 +21,19 @@ export async function saveOrder(
   formData: FormData,
 ): Promise<CartState> {
   try {
+    const tableNumberChanged = parseInt(
+      formData.get("tableNumber") as string,
+      10,
+    );
     const validate = cartSchema.safeParse({
       orders,
       customer_name: formData.get("category_name"),
       customer_phone: formData.get("phone"),
       total_amount,
       location: formData.get("location"),
+      tableNumber: tableNumberChanged,
     });
-    console.log(validate.data);
+    console.log(validate);
     if (!validate.success)
       return { errors: z.flattenError(validate.error).fieldErrors };
     const orgId = await getUserOrgIds(userId);
@@ -39,7 +44,7 @@ export async function saveOrder(
         total_amount,
         items: { create: validate.data.orders },
         userId,
-        tableNumber: 1,
+        tableNumber: validate.data.tableNumber,
         orgId,
       },
     });

@@ -6,4 +6,5 @@ export const orderSchema = z.object({
   total_amount: z.number(),
   status: z.enum(["Pending", "Processing", "Completed", "Cancelled"]),
   payment_status: z.enum(["Paid", "unPaid"]),
+  tableNumber: z.number(),
 });

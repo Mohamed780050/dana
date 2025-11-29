@@ -18,6 +18,8 @@ export interface OrderInterface {
   updatedAt: Date;
   status: "Pending" | "Processing" | "Completed" | "Cancelled";
   payment_status: "Paid" | "unPaid";
+  tableNumber: number | null;
+  location: string | null;
 }
 
 export interface OrderState {
@@ -29,6 +31,7 @@ export interface OrderState {
     total_amount?: string[];
     status?: string[];
     payment_status?: string[];
+    tableNumber?: string[];
   };
   message?: string | null;
 }

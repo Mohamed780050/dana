@@ -27,13 +27,11 @@ export default function CartOrderSubmission({ userId }: { userId: string }) {
     totalPrice,
     paymentMethod,
     userId,
-    // initialState,
   );
   const [state, action, isPending] = useActionState<CartState, FormData>(
     saveOrderWithData,
     initialState,
   );
-  console.log(state);
   return (
     <form className="space-y-3 pt-2" action={action}>
       <div>

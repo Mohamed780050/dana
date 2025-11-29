@@ -33,6 +33,12 @@ export default async function OrderTableComponent({
             Payment
           </th>
           <th className="px-6 py-4 text-left text-xs font-semibold tracking-wider text-slate-600 uppercase">
+            Table Number
+          </th>
+          <th className="px-6 py-4 text-left text-xs font-semibold tracking-wider text-slate-600 uppercase">
+            Location
+          </th>
+          <th className="px-6 py-4 text-left text-xs font-semibold tracking-wider text-slate-600 uppercase">
             Date
           </th>
           <th className="px-6 py-4 text-left text-xs font-semibold tracking-wider text-slate-600 uppercase">
@@ -79,6 +85,12 @@ export default async function OrderTableComponent({
                 >
                   {order.payment_status}
                 </span>
+              </td>
+              <td className="px-6 py-4 text-sm text-slate-600">
+                {order.tableNumber}
+              </td>
+              <td className="px-6 py-4 text-sm text-slate-600">
+                {order.location}
               </td>
               <td className="px-6 py-4 text-sm text-slate-600">
                 {new Date(order.created_at).toLocaleDateString()}

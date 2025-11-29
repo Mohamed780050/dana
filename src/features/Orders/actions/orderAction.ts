@@ -14,6 +14,11 @@ export async function createOrder(
 ): Promise<OrderState> {
   try {
     const user = await currentUser();
+    const tableNumberChanged = parseInt(
+      formData.get("tableNumber") as string,
+      10,
+    );
+    // const tableNumberChaned = parseInt(formData.get("tableNumber"));
     if (!user?.id) return { message: "Not authorized" };
     const orgId = await getUserOrgIds(user.id);
     const validate = orderSchema.safeParse({
@@ -22,6 +27,7 @@ export async function createOrder(
       total_amount: 50,
       status: formData.get("status"),
       payment_status: formData.get("payment_status"),
+      tableNumber: tableNumberChanged,
     });
 
     if (!validate.success)
@@ -33,6 +39,7 @@ export async function createOrder(
       payment_status,
       status,
       total_amount,
+      tableNumber,
     } = validate.data;
     const order = await db.orders.create({
       data: {
@@ -43,17 +50,18 @@ export async function createOrder(
         status,
         total_amount,
         orgId,
+        tableNumber,
       },
     });
     await db.cardsStatus.update({
-      where: { orgId },
+      where: { userId: user.id },
       data: {
         totalOrders: { increment: 1 },
       },
     });
 
     await db.cardsStatus.update({
-      where: { orgId },
+      where: { userId: user.id },
       data: {
         salesVolume: {
           increment: order.total_amount,
@@ -70,12 +78,12 @@ export async function createOrder(
       updateData.processing = { increment: 1 };
     }
     await db.totalOrders.update({
-      where: { orgId },
+      where: { userId: user.id },
       data: updateData,
     });
 
     await db.salesAnalytics.update({
-      where: { orgId },
+      where: { userId: user.id },
       data: {
         today: { increment: order.total_amount },
         thisWeek: { increment: order.total_amount },

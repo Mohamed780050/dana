@@ -59,7 +59,7 @@ enum PaymentStatus {
 }
 
 enum location {
-  InSite
+  inSite
   Delivery
 }
 
@@ -76,7 +76,7 @@ model orders {
   items          orderItems[]
   orgId          String        @unique
   tableNumber    Int?
-  location       location
+  location       location @default(inSite)
 }
 
 model orderItems {
