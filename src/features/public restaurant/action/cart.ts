@@ -31,7 +31,7 @@ export async function saveOrder(
       customer_phone: formData.get("phone"),
       total_amount,
       location: formData.get("location"),
-      tableNumber: tableNumberChanged,
+      tableNumber: tableNumberChanged || 0,
     });
     console.log(validate);
     if (!validate.success)

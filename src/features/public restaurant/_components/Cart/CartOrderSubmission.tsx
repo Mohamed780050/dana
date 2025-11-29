@@ -32,6 +32,7 @@ export default function CartOrderSubmission({ userId }: { userId: string }) {
     saveOrderWithData,
     initialState,
   );
+  const [isDeleviray, setIsDeleviray] = useState(false);
   return (
     <form className="space-y-3 pt-2" action={action}>
       <div>
@@ -121,27 +122,44 @@ export default function CartOrderSubmission({ userId }: { userId: string }) {
         </div>
       </div>
 
-      <div>
-        <Label className="mb-2 block text-sm font-medium text-slate-700">
-          Table number
-        </Label>
-        <Input
-          type="number"
-          name="tableNumber"
-          placeholder="Table Number"
-          className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-transparent focus:ring-2 focus:ring-emerald-500"
-        />
-      </div>
+      {isDeleviray === false ? (
+        <div>
+          <Label className="mb-2 block text-sm font-medium text-slate-700">
+            Table number
+          </Label>
+          <Input
+            disabled={isPending}
+            type="number"
+            name="tableNumber"
+            placeholder="Table Number"
+            className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-transparent focus:ring-2 focus:ring-emerald-500"
+          />
+        </div>
+      ) : (
+        <div></div>
+      )}
 
-      <Select defaultValue="inSite" name="location" disabled={isPending}>
+      <Select
+        defaultValue="inSite"
+        name="location"
+        disabled={isPending}
+        onValueChange={(e) => {
+          if (e === "delivery") setIsDeleviray(true);
+          else setIsDeleviray(false);
+        }}
+      >
         <SelectTrigger className="w-full">
           <SelectValue placeholder="Select a fruit" />
         </SelectTrigger>
         <SelectContent>
           <SelectGroup>
             <SelectLabel>Location</SelectLabel>
-            <SelectItem value="inSite">In Site</SelectItem>
-            <SelectItem value="delivery">Delivery</SelectItem>
+            <SelectItem value="inSite" onClick={() => setIsDeleviray(true)}>
+              In Site
+            </SelectItem>
+            <SelectItem value="delivery" onClick={() => setIsDeleviray(true)}>
+              Delivery
+            </SelectItem>
           </SelectGroup>
         </SelectContent>
       </Select>
