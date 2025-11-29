@@ -16,6 +16,15 @@ import { UserState } from "@/interfaces/interface";
 import { ReactNode, useActionState } from "react";
 import { addUser } from "../actions/userActions";
 import { Save } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export default function AddUser({ children }: { children: ReactNode }) {
   const initialState: UserState = { message: null, errors: {} };
@@ -33,7 +42,7 @@ export default function AddUser({ children }: { children: ReactNode }) {
             </DialogDescription>
           </DialogHeader>
           <div className="grid gap-4">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between gap-4">
               <div className="grid gap-3">
                 <Label htmlFor="firstName">First Name</Label>
                 <Input id="firstName" name="firstName" disabled={isPending} />
@@ -44,7 +53,7 @@ export default function AddUser({ children }: { children: ReactNode }) {
                     </p>
                   ))}
               </div>
-               <div className="grid gap-3">
+              <div className="grid gap-3">
                 <Label htmlFor="lastName">Last Name</Label>
                 <Input id="lastName" name="lastName" disabled={isPending} />
                 {state.errors?.lastName &&
@@ -75,6 +84,26 @@ export default function AddUser({ children }: { children: ReactNode }) {
               />
               {state.errors?.password &&
                 state.errors.password.map((text, index) => (
+                  <p className="text-sm text-red-600" key={index}>
+                    {text}
+                  </p>
+                ))}
+            </div>
+            <div className="grid gap-3">
+              <Select defaultValue="cashier" name="role" disabled={isPending}>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Select a fruit" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectLabel>Roles</SelectLabel>
+                    <SelectItem value="cashier">Cashier</SelectItem>
+                    <SelectItem value="delivery">Delivery</SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+              {state.errors?.role &&
+                state.errors.role.map((text, index) => (
                   <p className="text-sm text-red-600" key={index}>
                     {text}
                   </p>

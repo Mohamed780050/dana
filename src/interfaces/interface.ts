@@ -103,6 +103,7 @@ export interface UserState {
     password?: string[];
     firstName?: string[];
     lastName?: string[];
+    role?: string[];
   };
   message?: string | null;
 }

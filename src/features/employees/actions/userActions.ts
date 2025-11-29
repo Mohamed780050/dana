@@ -15,13 +15,14 @@ export async function addUser(
       password: formData.get("password"),
       firstName: formData.get("firstName"),
       lastName: formData.get("lastName"),
+      role: formData.get("role"),
     });
     if (!validate.success)
       return { errors: flattenError(validate.error).fieldErrors };
     // your logic
     const { orgId } = await auth();
     if (!orgId) return { message: "Something went wrong." };
-    const { email, password, firstName, lastName } = validate.data;
+    const { email, password, firstName, lastName, role } = validate.data;
     const client = await clerkClient();
     const user = await client.users.createUser({
       firstName,
@@ -32,7 +33,7 @@ export async function addUser(
     await client.organizations.createOrganizationMembership({
       organizationId: orgId,
       userId: user.id,
-      role: "org:delivery",
+      role: `org:${role}`,
     });
     revalidatePath("/");
     return { message: null };
