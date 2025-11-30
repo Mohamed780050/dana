@@ -3,9 +3,18 @@
 import { Input } from "@/components/ui/input";
 import { OrderState } from "@/interfaces/interface";
 import { DialogClose } from "@radix-ui/react-dialog";
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
 import { createOrder } from "../actions/orderAction";
 import { Label } from "@radix-ui/react-label";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export default function CreationForm() {
   const initialState: OrderState = { message: null, errors: {} };
@@ -13,6 +22,8 @@ export default function CreationForm() {
     createOrder,
     initialState,
   );
+  const [isDeleviray, setIsDeleviray] = useState(false);
+
   return (
     <form
       action={formAction}
@@ -102,30 +113,68 @@ export default function CreationForm() {
         </div>
 
         <div>
-          <Label className="mb-2 block text-sm font-medium text-slate-700">
-            Table number
-          </Label>
+          <label className="mb-2 block text-sm font-medium text-slate-700">
+            Amount
+          </label>
           <Input
-            type="number"
-            name="tableNumber"
-            placeholder="Table Number"
-            className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-transparent focus:ring-2 focus:ring-emerald-500"
+            name="total_amount"
+            placeholder="$000"
+            className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-transparent focus:ring-2 focus:ring-emerald-500"
           />
-          {state.errors?.tableNumber &&
+          {state.errors?.total_amount &&
+            state.errors.total_amount.map((item, index) => (
+              <p className="mt-2 text-sm text-red-500" key={index}>
+                {item}
+              </p>
+            ))}
+        </div>
+
+        {isDeleviray === false && (
+          <div>
+            <Label className="mb-2 block text-sm font-medium text-slate-700">
+              Table number
+            </Label>
+            <Input
+              type="number"
+              name="tableNumber"
+              placeholder="Table Number"
+              className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-transparent focus:ring-2 focus:ring-emerald-500"
+            />
+            {state.errors?.tableNumber &&
               state.errors.tableNumber.map((item, index) => (
                 <p className="mt-2 text-sm text-red-500" key={index}>
                   {item}
                 </p>
               ))}
-        </div>
-        <div className="border-t border-slate-200 pt-6">
-          <h3 className="mb-4 text-lg font-semibold text-slate-900">
-            Order Items
-          </h3>
-        </div>
+          </div>
+        )}
+        <Select
+          defaultValue="inSite"
+          name="location"
+          disabled={isPending}
+          onValueChange={(e) => {
+            if (e === "delivery") setIsDeleviray(true);
+            else setIsDeleviray(false);
+          }}
+        >
+          <SelectTrigger className="w-full">
+            <SelectValue placeholder="Select a fruit" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectLabel>Location</SelectLabel>
+              <SelectItem value="inSite" onClick={() => setIsDeleviray(true)}>
+                In Site
+              </SelectItem>
+              <SelectItem value="delivery" onClick={() => setIsDeleviray(true)}>
+                Delivery
+              </SelectItem>
+            </SelectGroup>
+          </SelectContent>
+        </Select>
       </div>
 
-      <div className="flex items-center justify-end gap-3 border-t border-slate-200 p-6">
+      <div className="flex items-center justify-end gap-3 border-slate-200 p-6">
         <DialogClose>
           <button
             disabled={isPending}

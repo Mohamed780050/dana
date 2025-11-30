@@ -14,8 +14,12 @@ export async function createOrder(
 ): Promise<OrderState> {
   try {
     const user = await currentUser();
-    const tableNumberChanged = parseInt(
-      formData.get("tableNumber") as string,
+    const tableNumberChanged =
+      formData.get("tableNumber") === null
+        ? null
+        : parseInt(formData.get("tableNumber") as string, 10);
+    const total_amount_Formatted = parseInt(
+      formData.get("total_amount") as string,
       10,
     );
     // const tableNumberChaned = parseInt(formData.get("tableNumber"));
@@ -24,12 +28,12 @@ export async function createOrder(
     const validate = orderSchema.safeParse({
       customer_name: formData.get("customer_name"),
       customer_phone: formData.get("customer_phone"),
-      total_amount: 50,
+      total_amount: total_amount_Formatted,
       status: formData.get("status"),
       payment_status: formData.get("payment_status"),
       tableNumber: tableNumberChanged,
     });
-
+    console.log(validate);
     if (!validate.success)
       return { errors: z.flattenError(validate.error).fieldErrors };
 
