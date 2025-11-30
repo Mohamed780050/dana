@@ -41,6 +41,7 @@ export default function CartOrderSubmission({ userId }: { userId: string }) {
         </Label>
         <Input
           type="text"
+          disabled={isPending}
           name="category_name"
           placeholder="John Doe"
           className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-transparent focus:ring-2 focus:ring-emerald-500"
@@ -59,6 +60,7 @@ export default function CartOrderSubmission({ userId }: { userId: string }) {
         </Label>
         <Input
           type="tel"
+          disabled={isPending}
           name="phone"
           placeholder="+1 (555) 123-4567"
           className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-transparent focus:ring-2 focus:ring-emerald-500"

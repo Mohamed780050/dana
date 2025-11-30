@@ -33,7 +33,7 @@ export async function createOrder(
       payment_status: formData.get("payment_status"),
       tableNumber: tableNumberChanged,
     });
-    console.log(validate);
+    
     if (!validate.success)
       return { errors: z.flattenError(validate.error).fieldErrors };
 

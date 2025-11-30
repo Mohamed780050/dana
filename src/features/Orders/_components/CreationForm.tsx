@@ -15,6 +15,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Button } from "@/components/ui/button";
 
 export default function CreationForm() {
   const initialState: OrderState = { message: null, errors: {} };
@@ -36,6 +37,7 @@ export default function CreationForm() {
               Customer Name
             </label>
             <Input
+              disabled={isPending}
               name="customer_name"
               placeholder="John Doe"
               className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-transparent focus:ring-2 focus:ring-emerald-500"
@@ -53,6 +55,7 @@ export default function CreationForm() {
               Customer Phone
             </label>
             <Input
+              disabled={isPending}
               name="customer_phone"
               placeholder="+1 (555) 123-4567"
               className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-transparent focus:ring-2 focus:ring-emerald-500"
@@ -72,6 +75,7 @@ export default function CreationForm() {
               Order Status
             </label>
             <select
+              disabled={isPending}
               defaultValue="Pending"
               name="status"
               className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-transparent focus:ring-2 focus:ring-emerald-500"
@@ -88,6 +92,7 @@ export default function CreationForm() {
               Payment Status
             </label>
             <select
+              disabled={isPending}
               name="payment_status"
               defaultValue="unPaid"
               className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-transparent focus:ring-2 focus:ring-emerald-500"
@@ -106,6 +111,7 @@ export default function CreationForm() {
             // onChange={(e) =>
             //   setFormData({ ...formData, notes: e.target.value })
             // }
+            disabled={isPending}
             placeholder="Special instructions..."
             rows={2}
             className="w-full resize-none rounded-lg border border-slate-300 px-4 py-2.5 focus:border-transparent focus:ring-2 focus:ring-emerald-500"
@@ -117,6 +123,7 @@ export default function CreationForm() {
             Amount
           </label>
           <Input
+            disabled={isPending}
             name="total_amount"
             placeholder="$000"
             className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-transparent focus:ring-2 focus:ring-emerald-500"
@@ -135,6 +142,7 @@ export default function CreationForm() {
               Table number
             </Label>
             <Input
+              disabled={isPending}
               type="number"
               name="tableNumber"
               placeholder="Table Number"
@@ -176,21 +184,22 @@ export default function CreationForm() {
 
       <div className="flex items-center justify-end gap-3 border-slate-200 p-6">
         <DialogClose>
-          <button
+          <Button
             disabled={isPending}
+            variant="outline"
             type="button"
-            className="rounded-lg border border-slate-300 px-6 py-2.5 font-semibold text-slate-700 transition-colors hover:bg-slate-100"
+            // className="rounded-lg border border-slate-300 px-6 py-2.5 font-semibold text-slate-700 transition-colors hover:bg-slate-100"
           >
             Cancel
-          </button>
+          </Button>
         </DialogClose>
-        <button
+        <Button
           disabled={isPending}
           type="submit"
           className="rounded-lg bg-emerald-600 px-6 py-2.5 font-semibold text-white transition-colors hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-50"
         >
           {isPending ? "Creating..." : "Create Order"}
-        </button>
+        </Button>
       </div>
     </form>
   );
