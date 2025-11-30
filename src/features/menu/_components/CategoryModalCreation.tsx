@@ -30,6 +30,7 @@ export default function CategoryModalCreation({
     initialState,
   );
   const [imgURL, setImgURL] = useState("");
+  const [uploading, setUploading] = useState(false);
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
@@ -39,7 +40,7 @@ export default function CategoryModalCreation({
           <div className="grid gap-4">
             <div className="grid gap-3">
               <Label htmlFor="name">Name</Label>
-              <Input disabled={isPending} id="name" name="name" />
+              <Input disabled={isPending || uploading} id="name" name="name" />
               {state.errors?.category_name &&
                 state.errors.category_name.map((text, index) => (
                   <p key={index} className="mt-2 text-sm text-red-500">
@@ -50,7 +51,7 @@ export default function CategoryModalCreation({
             <div className="grid gap-3">
               <Label htmlFor="price">Price</Label>
               <Input
-                disabled={isPending}
+                disabled={isPending || uploading}
                 type="number"
                 id="price"
                 name="price"
@@ -68,7 +69,7 @@ export default function CategoryModalCreation({
             <div className="grid gap-3">
               <Label htmlFor="description">Description</Label>
               <Textarea
-                disabled={isPending}
+                disabled={isPending || uploading}
                 id="description"
                 name="description"
               />
@@ -85,7 +86,11 @@ export default function CategoryModalCreation({
             <div className="grid gap-3">
               <Label htmlFor="image">Image (Optional)</Label>
               <div className="flex items-center justify-between gap-3">
-                <UploadItemImage setImgURL={setImgURL} />
+                <UploadItemImage
+                  uploading={uploading}
+                  setUploading={setUploading}
+                  setImgURL={setImgURL}
+                />
                 <Input
                   className="hidden"
                   disabled={isPending}
@@ -107,14 +112,14 @@ export default function CategoryModalCreation({
           </div>
           <DialogFooter className="mt-4">
             <DialogClose asChild>
-              <Button disabled={isPending} variant="outline">
+              <Button disabled={isPending || uploading} variant="outline">
                 Cancel
               </Button>
             </DialogClose>
             <Button
               type="submit"
               className="bg-emerald-500 hover:bg-emerald-600"
-              disabled={isPending}
+              disabled={isPending || uploading}
             >
               {isPending ? "Creating..." : "Create"}
             </Button>

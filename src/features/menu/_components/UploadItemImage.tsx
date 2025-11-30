@@ -9,8 +9,12 @@ import {
 
 export default function UploadItemImage({
   setImgURL,
+  setUploading,
+  uploading,
 }: {
   setImgURL: (v: string) => void;
+  setUploading: (v: boolean) => void;
+  uploading: boolean;
 }) {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -20,14 +24,21 @@ export default function UploadItemImage({
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUploading(true);
     const file = e.target.files?.[0];
     if (!file) return;
 
     const reader = new FileReader();
     reader.onloadend = async () => {
-      const base64data = reader.result as string;
-      const url = await uploadToCloudinaryItemImage(base64data);
-      setImgURL(url);
+      try {
+        const base64data = reader.result as string;
+        const url = await uploadToCloudinaryItemImage(base64data);
+        setImgURL(url);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setUploading(false);
+      }
     };
     reader.readAsDataURL(file);
   };
@@ -35,11 +46,12 @@ export default function UploadItemImage({
   return (
     <div>
       <Button
+        disabled={uploading}
         type="button"
         className="cursor-pointer bg-emerald-500 hover:bg-emerald-600"
         onClick={handleClick}
       >
-        Upload your Logo
+        {uploading ? "Uploading" : "Upload your Logo"}
       </Button>
 
       {/* Hidden file input */}
