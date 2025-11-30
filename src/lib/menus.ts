@@ -2,7 +2,7 @@
 "use server";
 import { revalidatePath } from "next/cache";
 import { db } from "./db";
-import { currentUser, auth } from "@clerk/nextjs/server";
+import { currentUser } from "@clerk/nextjs/server";
 import { getUserOrgIds } from "./orgs";
 
 export async function getAllCategories() {

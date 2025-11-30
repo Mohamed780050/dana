@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // "use server";
 import { db } from "./db";
-import { currentUser, auth } from "@clerk/nextjs/server";
+import { currentUser } from "@clerk/nextjs/server";
 import { getUserOrgIds } from "./orgs";
 
 export async function getSalesStatus() {

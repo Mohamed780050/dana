@@ -16,7 +16,7 @@ interface OrdersState {
   decreaseQuantity: (id: string) => void;
 }
 
-export const useOrdersStore = create<OrdersState>((set, get) => ({
+export const useOrdersStore = create<OrdersState>((set) => ({
   orders: [],
   totalPrice: 0,
 
