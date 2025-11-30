@@ -47,7 +47,7 @@ export async function getAllMenuItems(id: string) {
 
     const orgId = await getUserOrgIds(user.id);
 
-    return await db.menuItem.findMany({ where: { orgId } });
+    return await db.menuItem.findMany({ where: { menuId: id } });
   } catch (error: any) {
     console.log(error);
     throw new Error(error.message);

@@ -4,7 +4,6 @@ import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import {
   uploadToCloudinaryItemImage,
-  uploadToCloudinaryLogoRestaurant,
 } from "@/lib/cloudinary";
 
 export default function UploadItemImage({
