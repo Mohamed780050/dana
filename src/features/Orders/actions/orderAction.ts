@@ -32,8 +32,9 @@ export async function createOrder(
       status: formData.get("status"),
       payment_status: formData.get("payment_status"),
       tableNumber: tableNumberChanged,
+      location: formData.get("location"),
     });
-    
+    console.log(validate);
     if (!validate.success)
       return { errors: z.flattenError(validate.error).fieldErrors };
 
@@ -44,6 +45,7 @@ export async function createOrder(
       status,
       total_amount,
       tableNumber,
+      location,
     } = validate.data;
     const order = await db.orders.create({
       data: {
@@ -55,6 +57,7 @@ export async function createOrder(
         total_amount,
         orgId,
         tableNumber,
+        location,
       },
     });
     await db.cardsStatus.update({

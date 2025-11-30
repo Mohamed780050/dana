@@ -16,6 +16,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
 
 export default function CreationForm() {
   const initialState: OrderState = { message: null, errors: {} };
@@ -91,26 +92,29 @@ export default function CreationForm() {
             <label className="mb-2 block text-sm font-medium text-slate-700">
               Payment Status
             </label>
-            <select
-              disabled={isPending}
-              name="payment_status"
+            <Select
               defaultValue="unPaid"
-              className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-transparent focus:ring-2 focus:ring-emerald-500"
+              name="payment_status"
+              disabled={isPending}
             >
-              <option value="unPaid">unPaid</option>
-              <option value="Paid">Paid</option>
-            </select>
+              <SelectTrigger className="w-full px-4 py-2.5">
+                <SelectValue placeholder="Select a payment method" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  <SelectLabel>Payment</SelectLabel>
+                  <SelectItem value="unPaid">unPaid</SelectItem>
+                  <SelectItem value="Paid">Paid</SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
           </div>
         </div>
         <div>
           <label className="mb-2 block text-sm font-medium text-slate-700">
             Notes
           </label>
-          <textarea
-            // value={formData.notes}
-            // onChange={(e) =>
-            //   setFormData({ ...formData, notes: e.target.value })
-            // }
+          <Textarea
             disabled={isPending}
             placeholder="Special instructions..."
             rows={2}
@@ -161,7 +165,7 @@ export default function CreationForm() {
           name="location"
           disabled={isPending}
           onValueChange={(e) => {
-            if (e === "delivery") setIsDeleviray(true);
+            if (e === "Delivery") setIsDeleviray(true);
             else setIsDeleviray(false);
           }}
         >
@@ -171,12 +175,8 @@ export default function CreationForm() {
           <SelectContent>
             <SelectGroup>
               <SelectLabel>Location</SelectLabel>
-              <SelectItem value="inSite" onClick={() => setIsDeleviray(true)}>
-                In Site
-              </SelectItem>
-              <SelectItem value="delivery" onClick={() => setIsDeleviray(true)}>
-                Delivery
-              </SelectItem>
+              <SelectItem value="inSite">In Site</SelectItem>
+              <SelectItem value="Delivery">Delivery</SelectItem>
             </SelectGroup>
           </SelectContent>
         </Select>
