@@ -7,6 +7,7 @@ import { db } from "@/lib/db";
 import { currentUser } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 import { getUserOrgIds } from "@/lib/orgs";
+import Orders from "@/models/orders";
 
 export async function createOrder(
   prevState: OrderState,
@@ -33,6 +34,7 @@ export async function createOrder(
       payment_status: formData.get("payment_status"),
       tableNumber: tableNumberChanged,
       location: formData.get("location"),
+      address: formData.get("address"),
     });
     console.log(validate);
     if (!validate.success)
@@ -41,62 +43,77 @@ export async function createOrder(
     const {
       customer_name,
       customer_phone,
-      payment_status,
-      status,
       total_amount,
+      status,
+      payment_status,
       tableNumber,
       location,
+      address
     } = validate.data;
-    const order = await db.orders.create({
-      data: {
-        userId: user.id,
-        customer_name,
-        customer_phone,
-        payment_status,
-        status,
-        total_amount,
-        orgId,
-        tableNumber,
-        location,
-      },
-    });
-    await db.cardsStatus.update({
-      where: { userId: user.id },
-      data: {
-        totalOrders: { increment: 1 },
-      },
-    });
+    const order = new Orders(
+      user.id,
+      customer_name,
+      customer_phone,
+      total_amount,
+      status,
+      payment_status,
+      tableNumber,
+      location,
+      address,
+      orgId,
+    );
+    console.log(order);
+    await order.save()
+    // const order = await db.orders.create({
+    //   data: {
+    //     userId: user.id,
+    //     customer_name,
+    //     customer_phone,
+    //     payment_status,
+    //     status,
+    //     total_amount,
+    //     orgId,
+    //     tableNumber,
+    //     location,
+    //   },
+    // });
+    // await db.cardsStatus.update({
+    //   where: { userId: user.id },
+    //   data: {
+    //     totalOrders: { increment: 1 },
+    //   },
+    // });
 
-    await db.cardsStatus.update({
-      where: { userId: user.id },
-      data: {
-        salesVolume: {
-          increment: order.total_amount,
-        },
-      },
-    });
+    // await db.cardsStatus.update({
+    //   where: { userId: user.id },
+    //   data: {
+    //     salesVolume: {
+    //       increment: order.total_amount,
+    //     },
+    //   },
+    // });
 
-    const updateData: any = {};
-    if (order.status === "Completed") {
-      updateData.completed = { increment: 1 };
-    } else if (order.status === "Pending") {
-      updateData.pending = { increment: 1 };
-    } else if (order.status === "Processing") {
-      updateData.processing = { increment: 1 };
-    }
-    await db.totalOrders.update({
-      where: { userId: user.id },
-      data: updateData,
-    });
+    // const updateData: any = {};
+    // if (order.status === "Completed") {
+    //   updateData.completed = { increment: 1 };
+    // } else if (order.status === "Pending") {
+    //   updateData.pending = { increment: 1 };
+    // } else if (order.status === "Processing") {
+    //   updateData.processing = { increment: 1 };
+    // }
+    // await db.totalOrders.update({
+    //   where: { userId: user.id },
+    //   data: updateData,
+    // });
 
-    await db.salesAnalytics.update({
-      where: { userId: user.id },
-      data: {
-        today: { increment: order.total_amount },
-        thisWeek: { increment: order.total_amount },
-        thisMonth: { increment: order.total_amount },
-      },
-    });
+    // await db.salesAnalytics.update({
+    //   where: { userId: user.id },
+    //   data: {
+    //     today: { increment: order.total_amount },
+    //     thisWeek: { increment: order.total_amount },
+    //     thisMonth: { increment: order.total_amount },
+    //   },
+    // });
     revalidatePath("/orders");
     return { message: null, errors: undefined };
   } catch (error: any) {

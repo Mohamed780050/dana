@@ -7,5 +7,6 @@ export const orderSchema = z.object({
   status: z.enum(["Pending", "Processing", "Completed", "Cancelled"]),
   payment_status: z.enum(["Paid", "unPaid"]),
   tableNumber: z.number().nullable(),
+  address: z.string().nullable(),
   location: z.enum(["inSite", "Delivery"]),
 });

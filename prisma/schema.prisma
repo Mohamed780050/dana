@@ -76,7 +76,8 @@ model orders {
   items          orderItems[]
   orgId          String        @unique
   tableNumber    Int?
-  location       location @default(inSite)
+  location       location      @default(inSite)
+  address        String?
 }
 
 model orderItems {

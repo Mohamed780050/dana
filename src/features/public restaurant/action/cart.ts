@@ -42,7 +42,7 @@ export async function saveOrder(
         customer_name: validate.data.customer_name,
         customer_phone: validate.data.customer_phone,
         total_amount,
-        items: { create: validate.data.orders },
+        // items: { create: validate.data.orders },
         userId,
         tableNumber: validate.data.tableNumber,
         orgId,

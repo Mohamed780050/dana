@@ -8,18 +8,35 @@ export interface StatCardProps {
   trendUp?: boolean;
 }
 
+//   items          orderItems[]
+//   orgId          String        @unique
+export interface NewOrdersInterface {
+  id: string;
+  userId: string;
+  customer_name: string;
+  customer_phone: string;
+  total_amount: number;
+  status: "Pending" | "Processing" | "Completed" | "Cancelled";
+  payment_status: "Paid" | "unPaid";
+  tableNumber: number | null;
+  location: "inSite" | "Delivery";
+  address: string | null;
+  orgId: string;
+  created_at: Date | string;
+  updatedAt: Date;
+}
 export interface OrderInterface {
   id: string;
   userId: string;
   customer_name: string;
   customer_phone: string;
   total_amount: number;
-  created_at: Date | string;
-  updatedAt: Date;
   status: "Pending" | "Processing" | "Completed" | "Cancelled";
   payment_status: "Paid" | "unPaid";
   tableNumber: number | null;
   location: string | null;
+  created_at: Date | string;
+  updatedAt: Date;
 }
 
 export interface OrderState {
@@ -32,6 +49,7 @@ export interface OrderState {
     status?: string[];
     payment_status?: string[];
     tableNumber?: string[];
+    address?: string[];
   };
   message?: string | null;
 }

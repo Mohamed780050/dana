@@ -24,7 +24,7 @@ export default function CreationForm() {
     createOrder,
     initialState,
   );
-  const [isDeleviray, setIsDeleviray] = useState(false);
+  const [isDelivery, setIsDelivery] = useState(false);
 
   return (
     <form
@@ -140,7 +140,26 @@ export default function CreationForm() {
             ))}
         </div>
 
-        {isDeleviray === false && (
+        {isDelivery ? (
+          <div>
+            <Label className="mb-2 block text-sm font-medium text-slate-700">
+              Address
+            </Label>
+            <Input
+              disabled={isPending}
+              type="text"
+              name="address"
+              placeholder="Address"
+              className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-transparent focus:ring-2 focus:ring-emerald-500"
+            />
+            {state.errors?.address &&
+              state.errors.address.map((item, index) => (
+                <p className="mt-2 text-sm text-red-500" key={index}>
+                  {item}
+                </p>
+              ))}
+          </div>
+        ) : (
           <div>
             <Label className="mb-2 block text-sm font-medium text-slate-700">
               Table number
@@ -165,8 +184,8 @@ export default function CreationForm() {
           name="location"
           disabled={isPending}
           onValueChange={(e) => {
-            if (e === "Delivery") setIsDeleviray(true);
-            else setIsDeleviray(false);
+            if (e === "Delivery") setIsDelivery(true);
+            else setIsDelivery(false);
           }}
         >
           <SelectTrigger className="w-full">
