@@ -92,5 +92,27 @@
     "addCategory": "إضافة",
     "Creating": "جارٍ الإنشاء...",
     "AddItem": "إضافة عنصر"
+  },
+  "RestaurantSettings": {
+    "title": "إعدادات المطعم",
+    "description": "إدارة معلومات مطعمك وساعات العمل.",
+    "UploadYourLogo": "حمّل شعارك",
+    "RestaurantDetails": "تفاصيل المطعم",
+    "RestaurantSocialMedia": "وسائل التواصل للمطعم",
+    "RestaurantName": "اسم المطعم",
+    "RestaurantNamePlaceholder": "مطعمي الرائع",
+    "RestaurantPhone": "هاتف المطعم",
+    "RestaurantDescription": "وصف المطعم",
+    "RestaurantDescriptionPlaceholder": "أخبر الزبائن عن مطعمك...",
+    "RestaurantAddress": "عنوان المطعم",
+    "RestaurantAddressPlaceholder": "123 شارع رئيسي، المدينة، المحافظة 12345",
+    "Currency": "العملة",
+    "WhatsAppPhone": "رقم واتساب",
+    "Saving": "جاري الحفظ...",
+    "SaveChanges": "حفظ التغييرات",
+    "SocialMediaLinks": "روابط التواصل الاجتماعي",
+    "FacebookProfile": "حساب فيسبوك",
+    "InstagramProfile": "حساب إنستجرام",
+    "LinkedInProfile": "حساب لينكد إن"
   }
 }

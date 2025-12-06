@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { CldUploadWidget } from "next-cloudinary";
 import { Button } from "@/components/ui/button";
+import { useTranslations } from "next-intl";
 
 export default function RestaurantForm({
   address,
@@ -28,19 +29,20 @@ export default function RestaurantForm({
     EditRestaurantDetails,
     initialState,
   );
+  const t = useTranslations("RestaurantSettings");
   return (
     <form className="space-y-6" action={formAction}>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         <div>
           <label className="mb-2 block text-sm font-medium text-slate-700">
-            Restaurant Name
+            {t("RestaurantName")}
           </label>
           <Input
             defaultValue={name || ""}
             disabled={isPending}
             name="name"
             type="text"
-            placeholder="My Amazing Restaurant"
+            placeholder={t("RestaurantNamePlaceholder")}
             className="w-full rounded-lg border border-slate-300 px-4 py-3"
           />
           {state.errors?.name &&
@@ -53,7 +55,7 @@ export default function RestaurantForm({
 
         <div>
           <label className="mb-2 block text-sm font-medium text-slate-700">
-            Restaurant Phone
+            {t("RestaurantPhone")}
           </label>
           <Input
             defaultValue={parseInt(phone) || undefined}
@@ -74,13 +76,13 @@ export default function RestaurantForm({
 
       <div>
         <label className="mb-2 block text-sm font-medium text-slate-700">
-          Restaurant Description
+          {t("RestaurantDescription")}
         </label>
         <Textarea
           defaultValue={description}
           disabled={isPending}
           name="description"
-          placeholder="Tell customers about your restaurant..."
+          placeholder={t("RestaurantDescriptionPlaceholder")}
           rows={4}
           className="min-h-44 w-full resize-none rounded-lg border border-slate-300 px-4 py-3"
         />
@@ -94,14 +96,14 @@ export default function RestaurantForm({
 
       <div>
         <label className="mb-2 block text-sm font-medium text-slate-700">
-          Restaurant Address
+          {t("RestaurantAddress")}
         </label>
         <Input
           defaultValue={address}
           name="address"
           disabled={isPending}
           type="text"
-          placeholder="123 Main Street, City, State 12345"
+          placeholder={t("RestaurantAddressPlaceholder")}
           className="w-full rounded-lg border border-slate-300 px-4 py-3"
         />
 
@@ -116,7 +118,7 @@ export default function RestaurantForm({
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         <div>
           <label className="mb-2 block text-sm font-medium text-slate-700">
-            Currency
+            {t("Currency")}
           </label>
           <select
             defaultValue={currency}
@@ -139,7 +141,7 @@ export default function RestaurantForm({
 
         <div>
           <label className="mb-2 block text-sm font-medium text-slate-700">
-            WhatsApp Phone
+            {t("WhatsAppPhone")}
           </label>
           <Input
             defaultValue={wa_phone}
@@ -165,7 +167,7 @@ export default function RestaurantForm({
           className="flex items-center gap-2 rounded-lg bg-emerald-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-50"
         >
           <Save className="h-5 w-5" />
-          {isPending ? "Saving..." : "Save Changes"}
+          {isPending ? t("Saving") : t("SaveChanges")}
         </button>
       </div>
     </form>

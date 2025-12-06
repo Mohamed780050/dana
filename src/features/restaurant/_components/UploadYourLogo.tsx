@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { uploadToCloudinaryLogoRestaurant } from "@/lib/cloudinary";
+import { useTranslations } from "next-intl";
 
 export default function UploadYourLogo() {
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -23,7 +24,7 @@ export default function UploadYourLogo() {
     };
     reader.readAsDataURL(file);
   };
-
+  const t = useTranslations("RestaurantSettings");
   return (
     <div>
       <Button
@@ -31,7 +32,7 @@ export default function UploadYourLogo() {
         className="cursor-pointer bg-emerald-500 hover:bg-emerald-600"
         onClick={handleClick}
       >
-        Upload your Logo
+        {t("UploadYourLogo")}
       </Button>
 
       {/* Hidden file input */}

@@ -91,6 +91,31 @@
     "AddCategoryPlaceholder": "Category name (e.g., Appetizers, Main Course)",
     "addCategory": "Add",
     "Creating": "Creating...",
-    "AddItem":"Add Item"
-  }
+    "AddItem": "Add Item"
+  },
+  "RestaurantSettings": {
+    "title": "Restaurant Settings",
+    "description": "Manage your restaurant information and working hours.",
+    "UploadYourLogo": "Upload your Logo",
+    "RestaurantDetails": "Restaurant Details",
+    "RestaurantSocialMedia": "Restaurant Social Media",
+    "RestaurantName": "Restaurant Name",
+    "RestaurantNamePlaceholder": "My Amazing Restaurant",
+    "RestaurantPhone": "Restaurant Phone",
+    "RestaurantDescription": "Restaurant Description",
+    "RestaurantDescriptionPlaceholder": "Tell customers about your restaurant...",
+    "RestaurantAddress": "Restaurant Address",
+    "RestaurantAddressPlaceholder": "123 Main Street, City, State 12345",
+    "Currency": "Currency",
+    "WhatsAppPhone": " WhatsApp Phone",
+
+    "Saving": "Saving...",
+    "SaveChanges": "Save Changes",
+
+    "SocialMediaLinks": "Social Media Links",
+    "FacebookProfile": "Facebook Profile",
+    "InstagramProfile": " Instagram Profile",
+    "LinkedInProfile": "LinkedIn Profile"
+  },
+  "QRCode": {}
 }
