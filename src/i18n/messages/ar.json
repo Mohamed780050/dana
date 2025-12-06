@@ -175,5 +175,26 @@
     "Cancel": "إلغاء",
     "Saving": "جاري الحفظ...",
     "SaveChanges": "حفظ التغييرات"
+  },
+  "RestaurantPublic": {
+    "NotFound": "غير موجود",
+    "All": "الكل",
+    "Menu": "القائمة",
+    "Cart": "السلة",
+    "YourCart": "سلّتك",
+    "EmptyMessage": "سلتك فارغة",
+    "EmptyMessageItem": "أضف عناصر للبدء",
+    "Total": "الإجمالي",
+    "YourName": "اسمك",
+    "PhoneNumber": "رقم الهاتف",
+    "PaymentMethod": "طريقة الدفع",
+    "CashOnDelivery": "الدفع عند الاستلام",
+    "Visa": "فيزا (قريبًا)",
+    "TableNumber": "رقم الطاولة",
+    "Location": "الموقع",
+    "inSite": "في‑المكان",
+    "delivery": "توصيل",
+    "Processing": "جاري المعالجة...",
+    "PlaceOrder": "إتمام الطلب"
   }
 }

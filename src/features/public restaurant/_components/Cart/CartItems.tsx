@@ -2,6 +2,7 @@
 
 import { useOrdersStore } from "@/hooks/useCartItem";
 import { Minus, Plus, Trash2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export default function CartItems() {
   const {
@@ -11,6 +12,8 @@ export default function CartItems() {
     decreaseQuantity,
     totalPrice,
   } = useOrdersStore();
+
+  const t = useTranslations("RestaurantPublic");
 
   return (
     <>
@@ -57,7 +60,7 @@ export default function CartItems() {
       </div>
 
       <div className="flex items-center justify-between border-t border-slate-200 p-6 pt-4 text-lg">
-        <span className="font-bold text-slate-900">Total</span>
+        <span className="font-bold text-slate-900">{t("Total")}</span>
         <span className="text-xl font-bold text-emerald-600">
           {/* {currencySymbol} */}
           {Number(totalPrice).toFixed(2)}

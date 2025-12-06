@@ -16,6 +16,7 @@ import {
   SelectValue,
   SelectItem,
 } from "@/components/ui/select";
+import { useTranslations } from "next-intl";
 
 export default function CartOrderSubmission({ userId }: { userId: string }) {
   const initialState: CartState = { message: null, errors: {} };
@@ -33,11 +34,12 @@ export default function CartOrderSubmission({ userId }: { userId: string }) {
     initialState,
   );
   const [isDeleviray, setIsDeleviray] = useState(false);
+  const t = useTranslations("RestaurantPublic");
   return (
     <form className="space-y-3 pt-2" action={action}>
       <div>
         <Label className="mb-2 block text-sm font-medium text-slate-700">
-          Your Name
+          {t("YourName")}
         </Label>
         <Input
           type="text"
@@ -56,7 +58,7 @@ export default function CartOrderSubmission({ userId }: { userId: string }) {
 
       <div>
         <Label className="mb-2 block text-sm font-medium text-slate-700">
-          Phone Number
+          {t("PhoneNumber")}
         </Label>
         <Input
           type="tel"
@@ -75,7 +77,7 @@ export default function CartOrderSubmission({ userId }: { userId: string }) {
 
       <div>
         <label className="mb-2 block text-sm font-medium text-slate-700">
-          Payment Method
+          {t("PaymentMethod")}
         </label>
         <div className="space-y-2">
           <button
@@ -103,7 +105,7 @@ export default function CartOrderSubmission({ userId }: { userId: string }) {
                 paymentMethod === "cash" ? "text-emerald-600" : "text-slate-700"
               }`}
             >
-              Cash on Delivery
+              {t("CashOnDelivery")}
             </span>
           </button>
 
@@ -116,9 +118,7 @@ export default function CartOrderSubmission({ userId }: { userId: string }) {
             <div className="h-5 w-5 rounded-full border-2 border-slate-300" />
             <div className="flex items-center gap-2">
               <CreditCard className="h-5 w-5 text-slate-400" />
-              <span className="font-medium text-slate-500">
-                Visa (Coming Soon)
-              </span>
+              <span className="font-medium text-slate-500">{t("Visa")}</span>
             </div>
           </button>
         </div>
@@ -127,13 +127,13 @@ export default function CartOrderSubmission({ userId }: { userId: string }) {
       {isDeleviray === false ? (
         <div>
           <Label className="mb-2 block text-sm font-medium text-slate-700">
-            Table number
+            {t("TableNumber")}
           </Label>
           <Input
             disabled={isPending}
             type="number"
             name="tableNumber"
-            placeholder="Table Number"
+            placeholder={t("TableNumber")}
             className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-transparent focus:ring-2 focus:ring-emerald-500"
           />
         </div>
@@ -155,12 +155,12 @@ export default function CartOrderSubmission({ userId }: { userId: string }) {
         </SelectTrigger>
         <SelectContent>
           <SelectGroup>
-            <SelectLabel>Location</SelectLabel>
+            <SelectLabel>{t("Location")}</SelectLabel>
             <SelectItem value="inSite" onClick={() => setIsDeleviray(true)}>
-              In Site
+              {t("inSite")}
             </SelectItem>
             <SelectItem value="delivery" onClick={() => setIsDeleviray(true)}>
-              Delivery
+              {t("delivery")}
             </SelectItem>
           </SelectGroup>
         </SelectContent>
@@ -174,12 +174,12 @@ export default function CartOrderSubmission({ userId }: { userId: string }) {
         {isPending ? (
           <>
             <div className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
-            Processing...
+            {t("Processing")}
           </>
         ) : (
           <>
             <ShoppingCart className="h-5 w-5" />
-            Place Order
+            {t("PlaceOrder")}
           </>
         )}
       </button>

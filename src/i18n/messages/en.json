@@ -177,5 +177,26 @@
     "Cancel": "Cancel",
     "Saving": "Saving...",
     "SaveChanges": "Save Changes"
+  },
+  "RestaurantPublic": {
+    "NotFound": "Not Found",
+    "All": "All",
+    "Menu": "Menu",
+    "Cart": "Cart",
+    "YourCart": "Your Cart",
+    "EmptyMessage": "Your cart is empty",
+    "EmptyMessageItem": "Add items to get started",
+    "Total": "Total",
+    "YourName": "Your Name",
+    "PhoneNumber": "Phone Number",
+    "PaymentMethod": "Payment Method",
+    "CashOnDelivery": "Cash On Delivery",
+    "Visa": "Visa (Coming Soon)",
+    "TableNumber": "Table Number",
+    "Location": "Location",
+    "inSite": "In Site",
+    "delivery": "Delivery",
+    "Processing":"Processing...",
+    "PlaceOrder":"Place Order"
   }
 }

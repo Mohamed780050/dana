@@ -1,6 +1,7 @@
 import Restaurant from "@/features/public restaurant/_components/Restaurant";
 import { db } from "@/lib/db";
 import { getRestaurantDetailsForPublicRoute } from "@/lib/restaurant";
+import { getTranslations } from "next-intl/server";
 
 export const dynamic = "force-dynamic";
 export default async function page({ params }: { params: { id: string } }) {
@@ -11,12 +12,13 @@ export default async function page({ params }: { params: { id: string } }) {
     where: { userId: restaurant.userId },
     data: { views: { increment: 1 } },
   });
+  const t = await getTranslations("RestaurantPublic");
   return (
     <div>
       {restaurant ? (
         <Restaurant restaurant={restaurant} />
       ) : (
-        <div>not found</div>
+        <div>{t("NotFound")}</div>
       )}
     </div>
   );
