@@ -1,11 +1,13 @@
 "use client";
 import { navItems } from "@/data/static";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export default function BottomBar() {
   const pathname = usePathname();
-
+    const t = useTranslations("NavLinks");
+  
   return (
     <nav className="fixed right-0 bottom-0 left-0 flex items-center justify-around border-t border-slate-200 bg-white md:hidden">
       {navItems.map((item) => {
@@ -23,7 +25,7 @@ export default function BottomBar() {
           >
             <Icon className="h-5 w-5" />
             <span className="mt-1 truncate text-xs font-medium">
-              {item.label === "QR Code" ? "QR" : item.label}
+              {item.label === "QR Code" ? "QR" : t(item.label)}
             </span>
           </Link>
         );

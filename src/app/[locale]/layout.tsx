@@ -4,6 +4,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getLocale } from "next-intl/server";
+import { arSA, enUS } from "@clerk/localizations";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,8 +29,9 @@ export default async function RootLayout({
   const locale = await getLocale();
   const messages = await getMessages();
   const dir = locale === "ar" ? "rtl" : "ltr";
+  const clerkLoc = locale === "ar" ? arSA : enUS;
   return (
-    <ClerkProvider>
+    <ClerkProvider localization={clerkLoc}>
       <NextIntlClientProvider messages={messages}>
         <html lang={locale} dir={dir}>
           <body

@@ -91,7 +91,16 @@
     "AddCategoryPlaceholder": "Category name (e.g., Appetizers, Main Course)",
     "addCategory": "Add",
     "Creating": "Creating...",
-    "AddItem": "Add Item"
+    "AddItem": "Add Item",
+
+    "Name": "Name",
+    "Price": "Price",
+    "Description": "Description",
+    "Image": "Image (Optional)",
+    "Cancel": "Cancel",
+    "Create": "Create",
+    "Uploading": "Uploading",
+    "UploadYourLogo": "Upload your Logo"
   },
   "RestaurantSettings": {
     "title": "Restaurant Settings",

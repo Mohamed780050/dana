@@ -86,12 +86,21 @@
   },
   "Menu": {
     "title": "إدارة القائمة",
-    "description": "نظّم قائمتك بحسب الفئات والعناصر.",
+    "description": "نظّم قائمتك باستخدام الفئات والعناصر.",
     "AddCategory": "إضافة فئة",
-    "AddCategoryPlaceholder": "اسم الفئة (مثلاً: مقبلات، الطبق الرئيسي)",
+    "AddCategoryPlaceholder": "اسم الفئة (مثل: مقبلات، الطبق الرئيسي)",
     "addCategory": "إضافة",
     "Creating": "جارٍ الإنشاء...",
-    "AddItem": "إضافة عنصر"
+    "AddItem": "إضافة عنصر",
+
+    "Name": "الاسم",
+    "Price": "السعر",
+    "Description": "الوصف",
+    "Image": "صورة (اختيارية)",
+    "Cancel": "إلغاء",
+    "Create": "إنشاء",
+    "Uploading": "جاري الرفع...",
+    "UploadYourLogo": "حمّل شعارك"
   },
   "RestaurantSettings": {
     "title": "إعدادات المطعم",

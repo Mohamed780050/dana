@@ -2,9 +2,8 @@
 
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
-import {
-  uploadToCloudinaryItemImage,
-} from "@/lib/cloudinary";
+import { uploadToCloudinaryItemImage } from "@/lib/cloudinary";
+import { useTranslations } from "next-intl";
 
 export default function UploadItemImage({
   setImgURL,
@@ -42,6 +41,7 @@ export default function UploadItemImage({
     reader.readAsDataURL(file);
   };
 
+  const t = useTranslations("Menu");
   return (
     <div>
       <Button
@@ -50,7 +50,7 @@ export default function UploadItemImage({
         className="cursor-pointer bg-emerald-500 hover:bg-emerald-600"
         onClick={handleClick}
       >
-        {uploading ? "Uploading" : "Upload your Logo"}
+        {uploading ? t("Uploading") : t("UploadYourLogo")}
       </Button>
 
       {/* Hidden file input */}

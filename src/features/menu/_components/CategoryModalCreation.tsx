@@ -15,6 +15,7 @@ import { CategoryItemState } from "@/interfaces/interface";
 import { ReactNode, useActionState, useState } from "react";
 import { addCategoryItem } from "../actions/menuaction";
 import UploadItemImage from "./UploadItemImage";
+import { useTranslations } from "next-intl";
 
 export default function CategoryModalCreation({
   children,
@@ -31,6 +32,7 @@ export default function CategoryModalCreation({
   );
   const [imgURL, setImgURL] = useState("");
   const [uploading, setUploading] = useState(false);
+  const t = useTranslations("Menu");
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
@@ -39,7 +41,7 @@ export default function CategoryModalCreation({
           <DialogHeader></DialogHeader>
           <div className="grid gap-4">
             <div className="grid gap-3">
-              <Label htmlFor="name">Name</Label>
+              <Label htmlFor="name">{t("Name")}</Label>
               <Input disabled={isPending || uploading} id="name" name="name" />
               {state.errors?.category_name &&
                 state.errors.category_name.map((text, index) => (
@@ -49,7 +51,7 @@ export default function CategoryModalCreation({
                 ))}
             </div>
             <div className="grid gap-3">
-              <Label htmlFor="price">Price</Label>
+              <Label htmlFor="price">{t("Price")}</Label>
               <Input
                 disabled={isPending || uploading}
                 type="number"
@@ -67,7 +69,7 @@ export default function CategoryModalCreation({
                 ))}
             </div>
             <div className="grid gap-3">
-              <Label htmlFor="description">Description</Label>
+              <Label htmlFor="description">{t("Description")}</Label>
               <Textarea
                 disabled={isPending || uploading}
                 id="description"
@@ -84,7 +86,7 @@ export default function CategoryModalCreation({
                 ))}
             </div>
             <div className="grid gap-3">
-              <Label htmlFor="image">Image (Optional)</Label>
+              <Label htmlFor="image">{t("Image")}</Label>
               <div className="flex items-center justify-between gap-3">
                 <UploadItemImage
                   uploading={uploading}
@@ -113,7 +115,7 @@ export default function CategoryModalCreation({
           <DialogFooter className="mt-4">
             <DialogClose asChild>
               <Button disabled={isPending || uploading} variant="outline">
-                Cancel
+                {t("Cancel")}
               </Button>
             </DialogClose>
             <Button
@@ -121,7 +123,7 @@ export default function CategoryModalCreation({
               className="bg-emerald-500 hover:bg-emerald-600"
               disabled={isPending || uploading}
             >
-              {isPending ? "Creating..." : "Create"}
+              {isPending ? t("Creating") : t("Create")}
             </Button>
           </DialogFooter>
         </form>

@@ -9,12 +9,15 @@ import {
 import { ShoppingBag } from "lucide-react";
 import { ReactNode } from "react";
 import CreationForm from "./CreationForm";
+import { useLocale, useTranslations } from "next-intl";
 
 export default function CreateOrderModal({
   children,
 }: {
   children: ReactNode;
 }) {
+  const t = useTranslations("Orders.ModalCreation");
+  const local = useLocale();
   return (
     <Dialog>
       <form>
@@ -27,12 +30,12 @@ export default function CreateOrderModal({
                   <ShoppingBag className="h-6 w-6 text-emerald-600" />
                 </div>
                 <h2 className="text-2xl font-bold text-slate-900">
-                  Create New Order
+                  {t("title")}
                 </h2>
               </div>
             </DialogTitle>
-            <DialogDescription>
-              Make changes to your order here
+            <DialogDescription className={`${local === "ar" && "text-right"}`}>
+              {t("description")}
             </DialogDescription>
             <div className="w-full border-b border-slate-200"></div>
           </DialogHeader>
