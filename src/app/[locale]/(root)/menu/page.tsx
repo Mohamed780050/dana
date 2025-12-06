@@ -3,6 +3,7 @@ import AddCategory from "@/features/menu/_components/AddCategory";
 import Categories from "@/features/menu/_components/Categories";
 import CategorySkeleton from "@/features/menu/skeletons/CategorySkeleton";
 import { auth } from "@clerk/nextjs/server";
+import { getTranslations } from "next-intl/server";
 import { redirect } from "next/navigation";
 import { Suspense } from "react";
 
@@ -14,12 +15,11 @@ export default async function page() {
   if (orgRole === "org:delivery" || orgRole === "org:cashier")
     return redirect("/orders");
 
+  const t = await getTranslations("Menu");
+
   return (
     <div className="space-y-8">
-      <PageTitle
-        title="Menu Management"
-        description="Organize your menu with categories and items."
-      />
+      <PageTitle title={t("title")} description={t("description")} />
       <AddCategory />
       <Suspense fallback={<CategorySkeleton />}>
         <Categories />

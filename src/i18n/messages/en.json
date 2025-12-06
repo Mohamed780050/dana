@@ -83,5 +83,14 @@
       "Cancelled": "Cancelled",
       "Location": "Location"
     }
+  },
+  "Menu": {
+    "title": "Menu Management",
+    "description": "Organize your menu with categories and items.",
+    "AddCategory": "Add Category",
+    "AddCategoryPlaceholder": "Category name (e.g., Appetizers, Main Course)",
+    "addCategory": "Add",
+    "Creating": "Creating...",
+    "AddItem":"Add Item"
   }
 }

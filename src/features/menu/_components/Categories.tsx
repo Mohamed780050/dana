@@ -3,9 +3,12 @@ import { Plus, Trash2 } from "lucide-react";
 import CategoryItems from "./CategoryItems";
 import CategoryModalCreation from "./CategoryModalCreation";
 import CategoryDeletingModal from "./CategoryDeletingModal";
+import { getTranslations } from "next-intl/server";
 
 export default async function Categories() {
   const categories = await getAllCategories();
+  const t = await getTranslations("Menu");
+
   return (
     <ul className="space-y-6">
       {categories.map((item) => (
@@ -25,7 +28,7 @@ export default async function Categories() {
                   className="flex items-center gap-2 rounded-lg bg-emerald-600 px-4 py-2 font-semibold text-white transition-colors hover:bg-emerald-700"
                 >
                   <Plus className="h-4 w-4" />
-                  Add Item
+                  {t("AddItem")}
                 </button>
               </CategoryModalCreation>
               <CategoryDeletingModal CategoryId={item.id}>

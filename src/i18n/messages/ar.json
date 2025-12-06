@@ -83,5 +83,14 @@
       "Cancelled": "ملغى",
       "Location": "الموقع"
     }
+  },
+  "Menu": {
+    "title": "إدارة القائمة",
+    "description": "نظّم قائمتك بحسب الفئات والعناصر.",
+    "AddCategory": "إضافة فئة",
+    "AddCategoryPlaceholder": "اسم الفئة (مثلاً: مقبلات، الطبق الرئيسي)",
+    "addCategory": "إضافة",
+    "Creating": "جارٍ الإنشاء...",
+    "AddItem": "إضافة عنصر"
   }
 }
