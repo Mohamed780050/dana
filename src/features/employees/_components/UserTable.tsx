@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { clerkClient } from "@clerk/nextjs/server";
 import { Edit2, Trash2 } from "lucide-react";
 import UserDeleting from "./UserDeleting";
+import { useTranslations } from "next-intl";
 
 export default function UserTable({
   users,
@@ -26,16 +27,20 @@ export default function UserTable({
         return "bg-slate-700 text-slate-200";
     }
   };
+  const t = useTranslations("Employees");
+
   return (
     <div className="overflow-x-auto">
       <table className="w-full">
         <thead>
           <tr className="border-b border-slate-700">
-            <th className="px-6 py-4 text-left font-semibold">Name</th>
-            <th className="px-6 py-4 text-left font-semibold">Email</th>
-            <th className="px-6 py-4 text-left font-semibold">Role</th>
+            <th className="px-6 py-4 text-center font-semibold">{t("Name")}</th>
+            <th className="px-6 py-4 text-center font-semibold">{t("Email")}</th>
+            <th className="px-6 py-4 text-center font-semibold">{t("Role")}</th>
             {/* <th className="px-6 py-4 text-left font-semibold">Created</th> */}
-            <th className="px-6 py-4 text-right font-semibold">Actions</th>
+            <th className="px-6 py-4 text-center font-semibold">
+              {t("Action")}
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -48,14 +53,14 @@ export default function UserTable({
             return (
               <tr
                 key={user.userId}
-                className="border-b border-slate-700 transition-all duration-200 hover:from-slate-900/5"
+                className="text-center border-b border-slate-700 transition-all duration-200 hover:from-slate-900/5"
                 // onClick={() => onEdit(user)}
               >
                 <td className="px-6 py-4">
                   {user.firstName} {user.lastName}
                 </td>
-                <td className="px-6 py-4">{user.identifier}</td>
-                <td className="px-6 py-4">
+                <td className="text-center px-6 py-4">{user.identifier}</td>
+                <td className="text-center px-6 py-4">
                   <span
                     className={`rounded-full px-3 py-1 text-sm font-medium capitalize ${getRoleBadgeColor(data[0].role.split(":")[1])}`}
                   >
@@ -66,7 +71,7 @@ export default function UserTable({
                   {new Date(user.createdAt).toLocaleDateString()}
                 </td> */}
                 {data[0].role !== "org:admin" && (
-                  <td className="px-6 py-4 text-right">
+                  <td className="px-6 py-4 text-center">
                     <div className="flex justify-end gap-2">
                       <UserDeleting userId={user.userId}>
                         <Button

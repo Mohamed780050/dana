@@ -144,5 +144,29 @@
 
     "NoRestaurantFound": "No restaurant found",
     "NotFoundDes": "Please set up your restaurant information first."
+  },
+  "Employees": {
+    "title": "Employees",
+    "description": "You can manage your employees from here.",
+    "AddUser": "Add user",
+
+    "NoOrgs": "No Orgs found",
+    "NoOrgsDes": "Please set up your Org first.",
+
+    "Name": "Name",
+    "Email": "Email",
+    "Role": "Role",
+    "Action": "Action",
+
+    "ModalTitle": "Add An Employee",
+    "ModalDescription": "use this to add employees to your work.",
+    "FirstName": "First Name",
+    "LastName": "Last Name",
+    "Password": "Password",
+    "Cashier": "Cashier",
+    "Delivery": "Delivery",
+    "Cancel": "Cancel",
+    "Saving": "Saving...",
+    "SaveChanges": "Save Changes"
   }
 }

@@ -25,26 +25,26 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useTranslations } from "next-intl";
 
 export default function AddUser({ children }: { children: ReactNode }) {
   const initialState: UserState = { message: null, errors: {} };
   const [state, action, isPending] = useActionState(addUser, initialState);
 
+  const t = useTranslations("Employees");
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <form action={action} className="space-y-4">
           <DialogHeader>
-            <DialogTitle>Add An Employee</DialogTitle>
-            <DialogDescription>
-              use this to add employees to your work.
-            </DialogDescription>
+            <DialogTitle>{t("ModalTitle")}</DialogTitle>
+            <DialogDescription>{t("ModalDescription")}</DialogDescription>
           </DialogHeader>
           <div className="grid gap-4">
             <div className="flex items-center justify-between gap-4">
               <div className="grid gap-3">
-                <Label htmlFor="firstName">First Name</Label>
+                <Label htmlFor="firstName">{t("FirstName")}</Label>
                 <Input id="firstName" name="firstName" disabled={isPending} />
                 {state.errors?.firstName &&
                   state.errors.firstName.map((text, index) => (
@@ -54,7 +54,7 @@ export default function AddUser({ children }: { children: ReactNode }) {
                   ))}
               </div>
               <div className="grid gap-3">
-                <Label htmlFor="lastName">Last Name</Label>
+                <Label htmlFor="lastName">{t("LastName")}</Label>
                 <Input id="lastName" name="lastName" disabled={isPending} />
                 {state.errors?.lastName &&
                   state.errors.lastName.map((text, index) => (
@@ -65,7 +65,7 @@ export default function AddUser({ children }: { children: ReactNode }) {
               </div>
             </div>
             <div className="grid gap-3">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">{t("Email")}</Label>
               <Input id="email" name="email" disabled={isPending} />
               {state.errors?.email &&
                 state.errors.email.map((text, index) => (
@@ -75,7 +75,7 @@ export default function AddUser({ children }: { children: ReactNode }) {
                 ))}
             </div>
             <div className="grid gap-3">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password">{t("Password")}</Label>
               <Input
                 id="password"
                 type="password"
@@ -96,9 +96,9 @@ export default function AddUser({ children }: { children: ReactNode }) {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
-                    <SelectLabel>Roles</SelectLabel>
-                    <SelectItem value="cashier">Cashier</SelectItem>
-                    <SelectItem value="delivery">Delivery</SelectItem>
+                    <SelectLabel>{t("Role")}</SelectLabel>
+                    <SelectItem value="cashier">{t("Cashier")}</SelectItem>
+                    <SelectItem value="delivery">{t("Delivery")}</SelectItem>
                   </SelectGroup>
                 </SelectContent>
               </Select>
@@ -113,7 +113,7 @@ export default function AddUser({ children }: { children: ReactNode }) {
           <DialogFooter>
             <DialogClose asChild>
               <Button variant="outline" disabled={isPending}>
-                Cancel
+                {t("Cancel")}
               </Button>
             </DialogClose>
             <Button
@@ -122,7 +122,7 @@ export default function AddUser({ children }: { children: ReactNode }) {
               disabled={isPending}
             >
               <Save />
-              {isPending ? "Saving" : "Save changes"}
+              {isPending ? t("Saving") : t("SaveChanges")}
             </Button>
           </DialogFooter>
           {state.message && <p>{state.message}</p>}
