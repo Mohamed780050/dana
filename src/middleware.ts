@@ -9,7 +9,10 @@ const i18nMiddleware = createMiddleware({
 const isPublicRoute = createRouteMatcher([
   "/sign-in(.*)",
   "/sign-up(.*)",
+  "/(en|ar)/sign-in(.*)",
+  "/(en|ar)/sign-up(.*)",
   "/",
+  "/(en|ar)",
   "/restaurantMenu(.*)",
   "/(api|trpc)(.*)",
 ]);

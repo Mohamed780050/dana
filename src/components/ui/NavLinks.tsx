@@ -1,5 +1,6 @@
 "use client";
 import { navItems } from "@/data/static";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -9,8 +10,7 @@ export default function NavLinks({
   orgRole: string | null | undefined;
 }) {
   const pathname = usePathname();
-  // const { orgRole } = await auth();
-  // if (orgRole === "org:delivery" || orgRole === "org:cashier") return null;
+  const t = useTranslations("NavLinks");
   return (
     <>
       {orgRole === "org:delivery" || orgRole === "org:cashier" ? (
@@ -18,6 +18,9 @@ export default function NavLinks({
           {navItems.map((item) => {
             const Icon = item.icon;
             const active = `/${item.id}` === pathname;
+            console.log(active);
+            console.log(pathname);
+            console.log(item.id);
             if (item.id === "orders")
               return (
                 <Link
@@ -30,7 +33,7 @@ export default function NavLinks({
                   }`}
                 >
                   <Icon className="h-5 w-5" />
-                  <span>{item.label}</span>
+                  <span>{t(item.label)}</span>
                 </Link>
               );
           })}
@@ -51,7 +54,7 @@ export default function NavLinks({
                 }`}
               >
                 <Icon className="h-5 w-5" />
-                <span>{item.label}</span>
+                <span>{t(item.label)}</span>
               </Link>
             );
           })}

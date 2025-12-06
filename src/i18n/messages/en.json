@@ -1,5 +1,37 @@
 {
-  "landingPage":{
-    
+  "landingPage": {
+    "MainTitle": "We Create Digital Experiences"
+  },
+  "NavLinks": {
+    "Dashboard": "Dashboard",
+    "Orders": "Orders",
+    "Menu": "Menu",
+    "Restaurant": "Restaurant",
+    "Employees": "Employees",
+    "QR Code": "QR Code"
+  },
+  "Dashboard": {
+    "title": "Dashboard",
+    "description": "Welcome back! Here's your restaurant overview.",
+    "Cards": {
+      "Total Orders": "Total Orders",
+      "Sales Volume": "Sales Volume",
+      "Menu Items": "Menu Items",
+      "Views": "Views"
+    },
+    "TotalOrders": {
+      "title": "Total Orders",
+      "Pending": "Pending",
+      "Processing": "Processing",
+      "Completed": "Completed",
+      "AllOrders": "All Orders"
+    },
+    "SalesOverview": {
+      "title": "Sales Overview",
+      "Today": "Today",
+      "This Week": "This Week",
+      "This Month": "This Month",
+      "TotalRevenue": "Total Revenue"
+    }
   }
 }

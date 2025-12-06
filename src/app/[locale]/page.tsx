@@ -1,37 +1,39 @@
 import Header from "@/components/Header";
+import { useTranslations } from "next-intl";
 
 export default function Home() {
+  const t = useTranslations();
   return (
-    <div className="antialiased text-gray-900 bg-white">
+    <div className="bg-white text-gray-900 antialiased">
       <Header />
 
-      <section className="h-screen flex items-center relative  bg-[url('/hero.jpg')] bg-cover bg-center">
-        <div className="container mx-auto px-6 text-white max-w-2xl relative z-10">
-          <h1 className="text-5xl md:text-6xl font-extrabold mb-4 drop-shadow-lg">
-            We Create Digital Experiences
+      <section className="relative flex h-screen items-center bg-[url('/hero.jpg')] bg-cover bg-center">
+        <div className="relative z-10 container mx-auto max-w-2xl px-6 text-white">
+          <h1 className="mb-4 text-5xl font-extrabold drop-shadow-lg md:text-6xl">
+            {t("landingPage.MainTitle")}
           </h1>
-          <p className="text-lg md:text-xl mb-6 drop-shadow-md">
+          <p className="mb-6 text-lg drop-shadow-md md:text-xl">
             Partnering with brands to build immersive web, mobile and branding
             solutions that delight your users and drive growth.
           </p>
           <a
             href="#work"
-            className="px-8 py-3 bg-emerald-600 rounded text-white font-semibold hover:bg-emerald-700 transition shadow-lg"
+            className="rounded bg-emerald-600 px-8 py-3 font-semibold text-white shadow-lg transition hover:bg-emerald-700"
           >
             See Our Work
           </a>
         </div>
-        <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+        <div className="bg-opacity-30 absolute inset-0 bg-black"></div>
       </section>
 
-      <section id="services" className="py-20 bg-gray-50">
+      <section id="services" className="bg-gray-50 py-20">
         <div className="container mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-emerald-600">
+          <h2 className="mb-12 text-3xl font-bold text-emerald-600 md:text-4xl">
             Our Services
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-lg shadow hover:shadow-xl transition">
-              <h3 className="text-2xl font-semibold mb-4">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+            <div className="rounded-lg bg-white p-8 shadow transition hover:shadow-xl">
+              <h3 className="mb-4 text-2xl font-semibold">
                 Branding & Identity
               </h3>
               <p className="text-gray-600">
@@ -39,8 +41,8 @@ export default function Home() {
                 audience and stand out in the market.
               </p>
             </div>
-            <div className="bg-white p-8 rounded-lg shadow hover:shadow-xl transition">
-              <h3 className="text-2xl font-semibold mb-4">
+            <div className="rounded-lg bg-white p-8 shadow transition hover:shadow-xl">
+              <h3 className="mb-4 text-2xl font-semibold">
                 Web & Mobile Development
               </h3>
               <p className="text-gray-600">
@@ -48,8 +50,8 @@ export default function Home() {
                 digital experiences across platforms.
               </p>
             </div>
-            <div className="bg-white p-8 rounded-lg shadow hover:shadow-xl transition">
-              <h3 className="text-2xl font-semibold mb-4">
+            <div className="rounded-lg bg-white p-8 shadow transition hover:shadow-xl">
+              <h3 className="mb-4 text-2xl font-semibold">
                 Marketing & Growth
               </h3>
               <p className="text-gray-600">
@@ -63,27 +65,27 @@ export default function Home() {
 
       <section id="work" className="py-20">
         <div className="container mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-emerald-600">
+          <h2 className="mb-12 text-3xl font-bold text-emerald-600 md:text-4xl">
             Recent Projects
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="relative bg-gray-200 h-64 rounded-lg overflow-hidden group">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+            <div className="group relative h-64 overflow-hidden rounded-lg bg-gray-200">
               <img
                 src="project1.jpg"
                 alt="Project 1"
-                className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center text-white text-2xl font-bold opacity-0 group-hover:opacity-100 transition">
+              <div className="bg-opacity-30 absolute inset-0 flex items-center justify-center bg-black text-2xl font-bold text-white opacity-0 transition group-hover:opacity-100">
                 Project 1
               </div>
             </div>
-            <div className="relative bg-gray-200 h-64 rounded-lg overflow-hidden group">
+            <div className="group relative h-64 overflow-hidden rounded-lg bg-gray-200">
               <img
                 src="project2.jpg"
                 alt="Project 2"
-                className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center text-white text-2xl font-bold opacity-0 group-hover:opacity-100 transition">
+              <div className="bg-opacity-30 absolute inset-0 flex items-center justify-center bg-black text-2xl font-bold text-white opacity-0 transition group-hover:opacity-100">
                 Project 2
               </div>
             </div>
@@ -91,7 +93,7 @@ export default function Home() {
           <div className="mt-8">
             <a
               href="#contact"
-              className="px-8 py-3 bg-emerald-600 rounded text-white font-semibold hover:bg-emerald-700 transition shadow-lg"
+              className="rounded bg-emerald-600 px-8 py-3 font-semibold text-white shadow-lg transition hover:bg-emerald-700"
             >
               View All Projects
             </a>
@@ -99,9 +101,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="about" className="py-20 bg-gray-50">
-        <div className="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
-          <div className="md:w-1/2 mb-8 md:mb-0 transform-hover:translate-y--2 transition">
+      <section id="about" className="bg-gray-50 py-20">
+        <div className="container mx-auto flex flex-col items-center gap-12 px-6 md:flex-row">
+          <div className="transform-hover:translate-y--2 mb-8 transition md:mb-0 md:w-1/2">
             <img
               src="about-team.jpg"
               alt="Our team"
@@ -109,10 +111,10 @@ export default function Home() {
             />
           </div>
           <div className="md:w-1/2 md:pl-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-emerald-600">
+            <h2 className="mb-4 text-3xl font-bold text-emerald-600 md:text-4xl">
               About Us
             </h2>
-            <p className="text-gray-600 mb-4">
+            <p className="mb-4 text-gray-600">
               We’re a full-service digital agency passionate about helping
               brands connect, engage, and grow. Our multidisciplinary team of
               designers, developers, and strategists bring fresh ideas and deep
@@ -129,32 +131,32 @@ export default function Home() {
 
       <section id="contact" className="py-20">
         <div className="container mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-emerald-600">
+          <h2 className="mb-6 text-3xl font-bold text-emerald-600 md:text-4xl">
             Let’s Talk
           </h2>
-          <p className="text-gray-600 mb-8">
+          <p className="mb-8 text-gray-600">
             Ready to start your project? Drop us a message and we’ll get back to
             you soon.
           </p>
-          <form className="max-w-2xl mx-auto space-y-4">
+          <form className="mx-auto max-w-2xl space-y-4">
             <input
               type="text"
               placeholder="Your Name"
-              className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-emerald-500"
+              className="w-full rounded border border-gray-300 px-4 py-3 focus:ring-2 focus:ring-emerald-500 focus:outline-none"
             />
             <input
               type="email"
               placeholder="Your Email"
-              className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-emerald-500"
+              className="w-full rounded border border-gray-300 px-4 py-3 focus:ring-2 focus:ring-emerald-500 focus:outline-none"
             />
             <textarea
               placeholder="Your Message"
               rows={4}
-              className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-emerald-500"
+              className="w-full rounded border border-gray-300 px-4 py-3 focus:ring-2 focus:ring-emerald-500 focus:outline-none"
             ></textarea>
             <button
               type="submit"
-              className="px-8 py-3 bg-emerald-600 text-white rounded font-semibold hover:bg-emerald-700 transition shadow-lg"
+              className="rounded bg-emerald-600 px-8 py-3 font-semibold text-white shadow-lg transition hover:bg-emerald-700"
             >
               Send Message
             </button>
@@ -162,19 +164,19 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="bg-emerald-600 text-gray-300 py-6">
+      <footer className="bg-emerald-600 py-6 text-gray-300">
         <div className="container mx-auto px-6 text-center">
           <p className="text-gray-200">
             &copy; 2025 YourAgency. All rights reserved.
           </p>
           <div className="mt-4 space-x-4">
-            <a href="#" className="hover:text-white transition">
+            <a href="#" className="transition hover:text-white">
               Twitter
             </a>
-            <a href="#" className="hover:text-white transition">
+            <a href="#" className="transition hover:text-white">
               LinkedIn
             </a>
-            <a href="#" className="hover:text-white transition">
+            <a href="#" className="transition hover:text-white">
               Instagram
             </a>
           </div>

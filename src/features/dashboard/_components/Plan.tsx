@@ -1,6 +1,7 @@
 export default function Plan() {
   return (
-    <div className="bg-linear-to-br from-emerald-500 to-emerald-600 rounded-xl p-8 text-white">
+    <>
+    {/* <div className="bg-linear-to-br from-emerald-500 to-emerald-600 rounded-xl p-8 text-white">
       <div className="flex items-start justify-between">
         <div>
           <h2 className="text-2xl font-bold mb-2">Your Current Plan</h2>
@@ -34,6 +35,7 @@ export default function Plan() {
           <div className="text-emerald-100">per month</div>
         </div>
       </div>
-    </div>
+    </div> */}
+    </>
   );
 }

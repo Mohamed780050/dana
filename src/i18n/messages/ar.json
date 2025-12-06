@@ -1,3 +1,37 @@
 {
-  "landingPage":{}
+  "landingPage": {
+    "MainTitle": "نحن نخلق تجارب رقمية"
+  },
+  "NavLinks": {
+    "Dashboard": "لوحة القيادة",
+    "Orders": "الطلبات",
+    "Menu": "قائمة",
+    "Restaurant": "المطعم",
+    "Employees": "الموظفين",
+    "QR Code": "رمز الاستجابة السريعة"
+  },
+  "Dashboard": {
+    "title": "لوحة القيادة",
+    "description": "مرحبًا بعودتك! إليك نظرة عامة على مطعمك.",
+    "Cards": {
+      "Total Orders": "إجمالي الطلبات",
+      "Sales Volume": "حجم المبيعات",
+      "Menu Items": "عناصر القائمة",
+      "Views": "عدد المشاهدات"
+    },
+    "TotalOrders": {
+      "title": "إجمالي الطلبات",
+      "Pending": "قيد الانتظار",
+      "Processing": "قيد المعالجة",
+      "Completed": "مكتملة",
+      "AllOrders": "جميع الطلبات"
+    },
+    "SalesOverview": {
+      "title": "نظرة على المبيعات",
+      "Today": "اليوم",
+      "This Week": "هذا الأسبوع",
+      "This Month": "هذا الشهر",
+      "TotalRevenue": "إجمالي الإيرادات"
+    }
+  }
 }
