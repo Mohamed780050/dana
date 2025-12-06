@@ -1,6 +1,7 @@
 "use client";
 import { useQRCode } from "@/hooks/useQRCodeDate";
 import { Download } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { QRCodeSVG } from "qrcode.react";
 import { useRef } from "react";
 
@@ -45,7 +46,7 @@ export default function QRCodePreview({
       "data:image/svg+xml;base64," +
       btoa(unescape(encodeURIComponent(svgData)));
   };
-
+  const t = useTranslations("QRCode");
   return (
     <div className="space-y-6">
       <div className="flex justify-center">
@@ -66,11 +67,13 @@ export default function QRCodePreview({
         className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-emerald-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-emerald-700"
       >
         <Download className="h-5 w-5" />
-        Download QR Code
+        {t("DownloadQRCode")}
       </button>
 
       <div className="rounded-lg border border-blue-200 bg-blue-50 p-4">
-        <p className="mb-2 text-sm font-medium text-blue-900">QR Code Link:</p>
+        <p className="mb-2 text-sm font-medium text-blue-900">
+          {t("QRCodeLink")}
+        </p>
         <p className="rounded border border-blue-100 bg-white px-3 py-2 font-mono text-xs break-all text-blue-800">
           {process.env.NEXT_PUBLIC_BASE_URL}/restaurantMenu/{restaurantId}
         </p>

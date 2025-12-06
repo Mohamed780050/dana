@@ -1,6 +1,7 @@
 "use client";
 
 import { useQRCode } from "@/hooks/useQRCodeDate";
+import { useTranslations } from "next-intl";
 
 export default function QRCodeEditing() {
   const {
@@ -13,12 +14,12 @@ export default function QRCodeEditing() {
     setSize,
     setLevel,
   } = useQRCode();
-  console.log(level);
+  const t = useTranslations("QRCode");
   return (
     <div className="space-y-6">
       <div>
         <label className="mb-3 block text-sm font-medium text-slate-700">
-          QR Code Color
+          {t("QRCodeColor")}
         </label>
         <div className="flex items-center gap-4">
           <input
@@ -36,7 +37,7 @@ export default function QRCodeEditing() {
               className="w-full rounded-lg border border-slate-300 px-4 py-2.5 font-mono focus:border-transparent focus:ring-2 focus:ring-emerald-500"
             />
             <p className="mt-1 text-xs text-slate-500">
-              Foreground color (QR pattern)
+              {t("ForegroundColor")}
             </p>
           </div>
         </div>
@@ -44,7 +45,7 @@ export default function QRCodeEditing() {
 
       <div>
         <label className="mb-3 block text-sm font-medium text-slate-700">
-          Background Color
+          {t("BackgroundColor")}
         </label>
         <div className="flex items-center gap-4">
           <input
@@ -61,14 +62,16 @@ export default function QRCodeEditing() {
               placeholder="#FFFFFF"
               className="w-full rounded-lg border border-slate-300 px-4 py-2.5 font-mono focus:border-transparent focus:ring-2 focus:ring-emerald-500"
             />
-            <p className="mt-1 text-xs text-slate-500">Background color</p>
+            <p className="mt-1 text-xs text-slate-500">
+              {t("BackgroundColor")}
+            </p>
           </div>
         </div>
       </div>
 
       <div>
         <label className="mb-3 block text-sm font-medium text-slate-700">
-          Size: {size}px
+          {t("Size")}: {size}px
         </label>
         <input
           type="range"
@@ -87,26 +90,32 @@ export default function QRCodeEditing() {
 
       <div>
         <label className="mb-3 block text-sm font-medium text-slate-700">
-          Error Correction Level
+          {t("Error")}
         </label>
         <select
           value={level}
           onChange={(e) => setLevel(e.target.value as "L" | "M" | "Q" | "H")}
           className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-transparent focus:ring-2 focus:ring-emerald-500"
         >
-          <option value="L">Low (7% recovery)</option>
-          <option value="M">Medium (15% recovery)</option>
-          <option value="Q">Quartile (25% recovery)</option>
-          <option value="H">High (30% recovery)</option>
+          <option value="L">
+            {t("Low")} (7% {t("recovery")})
+          </option>
+          <option value="M">
+            {t("Medium")} (15% {t("recovery")})
+          </option>
+          <option value="Q">
+            {t("Quartile")} (25% {t("recovery")})
+          </option>
+          <option value="H">
+            {t("High")} (30% {t("recovery")})
+          </option>
         </select>
-        <p className="mt-1 text-xs text-slate-500">
-          Higher levels allow the QR code to be read even if damaged
-        </p>
+        <p className="mt-1 text-xs text-slate-500">{t("selectionDes")}</p>
       </div>
 
       <div className="border-t border-slate-200 pt-4">
         <h3 className="mb-3 text-sm font-semibold text-slate-900">
-          Quick Presets
+          {t("QuickPresets")}
         </h3>
         <div className="grid grid-cols-2 gap-3">
           <button
@@ -118,7 +127,7 @@ export default function QRCodeEditing() {
           >
             <div className="flex items-center justify-center gap-2">
               <div className="h-6 w-6 rounded bg-black"></div>
-              <span className="text-sm font-medium">Classic</span>
+              <span className="text-sm font-medium">{t("Classic")}</span>
             </div>
           </button>
           <button
@@ -130,7 +139,7 @@ export default function QRCodeEditing() {
           >
             <div className="flex items-center justify-center gap-2">
               <div className="h-6 w-6 rounded bg-emerald-500"></div>
-              <span className="text-sm font-medium">Emerald</span>
+              <span className="text-sm font-medium">{t("Emerald")}</span>
             </div>
           </button>
           <button
@@ -142,7 +151,7 @@ export default function QRCodeEditing() {
           >
             <div className="flex items-center justify-center gap-2">
               <div className="h-6 w-6 rounded bg-blue-500"></div>
-              <span className="text-sm font-medium">Blue</span>
+              <span className="text-sm font-medium">{t("Blue")}</span>
             </div>
           </button>
           <button
@@ -154,7 +163,7 @@ export default function QRCodeEditing() {
           >
             <div className="flex items-center justify-center gap-2">
               <div className="h-6 w-6 rounded border border-slate-300 bg-white"></div>
-              <span className="text-sm font-medium">Inverted</span>
+              <span className="text-sm font-medium">{t("Inverted")}</span>
             </div>
           </button>
         </div>

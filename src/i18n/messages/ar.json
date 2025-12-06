@@ -114,5 +114,33 @@
     "FacebookProfile": "حساب فيسبوك",
     "InstagramProfile": "حساب إنستجرام",
     "LinkedInProfile": "حساب لينكد إن"
+  },
+  "QRCode": {
+    "title": "مولّد رمز QR",
+    "description": "أنشئ رموز QR لقائمة مطعمك.",
+    "YourQRCode": "رمز QR الخاص بك",
+    "CustomizeQRCode": "تخصيص رمز QR",
+    "DownloadQRCode": "تحميل رمز QR",
+    "QRCodeLink": "رابط رمز QR:",
+
+    "QRCodeColor": "لون رمز QR",
+    "ForegroundColor": "لون المقدمة (نمط الرمز)",
+    "BackgroundColor": "لون الخلفية",
+    "Size": "الحجم",
+    "Error": "مستوى تصحيح الخطأ",
+    "Low": "منخفض",
+    "Medium": "متوسط",
+    "Quartile": "ربع-عالي", 
+    "High": "عالي",
+    "recovery": "استرداد",
+    "selectionDes": "المستويات الأعلى تسمح بقراءة رمز QR حتى إذا تضرر",
+    "QuickPresets": "قوالب سريعة",
+    "Classic": "كلاسيكي",
+    "Emerald": "زمردي",
+    "Blue": "أزرق",
+    "Inverted": "معكوس",
+
+    "NoRestaurantFound": "لم يتم العثور على مطعم",
+    "NotFoundDes": "يرجى إعداد بيانات مطعمك أولاً."
   }
 }

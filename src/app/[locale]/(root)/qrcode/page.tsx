@@ -1,6 +1,7 @@
 import PageTitle from "@/components/PageTitle";
 import FindingQRCode from "@/features/qrcode/_components/FindingQRCode";
 import { auth } from "@clerk/nextjs/server";
+import { getTranslations } from "next-intl/server";
 import { redirect } from "next/navigation";
 import { Suspense } from "react";
 
@@ -11,13 +12,11 @@ export default async function page() {
 
   if (orgRole === "org:delivery" || orgRole === "org:cashier")
     return redirect("/orders");
+  const t = await getTranslations("QRCode");
 
   return (
     <div className="space-y-6">
-      <PageTitle
-        title="QR Code Generator"
-        description="Generate QR codes for your restaurant menu."
-      />
+      <PageTitle title={t("title")} description={t("description")} />
       <Suspense fallback={<div>loading</div>}>
         <FindingQRCode />
       </Suspense>

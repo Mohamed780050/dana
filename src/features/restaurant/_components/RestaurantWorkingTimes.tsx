@@ -73,7 +73,7 @@ export default function RestaurantWorkingTimes({
           </div>
 
           <div>
-            <label className="mb-2 block flex items-center gap-2 text-sm font-medium text-slate-700">
+            <label className="mb-2 flex items-center gap-2 text-sm font-medium text-slate-700">
               <Linkedin className="h-4 w-4 text-blue-700" />
               {t("LinkedInProfile")}
             </label>

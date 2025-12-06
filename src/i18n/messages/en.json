@@ -117,5 +117,32 @@
     "InstagramProfile": " Instagram Profile",
     "LinkedInProfile": "LinkedIn Profile"
   },
-  "QRCode": {}
+  "QRCode": {
+    "title": "QR Code Generator",
+    "description": "Generate QR codes for your restaurant menu.",
+    "YourQRCode": "Your QR Code",
+    "CustomizeQRCode": "Customize QR Code",
+    "DownloadQRCode": "Download QR Code",
+    "QRCodeLink": "QR Code Link:",
+
+    "QRCodeColor": "QR Code Color",
+    "ForegroundColor": "Foreground color (QR pattern)",
+    "BackgroundColor": "Background Color",
+    "Size": "Size",
+    "Error": "Error Correction Level",
+    "Low": "Low",
+    "Medium": "Medium",
+    "Quartile": "Quartile",
+    "High": "High",
+    "recovery": "recovery",
+    "selectionDes": "Higher levels allow the QR code to be read even if damaged",
+    "QuickPresets": "Quick Presets",
+    "Classic": "Classic",
+    "Emerald": "Emerald",
+    "Blue": "Blue",
+    "Inverted": "Inverted",
+
+    "NoRestaurantFound": "No restaurant found",
+    "NotFoundDes": "Please set up your restaurant information first."
+  }
 }
