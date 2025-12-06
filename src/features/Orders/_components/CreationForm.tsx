@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import { useTranslations } from "next-intl";
 
 export default function CreationForm() {
   const initialState: OrderState = { message: null, errors: {} };
@@ -25,7 +26,7 @@ export default function CreationForm() {
     initialState,
   );
   const [isDelivery, setIsDelivery] = useState(false);
-
+  const t = useTranslations("Orders.ModalCreation");
   return (
     <form
       action={formAction}
@@ -35,12 +36,12 @@ export default function CreationForm() {
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <div>
             <label className="mb-2 block text-sm font-medium text-slate-700">
-              Customer Name
+              {t("CustomerName")}
             </label>
             <Input
               disabled={isPending}
               name="customer_name"
-              placeholder="John Doe"
+              placeholder={t("CustomerName")}
               className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-transparent focus:ring-2 focus:ring-emerald-500"
             />
             {state.errors?.customer_name &&
@@ -53,7 +54,7 @@ export default function CreationForm() {
 
           <div>
             <label className="mb-2 block text-sm font-medium text-slate-700">
-              Customer Phone
+              {t("CustomerPhone")}
             </label>
             <Input
               disabled={isPending}
@@ -73,7 +74,7 @@ export default function CreationForm() {
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <div>
             <label className="mb-2 block text-sm font-medium text-slate-700">
-              Order Status
+              {t("OrderStatus")}
             </label>
             <select
               disabled={isPending}
@@ -81,16 +82,16 @@ export default function CreationForm() {
               name="status"
               className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-transparent focus:ring-2 focus:ring-emerald-500"
             >
-              <option value="Pending">Pending</option>
-              <option value="Processing">Processing</option>
-              <option value="Completed">Completed</option>
-              <option value="Cancelled">Cancelled</option>
+              <option value="Pending">{t("Pending")}</option>
+              <option value="Processing">{t("Processing")}</option>
+              <option value="Completed">{t("Completed")}</option>
+              <option value="Cancelled">{t("Cancelled")}</option>
             </select>
           </div>
 
           <div>
             <label className="mb-2 block text-sm font-medium text-slate-700">
-              Payment Status
+              {t("PaymentStatus")}
             </label>
             <Select
               defaultValue="unPaid"
@@ -102,9 +103,9 @@ export default function CreationForm() {
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
-                  <SelectLabel>Payment</SelectLabel>
-                  <SelectItem value="unPaid">unPaid</SelectItem>
-                  <SelectItem value="Paid">Paid</SelectItem>
+                  <SelectLabel>{t("PaymentStatus")}</SelectLabel>
+                  <SelectItem value="unPaid">{t("unPaid")}</SelectItem>
+                  <SelectItem value="Paid">{t("Paid")}</SelectItem>
                 </SelectGroup>
               </SelectContent>
             </Select>
@@ -112,11 +113,11 @@ export default function CreationForm() {
         </div>
         <div>
           <label className="mb-2 block text-sm font-medium text-slate-700">
-            Notes
+            {t("Note")}
           </label>
           <Textarea
             disabled={isPending}
-            placeholder="Special instructions..."
+            placeholder={`${t("Note")}.....`}
             rows={2}
             className="w-full resize-none rounded-lg border border-slate-300 px-4 py-2.5 focus:border-transparent focus:ring-2 focus:ring-emerald-500"
           />
@@ -124,7 +125,7 @@ export default function CreationForm() {
 
         <div>
           <label className="mb-2 block text-sm font-medium text-slate-700">
-            Amount
+            {t("Amount")}
           </label>
           <Input
             disabled={isPending}
@@ -143,13 +144,13 @@ export default function CreationForm() {
         {isDelivery ? (
           <div>
             <Label className="mb-2 block text-sm font-medium text-slate-700">
-              Address
+              {t("Address")}
             </Label>
             <Input
               disabled={isPending}
               type="text"
               name="address"
-              placeholder="Address"
+              placeholder={t("Address")}
               className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-transparent focus:ring-2 focus:ring-emerald-500"
             />
             {state.errors?.address &&
@@ -162,13 +163,13 @@ export default function CreationForm() {
         ) : (
           <div>
             <Label className="mb-2 block text-sm font-medium text-slate-700">
-              Table number
+              {t("TableNumber")}
             </Label>
             <Input
               disabled={isPending}
               type="number"
               name="tableNumber"
-              placeholder="Table Number"
+              placeholder={t("TableNumber")}
               className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-transparent focus:ring-2 focus:ring-emerald-500"
             />
             {state.errors?.tableNumber &&
@@ -189,13 +190,13 @@ export default function CreationForm() {
           }}
         >
           <SelectTrigger className="w-full">
-            <SelectValue placeholder="Select a fruit" />
+            <SelectValue />
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
-              <SelectLabel>Location</SelectLabel>
-              <SelectItem value="inSite">In Site</SelectItem>
-              <SelectItem value="Delivery">Delivery</SelectItem>
+              <SelectLabel>{t("Location")}</SelectLabel>
+              <SelectItem value="inSite">{t("inSite")}</SelectItem>
+              <SelectItem value="Delivery">{t("delivery")}</SelectItem>
             </SelectGroup>
           </SelectContent>
         </Select>
@@ -209,7 +210,7 @@ export default function CreationForm() {
             type="button"
             // className="rounded-lg border border-slate-300 px-6 py-2.5 font-semibold text-slate-700 transition-colors hover:bg-slate-100"
           >
-            Cancel
+            {t("cancel")}
           </Button>
         </DialogClose>
         <Button
@@ -217,7 +218,7 @@ export default function CreationForm() {
           type="submit"
           className="rounded-lg bg-emerald-600 px-6 py-2.5 font-semibold text-white transition-colors hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-50"
         >
-          {isPending ? "Creating..." : "Create Order"}
+          {isPending ? t("creating") : t("CreateOrder")}
         </Button>
       </div>
     </form>

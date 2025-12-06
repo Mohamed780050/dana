@@ -33,5 +33,55 @@
       "This Month": "هذا الشهر",
       "TotalRevenue": "إجمالي الإيرادات"
     }
+  },
+  "Orders": {
+    "title": "الطلبات",
+    "description": "إدارة وتتبع جميع طلبات مطعمك.",
+    "filters": {
+      "title": "عوامل التصفية",
+      "createButton": "إنشاء طلب"
+    },
+    "Table": {
+      "OrderId": "رقم الطلب",
+      "Customers": "العملاء",
+      "Phone": "الهاتف",
+      "Amount": "المبلغ",
+      "Status": "الحالة",
+      "Payment": "الدفع",
+      "TableNumber": "رقم الطاولة",
+      "Location": "الموقع",
+      "Date": "التاريخ",
+      "Action": "الإجراء",
+      "unPaid": "غير مدفوع",
+      "Paid": "مدفوع",
+      "Pending": "قيد الانتظار",
+      "Processing": "قيد المعالجة",
+      "Completed": "مكتمل",
+      "Cancelled": "ملغى"
+    },
+    "ModalCreation": {
+      "title": "إنشاء طلب جديد",
+      "description": "قم بإجراء التعديلات على طلبك هنا",
+      "CustomerName": "اسم العميل",
+      "CustomerPhone": "هاتف العميل",
+      "OrderStatus": "حالة الطلب",
+      "PaymentStatus": "حالة الدفع",
+      "Note": "ملاحظة",
+      "Amount": "المبلغ",
+      "TableNumber": "رقم الطاولة",
+      "Address": "العنوان",
+      "inSite": "في المطعم",
+      "delivery": "توصيل",
+      "cancel": "إلغاء",
+      "creating": "جاري الإنشاء...",
+      "CreateOrder": "إنشاء الطلب",
+      "unPaid": "غير مدفوع",
+      "Paid": "مدفوع",
+      "Pending": "قيد الانتظار",
+      "Processing": "قيد المعالجة",
+      "Completed": "مكتمل",
+      "Cancelled": "ملغى",
+      "Location": "الموقع"
+    }
   }
 }

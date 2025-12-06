@@ -33,5 +33,55 @@
       "This Month": "This Month",
       "TotalRevenue": "Total Revenue"
     }
+  },
+  "Orders": {
+    "title": "Orders",
+    "description": "Manage and track all your restaurant orders.",
+    "filters": {
+      "title": "Filters",
+      "createButton": "Create Order"
+    },
+    "Table": {
+      "OrderId": "ORDER ID",
+      "Customers": "CUSTOMERS",
+      "Phone": "PHONE",
+      "Amount": "AMOUNT",
+      "Status": "STATUS",
+      "Payment": "PAYMENT",
+      "TableNumber": "TABLE NUMBER",
+      "Location": "LOCATION",
+      "Date": "DATE",
+      "Action": "ACTION",
+      "unPaid": "unPaid",
+      "Paid": "Paid",
+      "Pending": "Pending",
+      "Processing": "Processing",
+      "Completed": "Completed",
+      "Cancelled": "Cancelled"
+    },
+    "ModalCreation": {
+      "title": "Create New Order",
+      "description": "Make changes to your order here",
+      "CustomerName": "Customer Name",
+      "CustomerPhone": "Customer Phone",
+      "OrderStatus": "Order Status",
+      "PaymentStatus": "Payment Status",
+      "Note": "Note",
+      "Amount": "Amount",
+      "TableNumber": "Table Number",
+      "Address": "Address",
+      "inSite": "In Site",
+      "delivery": "Delivery",
+      "cancel": "Cancel",
+      "creating": "Creating...",
+      "CreateOrder": "Create Order",
+      "unPaid": "unPaid",
+      "Paid": "Paid",
+      "Pending": "Pending",
+      "Processing": "Processing",
+      "Completed": "Completed",
+      "Cancelled": "Cancelled",
+      "Location": "Location"
+    }
   }
 }

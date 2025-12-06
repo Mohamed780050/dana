@@ -4,6 +4,7 @@ import Paid from "./Paid";
 import Delivered from "./Delivered";
 import { auth } from "@clerk/nextjs/server";
 import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 
 export default async function OrderTableComponent({
   filteredOrders,
@@ -11,6 +12,8 @@ export default async function OrderTableComponent({
   filteredOrders: OrderInterface[];
 }) {
   const { orgRole } = await auth();
+  const t = await getTranslations("Orders.Table");
+
   const getStatusBadge = (status: string) => {
     const styles = {
       pending: "bg-amber-100 text-amber-700",
@@ -27,34 +30,34 @@ export default async function OrderTableComponent({
       <thead className="border-b border-slate-200 bg-slate-50 text-nowrap">
         <tr>
           <th className="px-6 py-4 text-left text-xs font-semibold tracking-wider text-slate-600 uppercase">
-            Order ID
+            {t("OrderId")}
           </th>
           <th className="px-6 py-4 text-left text-xs font-semibold tracking-wider text-slate-600 uppercase">
-            Customer
+            {t("Customers")}
           </th>
           <th className="px-6 py-4 text-left text-xs font-semibold tracking-wider text-slate-600 uppercase">
-            Phone
+            {t("Phone")}
           </th>
           <th className="px-6 py-4 text-left text-xs font-semibold tracking-wider text-slate-600 uppercase">
-            Amount
+            {t("Amount")}
           </th>
           <th className="px-6 py-4 text-left text-xs font-semibold tracking-wider text-slate-600 uppercase">
-            Status
+            {t("Status")}
           </th>
           <th className="px-6 py-4 text-left text-xs font-semibold tracking-wider text-slate-600 uppercase">
-            Payment
+            {t("Payment")}
           </th>
           <th className="px-6 py-4 text-left text-xs font-semibold tracking-wider text-slate-600 uppercase">
-            Table Number
+            {t("TableNumber")}
           </th>
           <th className="px-6 py-4 text-left text-xs font-semibold tracking-wider text-slate-600 uppercase">
-            Location
+            {t("Location")}
           </th>
           <th className="px-6 py-4 text-left text-xs font-semibold tracking-wider text-slate-600 uppercase">
-            Date
+            {t("Date")}
           </th>
           <th className="px-6 py-4 text-left text-xs font-semibold tracking-wider text-slate-600 uppercase">
-            Action
+            {t("Action")}
           </th>
         </tr>
       </thead>
@@ -88,14 +91,14 @@ export default async function OrderTableComponent({
                 <span
                   className={`${getStatusBadge(order.status.toLocaleLowerCase())} inline-flex rounded-full px-3 py-1 text-xs font-medium`}
                 >
-                  {order.status}
+                  {t(order.status)}
                 </span>
               </td>
               <td className="px-6 py-4">
                 <span
                   className={`inline-flex rounded-full px-3 py-1 text-xs font-medium ${order.payment_status === "unPaid" ? "bg-red-200" : "bg-emerald-200"}`}
                 >
-                  {order.payment_status}
+                  {t(order.payment_status)}
                 </span>
               </td>
               <td className="px-6 py-4 text-sm text-slate-600">
