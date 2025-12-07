@@ -91,21 +91,21 @@ type orderItems {
 model menu {
   id     String     @id @default(auto()) @map("_id") @db.ObjectId
   userId String
-  name   String     @unique
+  name   String     
   items  menuItem[] @relation("MenuItems")
-  orgId  String     @unique
+  orgId  String     
 }
 
 model menuItem {
-  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
   userId      String
-  menuId      String  @db.ObjectId
-  menu        menu    @relation("MenuItems", fields: [menuId], references: [id], onDelete: Cascade) // Relation to menu
+  menuId      String   @db.ObjectId
+  menu        menu     @relation("MenuItems", fields: [menuId], references: [id], onDelete: Cascade)
   name        String
   price       Float
   description String
   image       String?
-  orgId       String  @unique
+  orgId       String   // not unique
 }
 
 enum Currency {

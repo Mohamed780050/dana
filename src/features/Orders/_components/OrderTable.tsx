@@ -1,5 +1,4 @@
 import { OrderInterface } from "@/interfaces/interface";
-import { Edit2, Search } from "lucide-react";
 import OrderTableComponent from "./OrderTableComponent";
 import { getAllOrders } from "@/lib/orders";
 

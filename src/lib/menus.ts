@@ -131,3 +131,17 @@ export async function addItemToCategory(
     throw new Error(error.message);
   }
 }
+
+export async function getAllItems(id: string) {
+  try {
+    const user = await currentUser();
+    if (!user) throw new Error("Not authorized");
+
+    const orgId = await getUserOrgIds(user.id);
+
+    return await db.menuItem.findMany({ where: { orgId } });
+  } catch (error: any) {
+    console.log(error);
+    throw new Error(error.message);
+  }
+}

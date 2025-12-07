@@ -18,6 +18,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useTranslations } from "next-intl";
+import MenuItems from "./MenuItems";
+import { useOrdersStore } from "@/hooks/useCartItem";
 
 export default function CreationForm() {
   const initialState: OrderState = { message: null, errors: {} };
@@ -25,6 +27,7 @@ export default function CreationForm() {
     createOrder,
     initialState,
   );
+  const { totalPrice } = useOrdersStore();
   const [isDelivery, setIsDelivery] = useState(false);
   const t = useTranslations("Orders.ModalCreation");
   return (
@@ -131,6 +134,7 @@ export default function CreationForm() {
             disabled={isPending}
             name="total_amount"
             placeholder="$000"
+            value={totalPrice}
             className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-transparent focus:ring-2 focus:ring-emerald-500"
           />
           {state.errors?.total_amount &&
@@ -200,16 +204,12 @@ export default function CreationForm() {
             </SelectGroup>
           </SelectContent>
         </Select>
+        <MenuItems />
       </div>
 
       <div className="flex items-center justify-end gap-3 border-slate-200 p-6">
         <DialogClose>
-          <Button
-            disabled={isPending}
-            variant="outline"
-            type="button"
-            // className="rounded-lg border border-slate-300 px-6 py-2.5 font-semibold text-slate-700 transition-colors hover:bg-slate-100"
-          >
+          <Button disabled={isPending} variant="outline" type="button">
             {t("cancel")}
           </Button>
         </DialogClose>
