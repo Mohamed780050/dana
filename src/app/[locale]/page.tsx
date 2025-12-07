@@ -2,186 +2,143 @@ import Header from "@/components/Header";
 import { useTranslations } from "next-intl";
 
 export default function Home() {
-  const t = useTranslations();
+  const t = useTranslations("landingPage");
   return (
-    <div className="bg-white text-gray-900 antialiased">
-      <Header />
-
-      <section className="relative flex h-screen items-center bg-[url('/hero.jpg')] bg-cover bg-center">
-        <div className="relative z-10 container mx-auto max-w-2xl px-6 text-white">
-          <h1 className="mb-4 text-5xl font-extrabold drop-shadow-lg md:text-6xl">
-            {t("landingPage.MainTitle")}
-          </h1>
-          <p className="mb-6 text-lg drop-shadow-md md:text-xl">
-            Partnering with brands to build immersive web, mobile and branding
-            solutions that delight your users and drive growth.
-          </p>
-          <a
-            href="#work"
-            className="rounded bg-emerald-600 px-8 py-3 font-semibold text-white shadow-lg transition hover:bg-emerald-700"
-          >
-            See Our Work
-          </a>
-        </div>
-        <div className="bg-opacity-30 absolute inset-0 bg-black"></div>
-      </section>
-
-      <section id="services" className="bg-gray-50 py-20">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="mb-12 text-3xl font-bold text-emerald-600 md:text-4xl">
-            Our Services
-          </h2>
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-            <div className="rounded-lg bg-white p-8 shadow transition hover:shadow-xl">
-              <h3 className="mb-4 text-2xl font-semibold">
-                Branding & Identity
-              </h3>
-              <p className="text-gray-600">
-                We craft unique brand identities that resonate with your
-                audience and stand out in the market.
-              </p>
+    <>
+      <header>
+        <title>QR-Dine Restaurant System Landing Page</title>
+        <link href="https://fonts.googleapis.com" rel="preconnect" />
+        <link href="https://fonts.gstatic.com" rel="preconnect" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&amp;display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+          rel="stylesheet"
+        />
+      </header>
+      <div className="group/design-root relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+        <div className="layout-container flex h-full grow flex-col">
+          <div className="flex flex-1 justify-center py-5">
+            <div className="layout-content-container flex w-full max-w-5xl flex-1 flex-col">
+              <Header />
+              <main className="flex flex-col gap-10 px-4 py-10 md:gap-16 md:px-10 lg:gap-20">
+                <div className="@container">
+                  <div className="flex flex-col gap-10 @[864px]:flex-row @[864px]:items-center">
+                    <div className="flex flex-col gap-6 text-left @[864px]:w-1/2">
+                      <div className="flex flex-col gap-4">
+                        <h1 className="text-4xl leading-tight font-black tracking-[-0.033em] text-gray-900 @[480px]:text-5xl @[480px]:leading-tight @[480px]:font-black @[480px]:tracking-[-0.033em] dark:text-white">
+                          {t("PageTitle")}
+                        </h1>
+                        <p className="text-base leading-normal font-normal text-gray-600 @[480px]:text-lg dark:text-gray-300">
+                          {t("Pra")}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="w-full @[864px]:w-1/2">
+                      <img
+                        className="h-auto w-full rounded-xl object-cover shadow-lg"
+                        data-alt="A smartphone displaying a digital restaurant menu on a table next to a plate of food."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcbYhJLab2YG0LwpHgr3hxtHUk0HI4zJ--sfa2-1wLEgIq0x3eLfNUKXryZGFWvsSpjsYRdD1VYR5H81Jw9fhMSwkHY5DuPFu1PX3z7fRc852l0g3N-KKWnKQcf3g_KP3IjDvPVZJfvkZKrmIzRMQAyfLBxQFHKSqhi1iD56D56DLhrn6-mZZNywIi3UGtgTPDr1zc88PsDvOH98PC0ZjHIpODe_pMIOJ36zkovS8ywA9QiORdJ8QGOkNp_g0WuIAz-L3VxW1i6PQ"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="@container flex flex-col gap-10 py-10">
+                  <h2 className="tracking-light max-w-[720px] text-3xl leading-tight font-bold text-gray-900 @[480px]:text-4xl @[480px]:leading-tight @[480px]:font-black @[480px]:tracking-[-0.033em] dark:text-white">
+                    {t("serviceTitle")}
+                  </h2>
+                  <div className="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-6 p-0">
+                    <div className="flex flex-1 flex-col gap-4 rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
+                      <span className="material-symbols-outlined text-primary text-3xl">
+                        qr_code
+                      </span>
+                      <div className="flex flex-col gap-1">
+                        <h3 className="text-lg leading-tight font-bold text-gray-900 dark:text-white">
+                          {t("QRTitle")}
+                        </h3>
+                        <p className="text-sm leading-normal font-normal text-gray-600 dark:text-gray-300">
+                          {t("QRDesc")}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex flex-1 flex-col gap-4 rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
+                      <span className="material-symbols-outlined text-primary text-3xl">
+                        dashboard
+                      </span>
+                      <div className="flex flex-col gap-1">
+                        <h3 className="text-lg leading-tight font-bold text-gray-900 dark:text-white">
+                          {t("DashboardTitle")}
+                        </h3>
+                        <p className="text-sm leading-normal font-normal text-gray-600 dark:text-gray-300">
+                          {t("DashboardDesc")}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex flex-1 flex-col gap-4 rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
+                      <span className="material-symbols-outlined text-primary text-3xl">
+                        credit_card
+                      </span>
+                      <div className="flex flex-col gap-1">
+                        <h3 className="text-lg leading-tight font-bold text-gray-900 dark:text-white">
+                          {t("PaymentTitle")}
+                        </h3>
+                        <p className="text-sm leading-normal font-normal text-gray-600 dark:text-gray-300">
+                          {t("PaymentDesc")}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex flex-1 flex-col gap-4 rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
+                      <span className="material-symbols-outlined text-primary text-3xl">
+                        smartphone
+                      </span>
+                      <div className="flex flex-col gap-1">
+                        <h3 className="text-lg leading-tight font-bold text-gray-900 dark:text-white">
+                          {t("SmartPhoneTitle")}
+                        </h3>
+                        <p className="text-sm leading-normal font-normal text-gray-600 dark:text-gray-300">
+                          {t("SmartPhoneDesc")}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex flex-1 flex-col gap-4 rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
+                      <span className="material-symbols-outlined text-primary text-3xl">
+                        bolt
+                      </span>
+                      <div className="flex flex-col gap-1">
+                        <h3 className="text-lg leading-tight font-bold text-gray-900 dark:text-white">
+                          {t("BoltTitle")}
+                        </h3>
+                        <p className="text-sm leading-normal font-normal text-gray-600 dark:text-gray-300">
+                          {t("BoltDesc")}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="py-10">
+                  <h2 className="pb-3 text-2xl leading-tight font-bold tracking-[-0.015em] text-gray-900 dark:text-white"></h2>
+                  <p className="text-base leading-relaxed font-normal text-gray-600 dark:text-gray-300">
+                    {t("OurMissionDesc")}
+                  </p>
+                </div>
+              </main>
+              <footer className="mt-10 border-t border-gray-200 px-10 py-8 dark:border-gray-700">
+                <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    {t("CopyRight")}
+                  </p>
+                </div>
+              </footer>
             </div>
-            <div className="rounded-lg bg-white p-8 shadow transition hover:shadow-xl">
-              <h3 className="mb-4 text-2xl font-semibold">
-                Web & Mobile Development
-              </h3>
-              <p className="text-gray-600">
-                From responsive websites to mobile apps, we deliver seamless
-                digital experiences across platforms.
-              </p>
-            </div>
-            <div className="rounded-lg bg-white p-8 shadow transition hover:shadow-xl">
-              <h3 className="mb-4 text-2xl font-semibold">
-                Marketing & Growth
-              </h3>
-              <p className="text-gray-600">
-                Grow your business with our strategic marketing, SEO and
-                performance-driven campaigns.
-              </p>
-            </div>
           </div>
         </div>
-      </section>
-
-      <section id="work" className="py-20">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="mb-12 text-3xl font-bold text-emerald-600 md:text-4xl">
-            Recent Projects
-          </h2>
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-            <div className="group relative h-64 overflow-hidden rounded-lg bg-gray-200">
-              <img
-                src="project1.jpg"
-                alt="Project 1"
-                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="bg-opacity-30 absolute inset-0 flex items-center justify-center bg-black text-2xl font-bold text-white opacity-0 transition group-hover:opacity-100">
-                Project 1
-              </div>
-            </div>
-            <div className="group relative h-64 overflow-hidden rounded-lg bg-gray-200">
-              <img
-                src="project2.jpg"
-                alt="Project 2"
-                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="bg-opacity-30 absolute inset-0 flex items-center justify-center bg-black text-2xl font-bold text-white opacity-0 transition group-hover:opacity-100">
-                Project 2
-              </div>
-            </div>
-          </div>
-          <div className="mt-8">
-            <a
-              href="#contact"
-              className="rounded bg-emerald-600 px-8 py-3 font-semibold text-white shadow-lg transition hover:bg-emerald-700"
-            >
-              View All Projects
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section id="about" className="bg-gray-50 py-20">
-        <div className="container mx-auto flex flex-col items-center gap-12 px-6 md:flex-row">
-          <div className="transform-hover:translate-y--2 mb-8 transition md:mb-0 md:w-1/2">
-            <img
-              src="about-team.jpg"
-              alt="Our team"
-              className="rounded-lg shadow-xl"
-            />
-          </div>
-          <div className="md:w-1/2 md:pl-12">
-            <h2 className="mb-4 text-3xl font-bold text-emerald-600 md:text-4xl">
-              About Us
-            </h2>
-            <p className="mb-4 text-gray-600">
-              We’re a full-service digital agency passionate about helping
-              brands connect, engage, and grow. Our multidisciplinary team of
-              designers, developers, and strategists bring fresh ideas and deep
-              expertise.
-            </p>
-            <p className="text-gray-600">
-              From startups to established brands, we tailor solutions to your
-              unique needs and work collaboratively to deliver results that
-              matter.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" className="py-20">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="mb-6 text-3xl font-bold text-emerald-600 md:text-4xl">
-            Let’s Talk
-          </h2>
-          <p className="mb-8 text-gray-600">
-            Ready to start your project? Drop us a message and we’ll get back to
-            you soon.
-          </p>
-          <form className="mx-auto max-w-2xl space-y-4">
-            <input
-              type="text"
-              placeholder="Your Name"
-              className="w-full rounded border border-gray-300 px-4 py-3 focus:ring-2 focus:ring-emerald-500 focus:outline-none"
-            />
-            <input
-              type="email"
-              placeholder="Your Email"
-              className="w-full rounded border border-gray-300 px-4 py-3 focus:ring-2 focus:ring-emerald-500 focus:outline-none"
-            />
-            <textarea
-              placeholder="Your Message"
-              rows={4}
-              className="w-full rounded border border-gray-300 px-4 py-3 focus:ring-2 focus:ring-emerald-500 focus:outline-none"
-            ></textarea>
-            <button
-              type="submit"
-              className="rounded bg-emerald-600 px-8 py-3 font-semibold text-white shadow-lg transition hover:bg-emerald-700"
-            >
-              Send Message
-            </button>
-          </form>
-        </div>
-      </section>
-
-      <footer className="bg-emerald-600 py-6 text-gray-300">
-        <div className="container mx-auto px-6 text-center">
-          <p className="text-gray-200">
-            &copy; 2025 YourAgency. All rights reserved.
-          </p>
-          <div className="mt-4 space-x-4">
-            <a href="#" className="transition hover:text-white">
-              Twitter
-            </a>
-            <a href="#" className="transition hover:text-white">
-              LinkedIn
-            </a>
-            <a href="#" className="transition hover:text-white">
-              Instagram
-            </a>
-          </div>
-        </div>
-      </footer>
-    </div>
+      </div>
+    </>
   );
 }

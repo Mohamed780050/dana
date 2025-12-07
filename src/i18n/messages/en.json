@@ -1,6 +1,23 @@
 {
   "landingPage": {
-    "MainTitle": "We Create Digital Experiences"
+    "Dashboard": "Dashboard",
+    "CreateAnAccount": "Create an Account",
+    "PageTitle": "Scan. Order. Manage. — The All-in-One QR RestaurantSystem",
+    "Pra": "Let customers order &amp; pay from their phone. Streamline table service without paper menus or extra staff.",
+    "serviceTitle": "Everything you need to modernize your service.",
+    "QRTitle": "QR Menu &amp; Ordering",
+    "QRDesc": "Allow customers to browse the menu and place orders directly from their phones.",
+    "DashboardTitle": "Order Management Dashboard",
+    "DashboardDesc": "A central hub to track all incoming orders, manage statuses, and notify the kitchen.",
+    "PaymentTitle": "Table &amp; Payment Management",
+    "PaymentDesc": "Assign orders to tables and enable seamless digital payments.",
+    "SmartPhoneTitle": "Mobile-friendly &amp; No App Needed",
+    "SmartPhoneDesc": "No downloads needed. Customers can access the menu instantly via any web browser.",
+    "BoltTitle": "Faster Service &amp; Better Efficiency",
+    "BoltDesc": "Reduce wait times and improve table turnover rates with an efficient digital workflow.",
+    "OurMission": "Our Mission",
+    "OurMissionDesc": "QR-Dana was born out of a desire to help small and medium restaurants streamline orders and reduce service friction. We believe easy digital ordering should be available to every restaurant. Our focus on simplicity and affordability sets us apart, helping local businesses thrive in the digital age.",
+    "CopyRight": "© 2024 QR-Dine. All rights reserved."
   },
   "NavLinks": {
     "Dashboard": "Dashboard",
@@ -196,7 +213,7 @@
     "Location": "Location",
     "inSite": "In Site",
     "delivery": "Delivery",
-    "Processing":"Processing...",
-    "PlaceOrder":"Place Order"
+    "Processing": "Processing...",
+    "PlaceOrder": "Place Order"
   }
 }
