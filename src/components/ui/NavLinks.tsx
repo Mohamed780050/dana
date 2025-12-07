@@ -1,6 +1,6 @@
 "use client";
 import { navItems } from "@/data/static";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -11,16 +11,15 @@ export default function NavLinks({
 }) {
   const pathname = usePathname();
   const t = useTranslations("NavLinks");
+  const local = useLocale();
   return (
     <>
       {orgRole === "org:delivery" || orgRole === "org:cashier" ? (
         <nav className="flex-1 space-y-1 p-4">
           {navItems.map((item) => {
             const Icon = item.icon;
-            const active = `/${item.id}` === pathname;
-            console.log(active);
-            console.log(pathname);
-            console.log(item.id);
+            const active = `/${local}/${item.id}` === pathname;
+
             if (item.id === "orders")
               return (
                 <Link
@@ -42,7 +41,7 @@ export default function NavLinks({
         <nav className="flex-1 space-y-1 p-4">
           {navItems.map((item) => {
             const Icon = item.icon;
-            const active = `/${item.id}` === pathname;
+            const active = `/${local}/${item.id}` === pathname;
             return (
               <Link
                 href={`/${item.id}`}

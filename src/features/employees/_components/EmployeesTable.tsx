@@ -24,7 +24,7 @@ export default async function EmployeesTable({
     // role: string;
   }[] = [];
 
-  await data.map( (user) => {
+  await data.map((user) => {
     if (!user.publicUserData) return;
     const { firstName, lastName, userId, identifier } = user.publicUserData;
     // const { data } = await client.users.getOrganizationMembershipList({
@@ -47,32 +47,8 @@ export default async function EmployeesTable({
       userId,
       // role: data[0].role,
     });
-    console.log(myUsers);
   });
 
-  const users: employees[] = [
-    {
-      id: "1",
-      name: "mohamed",
-      email: "something@anything.com",
-      createdAt: "1/12/2024",
-      role: "cashier",
-    },
-    {
-      id: "2",
-      name: "mohamed",
-      email: "something@anything.com",
-      createdAt: "1/12/2024",
-      role: "cashier",
-    },
-    {
-      id: "3",
-      name: "mohamed",
-      email: "something@anything.com",
-      createdAt: "1/12/2024",
-      role: "cashier",
-    },
-  ];
   return (
     <div>
       <UserTable users={myUsers} />
