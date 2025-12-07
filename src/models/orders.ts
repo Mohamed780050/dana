@@ -1,4 +1,4 @@
-import { NewOrdersInterface } from "@/interfaces/interface";
+import { NewOrdersInterface, OrderItemInterface } from "@/interfaces/interface";
 import { db } from "@/lib/db";
 
 // export default class Orders implements NewOrdersInterface {
@@ -19,6 +19,7 @@ export default class Orders
     public location: "inSite" | "Delivery",
     public address: string | null,
     public orgId: string,
+    public ordersItems?: OrderItemInterface[],
   ) {
     this.userId = userId;
     this.customer_name = customer_name;
@@ -30,9 +31,18 @@ export default class Orders
     this.location = location;
     this.address = address;
     this.orgId = orgId;
+    this.ordersItems = ordersItems;
   }
   async save() {
     // creating order
+    let cleanedItems: OrderItemInterface[] = [];
+    if (this.ordersItems)
+      cleanedItems = this.ordersItems.map((item) => ({
+        name: item.name,
+        price: item.price,
+        quantity: item.quantity,
+        // no `id` here
+      }));
     await db.orders.create({
       data: {
         userId: this.userId,
@@ -45,9 +55,9 @@ export default class Orders
         tableNumber: this.tableNumber,
         location: this.location,
         address: this.address,
+        orderItems: cleanedItems,
       },
     });
-
     // updating status
     await db.cardsStatus.update({
       where: { userId: this.userId },

@@ -73,22 +73,19 @@ model orders {
   payment_status PaymentStatus @default(unPaid)
   created_at     DateTime      @default(now())
   updatedAt      DateTime      @updatedAt
-  items          orderItems[]
   orgId          String        @unique
   tableNumber    Int?
   location       location      @default(inSite)
   address        String?
+  note           String?       @default("")
+  orderItems     orderItems[]
 }
 
-model orderItems {
-  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+type orderItems {
   name        String
   description String  @default("")
   price       Float
   quantity    Int
-  orders      orders? @relation(fields: [ordersId], references: [id])
-  ordersId    String? @db.ObjectId
-  orgId       String?
 }
 
 model menu {

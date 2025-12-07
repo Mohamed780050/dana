@@ -7,7 +7,12 @@ export interface StatCardProps {
   trend?: string;
   trendUp?: boolean;
 }
-
+export interface OrderItemInterface {
+  id?: string;
+  name: string;
+  price: number;
+  quantity: number;
+}
 //   items          orderItems[]
 //   orgId          String        @unique
 export interface NewOrdersInterface {
@@ -19,6 +24,7 @@ export interface NewOrdersInterface {
   status: "Pending" | "Processing" | "Completed" | "Cancelled";
   payment_status: "Paid" | "unPaid";
   tableNumber: number | null;
+  ordersItems?: OrderItemInterface[];
   location: "inSite" | "Delivery";
   address: string | null;
   orgId: string;
@@ -107,6 +113,8 @@ export interface CartState {
     status?: string[];
     payment_status?: string[];
     phone?: string[];
+    tableNumber?: string[];
+    address?: string[];
   };
   message?: string | null;
 }

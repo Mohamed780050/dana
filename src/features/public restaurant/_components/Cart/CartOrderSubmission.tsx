@@ -136,9 +136,32 @@ export default function CartOrderSubmission({ userId }: { userId: string }) {
             placeholder={t("TableNumber")}
             className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-transparent focus:ring-2 focus:ring-emerald-500"
           />
+          {state.errors?.tableNumber &&
+            state.errors.tableNumber.map((item, index) => (
+              <p className="mt-2 text-sm text-red-500" key={index}>
+                {item}
+              </p>
+            ))}
         </div>
       ) : (
-        <div></div>
+        <div>
+          <Label className="mb-2 block text-sm font-medium text-slate-700">
+            {t("Address")}
+          </Label>
+          <Input
+            disabled={isPending}
+            type="text"
+            name="address"
+            placeholder={t("Address")}
+            className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-transparent focus:ring-2 focus:ring-emerald-500"
+          />
+          {state.errors?.address &&
+            state.errors.address.map((item, index) => (
+              <p className="mt-2 text-sm text-red-500" key={index}>
+                {item}
+              </p>
+            ))}
+        </div>
       )}
 
       <Select
@@ -146,7 +169,7 @@ export default function CartOrderSubmission({ userId }: { userId: string }) {
         name="location"
         disabled={isPending}
         onValueChange={(e) => {
-          if (e === "delivery") setIsDeleviray(true);
+          if (e === "Delivery") setIsDeleviray(true);
           else setIsDeleviray(false);
         }}
       >
@@ -159,7 +182,7 @@ export default function CartOrderSubmission({ userId }: { userId: string }) {
             <SelectItem value="inSite" onClick={() => setIsDeleviray(true)}>
               {t("inSite")}
             </SelectItem>
-            <SelectItem value="delivery" onClick={() => setIsDeleviray(true)}>
+            <SelectItem value="Delivery" onClick={() => setIsDeleviray(true)}>
               {t("delivery")}
             </SelectItem>
           </SelectGroup>

@@ -24,7 +24,7 @@ export default function NavLinks({
             if (item.id === "orders")
               return (
                 <Link
-                  href={item.id}
+                  href={`/${item.id}`}
                   key={item.id}
                   className={`flex w-full items-center gap-3 rounded-lg px-4 py-3 transition-all ${
                     active
@@ -45,7 +45,7 @@ export default function NavLinks({
             const active = `/${item.id}` === pathname;
             return (
               <Link
-                href={item.id}
+                href={`/${item.id}`}
                 key={item.id}
                 className={`flex w-full items-center gap-3 rounded-lg px-4 py-3 transition-all ${
                   active
