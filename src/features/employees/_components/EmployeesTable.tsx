@@ -1,7 +1,5 @@
 // "use client";
-import { employees } from "@/interfaces/interface";
 import UserTable from "./UserTable";
-import { useOrganization } from "@clerk/clerk-react";
 import { clerkClient } from "@clerk/nextjs/server";
 
 export default async function EmployeesTable({

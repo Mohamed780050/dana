@@ -10,7 +10,12 @@ export async function getAllOrders() {
     const user = await currentUser();
     if (!user) throw new Error("Not authorized");
     const orgId = await getUserOrgIds(user.id);
-    const findOrders = await db.orders.findMany({ where: { orgId } });
+    const findOrders = await db.orders.findMany({
+      where: { orgId },
+      orderBy: {
+        created_at: "desc",
+      },
+    });
     return findOrders;
   } catch (error: any) {
     console.log(error);
