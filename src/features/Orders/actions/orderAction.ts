@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use server";
-import { OrderState } from "@/interfaces/interface";
+import { OrderItemInterface, OrderState } from "@/interfaces/interface";
 import { orderSchema } from "../schema/order";
 import z from "zod";
-import { db } from "@/lib/db";
 import { currentUser } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 import { getUserOrgIds } from "@/lib/orgs";
 import Orders from "@/models/orders";
 
 export async function createOrder(
+  orders: OrderItemInterface[],
   prevState: OrderState,
   formData: FormData,
 ): Promise<OrderState> {
@@ -48,7 +48,7 @@ export async function createOrder(
       payment_status,
       tableNumber,
       location,
-      address
+      address,
     } = validate.data;
     const order = new Orders(
       user.id,
@@ -61,9 +61,10 @@ export async function createOrder(
       location,
       address,
       orgId,
+      orders,
     );
     console.log(order);
-    await order.save()
+    await order.save();
     // const order = await db.orders.create({
     //   data: {
     //     userId: user.id,

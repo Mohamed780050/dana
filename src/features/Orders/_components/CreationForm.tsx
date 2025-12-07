@@ -23,11 +23,12 @@ import { useOrdersStore } from "@/hooks/useCartItem";
 
 export default function CreationForm() {
   const initialState: OrderState = { message: null, errors: {} };
+  const { totalPrice, orders } = useOrdersStore();
+  const createOrderWithOrderItems = createOrder.bind(null, orders);
   const [state, formAction, isPending] = useActionState(
-    createOrder,
+    createOrderWithOrderItems,
     initialState,
   );
-  const { totalPrice } = useOrdersStore();
   const [isDelivery, setIsDelivery] = useState(false);
   const t = useTranslations("Orders.ModalCreation");
   return (
@@ -209,12 +210,16 @@ export default function CreationForm() {
 
       <div className="flex items-center justify-end gap-3 border-slate-200 p-6">
         <DialogClose>
-          <Button disabled={isPending} variant="outline" type="button">
+          <Button
+            disabled={isPending || orders.length === 0}
+            variant="outline"
+            type="button"
+          >
             {t("cancel")}
           </Button>
         </DialogClose>
         <Button
-          disabled={isPending}
+          disabled={isPending || orders.length === 0}
           type="submit"
           className="rounded-lg bg-emerald-600 px-6 py-2.5 font-semibold text-white transition-colors hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-50"
         >
