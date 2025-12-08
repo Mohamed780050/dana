@@ -1,6 +1,6 @@
 "use client";
-import { Currency } from "@/generated/prisma/enums";
 import { useOrdersStore } from "@/hooks/useCartItem";
+import { Currency } from "@prisma/client";
 import { ShoppingCart } from "lucide-react";
 
 export default function AddToCart({

@@ -1,4 +1,4 @@
-import { Currency } from "@/generated/prisma/enums";
+import { Currency } from "@prisma/client";
 import AddToCart from "./Cart/AddToCart";
 
 export default function ItemInfo({
