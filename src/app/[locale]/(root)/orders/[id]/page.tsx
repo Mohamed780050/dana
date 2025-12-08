@@ -6,9 +6,7 @@ import {
   User,
   Phone,
   Calendar,
-  DollarSign,
   FileText,
-  Loader,
 } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";

@@ -1,3 +1,4 @@
+import CircleLocaleSwitcher from "@/components/CircleLocaleSwitcher";
 import Header from "@/components/Header";
 import { useTranslations } from "next-intl";
 
@@ -139,6 +140,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <CircleLocaleSwitcher />
     </>
   );
 }
