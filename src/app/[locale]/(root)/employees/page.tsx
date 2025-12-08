@@ -8,6 +8,9 @@ import { getTranslations } from "next-intl/server";
 import { redirect } from "next/navigation";
 import { Suspense } from "react";
 
+export const metadata = {
+  title: "Employees",
+};
 export default async function page() {
   const { orgRole } = await auth();
   if (orgRole === "org:delivery" || orgRole === "org:cashier")

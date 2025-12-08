@@ -7,6 +7,9 @@ import { getTranslations } from "next-intl/server";
 import { redirect } from "next/navigation";
 import { Suspense } from "react";
 
+export const metadata = {
+  title: "menu",
+};
 export const dynamic = "force-dynamic";
 export default async function page() {
   const { orgRole } = await auth();
