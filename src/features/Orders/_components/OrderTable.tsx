@@ -12,3 +12,4 @@ export default async function OrderTable() {
     </div>
   );
 }
+export const revalidate = 10;
