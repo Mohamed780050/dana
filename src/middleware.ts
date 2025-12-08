@@ -13,6 +13,7 @@ const isPublicRoute = createRouteMatcher([
   "/(en|ar)/sign-up(.*)",
   "/",
   "/(en|ar)",
+  "/(en|ar)/restaurantMenu(.*)",
   "/restaurantMenu(.*)",
   "/(api|trpc)(.*)",
 ]);
