@@ -7,14 +7,14 @@ import ItemInfo from "./ItemInfo";
 
 export async function AllTabContent({
   value,
-  currency
+  currency,
+  userId,
 }: {
+  userId: string;
   value: string;
   currency: "USD" | "EUR" | "GBP" | "EGP";
 }) {
-  const user = await currentUser();
-  if (!user) return null;
-  const menuItems = await db.menuItem.findMany({ where: { userId: user.id } });
+  const menuItems = await db.menuItem.findMany({ where: { userId } });
   return (
     <TabsContent value={value}>
       {menuItems.length ? (

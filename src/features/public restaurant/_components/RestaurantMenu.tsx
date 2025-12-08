@@ -44,6 +44,7 @@ export default async function RestaurantMenu({
             </div>
             <div className="p-8">
               <AllTabContent
+                userId={userId}
                 currency={details?.currency || "USD"}
                 value="all"
               />
