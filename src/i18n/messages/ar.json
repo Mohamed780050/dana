@@ -212,7 +212,8 @@
     "inSite": "في‑المكان",
     "delivery": "توصيل",
     "Processing": "جاري المعالجة...",
-    "PlaceOrder": "إتمام الطلب"
+    "PlaceOrder": "إتمام الطلب",
+    "AddToCart": "أضف إلى السلة"
   },
   "OrdersDetails": {
     "arrow": "العودة إلى الطلبات",

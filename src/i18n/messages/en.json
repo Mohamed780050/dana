@@ -214,7 +214,8 @@
     "inSite": "In Site",
     "delivery": "Delivery",
     "Processing": "Processing...",
-    "PlaceOrder": "Place Order"
+    "PlaceOrder": "Place Order",
+    "AddToCart":"Add to Cart"
   },
   "OrdersDetails": {
     "arrow": "Back to Orders",

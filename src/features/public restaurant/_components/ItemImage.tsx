@@ -11,12 +11,12 @@ export default function ItemImage({
   return (
     <>
       {url ? (
-        <div className="aspect-video overflow-hidden bg-slate-200 relative block">
+        <div className="relative block aspect-video overflow-hidden rounded-t-xl bg-slate-200">
           <Image
             src={url}
             alt={alt || "Item"}
             fill
-            className="object-cover transition-transform duration-300 group-hover:scale-110"
+            className=" object-cover transition-transform duration-300 group-hover:scale-110"
           />
         </div>
       ) : (
