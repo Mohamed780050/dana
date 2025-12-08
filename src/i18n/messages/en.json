@@ -215,5 +215,29 @@
     "delivery": "Delivery",
     "Processing": "Processing...",
     "PlaceOrder": "Place Order"
+  },
+  "OrdersDetails": {
+    "arrow": "Back to Orders",
+    "Order": "Order",
+    "OrderId": "Full ID: ",
+    "TotalAmount": "Total Amount",
+    "OrderStatus": "Order Status",
+    "PaymentStatus": "Payment Status",
+    "Date": "Date",
+    "Time": "Time",
+    "CustomerInformation": "Customer Information",
+    "Name": "Name",
+    "Phone": "Phone",
+    "OrderDates": "Order Dates",
+    "CreatedAt": "Created At",
+    "LastUpdated": "Last Updated",
+    "Notes": "Notes",
+    "OrderItems": "Order Items",
+    "NoItems": "No items in this order",
+    "Item": "Item",
+    "Quantity": "Quantity",
+    "UnitPrice": "Unit Price",
+    "Subtotal": "Subtotal",
+    "Total": "Total"
   }
 }

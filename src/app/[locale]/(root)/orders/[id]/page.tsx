@@ -1,3 +1,4 @@
+import NotFound from "@/features/Orders Details/NotFound";
 import { db } from "@/lib/db";
 import {
   ArrowLeft,
@@ -9,6 +10,7 @@ import {
   FileText,
   Loader,
 } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 
 export default async function page({
@@ -42,17 +44,18 @@ export default async function page({
   };
   const { id } = await params;
   const order = await db.orders.findUnique({ where: { id } });
+  const t = await getTranslations("OrdersDetails");
   return (
     <div className="space-y-">
       {order ? (
-        <div className="min-h-screen bg-linear-to-br from-slate-50 to-slate-100 p-4 md:p-8">
+        <div className="min-h-screen4 p-4 md:p-8">
           <div className="mx-auto max-w-4xl">
             <Link
               href="/orders"
               className="mb-6 flex items-center gap-2 font-semibold text-emerald-600 transition-colors hover:text-emerald-700"
             >
               <ArrowLeft className="h-5 w-5" />
-              Back to Orders
+              {t("arrow")}
             </Link>
             <div className="space-y-6">
               <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg">
@@ -60,23 +63,25 @@ export default async function page({
                   <div className="mb-6 flex items-center justify-between">
                     <div>
                       <h1 className="text-4xl font-bold">
-                        Order #{order.id.slice(0, 8).toUpperCase()}
+                        {t("Order")} #{order.id.slice(0, 8).toUpperCase()}
                       </h1>
                       <p className="mt-2 text-emerald-50">
-                        Full ID: {order.id}
+                        {t("OrderId")} {order.id}
                       </p>
                     </div>
                     <div className="text-right">
                       <div className="text-5xl font-bold">
                         ${Number(order.total_amount).toFixed(2)}
                       </div>
-                      <p className="mt-1 text-emerald-50">Total Amount</p>
+                      <p className="mt-1 text-emerald-50">{t("TotalAmount")}</p>
                     </div>
                   </div>
 
                   <div className="grid grid-cols-2 gap-4 border-t border-emerald-400/30 pt-6 md:grid-cols-4">
                     <div>
-                      <p className="text-sm text-emerald-50">Order Status</p>
+                      <p className="text-sm text-emerald-50">
+                        {t("OrderStatus")}
+                      </p>
                       <p
                         className={`mt-2 inline-flex rounded-full px-3 py-1 text-xs font-bold ${getStatusBadge(order.status)}`}
                       >
@@ -84,7 +89,9 @@ export default async function page({
                       </p>
                     </div>
                     <div>
-                      <p className="text-sm text-emerald-50">Payment Status</p>
+                      <p className="text-sm text-emerald-50">
+                        {t("PaymentStatus")}
+                      </p>
                       <p
                         className={`mt-2 inline-flex rounded-full px-3 py-1 text-xs font-bold ${getPaymentBadge(order.payment_status)}`}
                       >
@@ -92,7 +99,7 @@ export default async function page({
                       </p>
                     </div>
                     <div>
-                      <p className="text-sm text-emerald-50">Date</p>
+                      <p className="text-sm text-emerald-50">{t("Date")}</p>
                       <p className="mt-2 font-semibold">
                         {new Date(order.created_at).toLocaleDateString(
                           "en-US",
@@ -106,7 +113,7 @@ export default async function page({
                       </p>
                     </div>
                     <div>
-                      <p className="text-sm text-emerald-50">Time</p>
+                      <p className="text-sm text-emerald-50">{t("Time")}</p>
                       <p className="mt-2 font-semibold">
                         {new Date(order.created_at).toLocaleTimeString(
                           "en-US",
@@ -125,12 +132,12 @@ export default async function page({
                     <div className="space-y-4">
                       <h2 className="flex items-center gap-2 text-lg font-bold text-slate-900">
                         <User className="h-5 w-5 text-emerald-600" />
-                        Customer Information
+                        {t("CustomerInformation")}
                       </h2>
                       <div className="space-y-3 rounded-lg border border-slate-200 bg-slate-50 p-4">
                         <div>
                           <p className="text-xs font-semibold tracking-wide text-slate-600 uppercase">
-                            Name
+                            {t("Name")}
                           </p>
                           <p className="mt-1 text-lg font-semibold text-slate-900">
                             {order.customer_name || "N/A"}
@@ -138,7 +145,7 @@ export default async function page({
                         </div>
                         <div>
                           <p className="text-xs font-semibold tracking-wide text-slate-600 uppercase">
-                            Phone
+                            {t("Phone")}
                           </p>
                           <a
                             href={`tel:${order.customer_phone}`}
@@ -154,12 +161,12 @@ export default async function page({
                     <div className="space-y-4">
                       <h2 className="flex items-center gap-2 text-lg font-bold text-slate-900">
                         <Calendar className="h-5 w-5 text-emerald-600" />
-                        Order Dates
+                        {t("OrderDates")}
                       </h2>
                       <div className="space-y-3 rounded-lg border border-slate-200 bg-slate-50 p-4">
                         <div>
                           <p className="text-xs font-semibold tracking-wide text-slate-600 uppercase">
-                            Created At
+                            {t("CreatedAt")}
                           </p>
                           <p className="mt-1 text-sm text-slate-900">
                             {new Date(order.created_at).toLocaleDateString(
@@ -177,7 +184,7 @@ export default async function page({
                         </div>
                         <div>
                           <p className="text-xs font-semibold tracking-wide text-slate-600 uppercase">
-                            Last Updated
+                            {t("LastUpdated")}
                           </p>
                           <p className="mt-1 text-sm text-slate-900">
                             {new Date(order.updatedAt).toLocaleDateString(
@@ -201,7 +208,7 @@ export default async function page({
                     <div className="mb-8">
                       <h2 className="mb-3 flex items-center gap-2 text-lg font-bold text-slate-900">
                         <FileText className="h-5 w-5 text-emerald-600" />
-                        Notes
+                        {t("Notes")}
                       </h2>
                       <div className="rounded-lg border border-blue-200 bg-blue-50 p-4">
                         <p className="text-slate-700">{order.note}</p>
@@ -212,13 +219,13 @@ export default async function page({
                   <div className="space-y-4">
                     <h2 className="flex items-center gap-2 text-lg font-bold text-slate-900">
                       <Package className="h-5 w-5 text-emerald-600" />
-                      Order Items ({order.orderItems.length})
+                      {t("OrderItems")} ({order.orderItems.length})
                     </h2>
 
                     {order.orderItems.length === 0 ? (
                       <div className="rounded-lg border border-slate-200 bg-slate-50 p-8 text-center">
                         <Package className="mx-auto mb-3 h-12 w-12 text-slate-300" />
-                        <p className="text-slate-600">No items in this order</p>
+                        <p className="text-slate-600">{t("NoItems")}</p>
                       </div>
                     ) : (
                       <div className="overflow-hidden rounded-lg border border-slate-200">
@@ -226,17 +233,17 @@ export default async function page({
                           <table className="w-full">
                             <thead className="border-b border-slate-200 bg-slate-100">
                               <tr>
-                                <th className="px-6 py-4 text-left text-xs font-semibold tracking-wider text-slate-700 uppercase">
-                                  Item
+                                <th className="px-6 py-4 text-center text-xs font-semibold tracking-wider text-slate-700 uppercase">
+                                  {t("Item")}
                                 </th>
-                                <th className="px-6 py-4 text-left text-xs font-semibold tracking-wider text-slate-700 uppercase">
-                                  Quantity
+                                <th className="px-6 py-4 text-center text-xs font-semibold tracking-wider text-slate-700 uppercase">
+                                  {t("Quantity")}
                                 </th>
-                                <th className="px-6 py-4 text-left text-xs font-semibold tracking-wider text-slate-700 uppercase">
-                                  Unit Price
+                                <th className="px-6 py-4 text-center text-xs font-semibold tracking-wider text-slate-700 uppercase">
+                                  {t("UnitPrice")}
                                 </th>
-                                <th className="px-6 py-4 text-right text-xs font-semibold tracking-wider text-slate-700 uppercase">
-                                  Subtotal
+                                <th className="px-6 py-4 text-center text-xs font-semibold tracking-wider text-slate-700 uppercase">
+                                  {t("Subtotal")}
                                 </th>
                               </tr>
                             </thead>
@@ -261,10 +268,10 @@ export default async function page({
                                   <td className="px-6 py-4 text-center font-semibold text-slate-900">
                                     {item.quantity}
                                   </td>
-                                  <td className="px-6 py-4 font-semibold text-slate-900">
+                                  <td className="px-6 py-4 text-center font-semibold text-slate-900">
                                     ${Number(item.price).toFixed(2)}
                                   </td>
-                                  <td className="px-6 py-4 text-right">
+                                  <td className="px-6 py-4 text-center">
                                     <div className="text-lg font-bold text-emerald-600">
                                       $
                                       {(
@@ -282,7 +289,7 @@ export default async function page({
                           <div className="flex justify-end">
                             <div className="w-full max-w-xs space-y-3">
                               <div className="flex justify-between text-slate-700">
-                                <span>Subtotal:</span>
+                                <span>{t("Subtotal")}:</span>
                                 <span className="font-semibold">
                                   $
                                   {order.orderItems
@@ -297,7 +304,7 @@ export default async function page({
                               </div>
                               <div className="flex justify-between border-t border-slate-300 pt-3 text-lg">
                                 <span className="font-bold text-slate-900">
-                                  Total:
+                                  {t("Total")}:
                                 </span>
                                 <span className="text-2xl font-bold text-emerald-600">
                                   ${Number(order.total_amount).toFixed(2)}
@@ -315,17 +322,7 @@ export default async function page({
           </div>
         </div>
       ) : (
-        <div className="flex min-h-screen items-center justify-center bg-slate-50 p-4">
-          <div className="text-center">
-            <FileText className="mx-auto mb-4 h-16 w-16 text-slate-300" />
-            <h1 className="mb-2 text-2xl font-bold text-slate-900">
-              Order Not Found
-            </h1>
-            <p className="text-slate-600">
-              The order you&apos;re looking for doesn&apos;t exist.
-            </p>
-          </div>
-        </div>
+        <NotFound />
       )}
     </div>
   );

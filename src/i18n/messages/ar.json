@@ -213,5 +213,29 @@
     "delivery": "توصيل",
     "Processing": "جاري المعالجة...",
     "PlaceOrder": "إتمام الطلب"
+  },
+  "OrdersDetails": {
+    "arrow": "العودة إلى الطلبات",
+    "Order": "الطلب",
+    "OrderId": "الرقم الكامل: ",
+    "TotalAmount": "المبلغ الإجمالي",
+    "OrderStatus": "حالة الطلب",
+    "PaymentStatus": "حالة الدفع",
+    "Date": "التاريخ",
+    "Time": "الوقت",
+    "CustomerInformation": "معلومات العميل",
+    "Name": "الاسم",
+    "Phone": "الهاتف",
+    "OrderDates": "تواريخ الطلب",
+    "CreatedAt": "تاريخ الإنشاء",
+    "LastUpdated": "آخر تحديث",
+    "Notes": "ملاحظات",
+    "OrderItems": "عناصر الطلب",
+    "NoItems": "لا توجد عناصر في هذا الطلب",
+    "Item": "العنصر",
+    "Quantity": "الكمية",
+    "UnitPrice": "سعر الوحدة",
+    "Subtotal": "المجموع الفرعي",
+    "Total": "الإجمالي"
   }
 }
