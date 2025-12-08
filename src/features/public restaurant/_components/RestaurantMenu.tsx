@@ -3,13 +3,19 @@ import { Tabs, TabsList, TabsTrigger } from "@radix-ui/react-tabs";
 import RestaurantContent from "./RestaurantContent";
 import Cart from "./Cart/Cart";
 import { AllTabContent } from "./AllTabContent";
-import { getRestaurantDetails } from "@/lib/restaurant";
+import { getRestaurantDetailsForPublicRoute } from "@/lib/restaurant";
 import { getTranslations } from "next-intl/server";
 
-export default async function RestaurantMenu({ userId }: { userId: string }) {
+export default async function RestaurantMenu({
+  userId,
+  restaurantId,
+}: {
+  userId: string;
+  restaurantId: string;
+}) {
   const menus = await db.menu.findMany({ where: { userId } });
   //   const menuItems = await db.menuItem.findMany({where:{}})
-  const details = await getRestaurantDetails();
+  const details = await getRestaurantDetailsForPublicRoute(restaurantId);
   const t = await getTranslations("RestaurantPublic");
   return (
     <>
@@ -53,9 +59,6 @@ export default async function RestaurantMenu({ userId }: { userId: string }) {
           </Tabs>
         </div>
       </div>
-      
     </>
   );
 }
-
-

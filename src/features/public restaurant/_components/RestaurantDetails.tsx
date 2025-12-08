@@ -30,7 +30,6 @@ export default function RestaurantDetails({
   linkedIn: string | null;
   logo: string;
 }) {
-  console.log(logo);
   return (
     <div className="bg-linear-to-br from-emerald-600 via-emerald-500 to-teal-500 px-4 py-24 text-white shadow-xl">
       <div className="mx-auto max-w-5xl space-y-8 text-center">

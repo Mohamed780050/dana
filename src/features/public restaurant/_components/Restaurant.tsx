@@ -32,7 +32,7 @@ export default function Restaurant({
         linkedIn={restaurant.linkedIn}
         logo={restaurant.logo || ""}
       />
-      <RestaurantMenu userId={restaurant.userId} />
+      <RestaurantMenu userId={restaurant.userId} restaurantId={restaurant.id} />
     </div>
   );
 }
