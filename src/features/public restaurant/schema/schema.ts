@@ -8,7 +8,11 @@ const orderSchema = z.object({
 });
 
 export const cartSchema = z.object({
-  customer_name: z.string().min(1, "Put your name please."),
+  customer_name: z
+    .string()
+    .min(1, "Put your name please.")
+    .max(80, "Too many chars.")
+    .regex(/^[\p{L}\s]+$/u, "Only letters and spaces are allowed"),
   orders: z.array(orderSchema),
   total_amount: z.number(),
   location: z.enum(["inSite", "Delivery"]),

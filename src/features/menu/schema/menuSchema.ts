@@ -5,7 +5,7 @@ export const categorySchema = z.object({
     .string()
     .min(1, "Don't let it empty.")
     .max(80, "Too many chars.")
-    .regex(/^[A-Za-z]+$/, "Only letters are allowed"),
+    .regex(/^[\p{L}\s]+$/u, "Only letters and spaces are allowed"),
 });
 
 export const categoryItem = z.object({
@@ -13,7 +13,7 @@ export const categoryItem = z.object({
     .string()
     .min(1, "Don't let it empty.")
     .max(80, "Too many chars.")
-    .regex(/^[A-Za-z]+$/, "Only letters are allowed"),
+    .regex(/^[\p{L}\s]+$/u, "Only letters and spaces are allowed"),
   price: z.number().min(1, "Don't let this field empty."),
   description: z.string().min(1, "Don't let this field empty."),
   image: z.url().optional(),

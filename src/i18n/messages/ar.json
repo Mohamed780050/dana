@@ -243,6 +243,7 @@
     "DeliveryStatus": "حالة التوصيل",
     "Delivered": "تم التوصيل",
     "NotDelivered": "لم يتم التوصيل",
+    "unPaid": "غير مدفوع",
     "Paid": "مدفوع",
     "Pending": "قيد الانتظار",
     "Processing": "قيد المعالجة",
