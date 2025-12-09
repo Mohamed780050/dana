@@ -117,7 +117,8 @@
     "Cancel": "إلغاء",
     "Create": "إنشاء",
     "Uploading": "جاري الرفع...",
-    "UploadYourLogo": "حمّل شعارك"
+    "UploadYourLogo": "حمّل شعارك",
+    "TooBig": "صورتك أكبر من 1 ميغابايت"
   },
   "RestaurantSettings": {
     "title": "إعدادات المطعم",

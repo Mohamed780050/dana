@@ -1,11 +1,19 @@
 import z from "zod";
 
 export const categorySchema = z.object({
-  category_name: z.string().min(1, "Do not let the field empty."),
+  category_name: z
+    .string()
+    .min(1, "Don't let it empty.")
+    .max(80, "Too many chars.")
+    .regex(/^[A-Za-z]+$/, "Only letters are allowed"),
 });
 
 export const categoryItem = z.object({
-  name: z.string().min(1, "Don't let it empty.").max(80, "Too Much chars."),
+  name: z
+    .string()
+    .min(1, "Don't let it empty.")
+    .max(80, "Too many chars.")
+    .regex(/^[A-Za-z]+$/, "Only letters are allowed"),
   price: z.number().min(1, "Don't let this field empty."),
   description: z.string().min(1, "Don't let this field empty."),
   image: z.url().optional(),

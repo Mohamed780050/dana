@@ -39,7 +39,7 @@ export async function uploadToCloudinaryLogoRestaurant(
 
 export async function uploadToCloudinaryItemImage(
   buffer: Buffer | string,
-): Promise<string> {
+): Promise<{ url: string; name: string }> {
   // Returns the secure URL string of the uploaded image
   try {
     const user = await currentUser();
@@ -47,8 +47,8 @@ export async function uploadToCloudinaryItemImage(
 
     const base64 = buffer.toString("base64");
     const result = await cloudinary.uploader.upload(base64);
-
-    return result.secure_url;
+    console.log(result);
+    return { url: result.secure_url, name: result.display_name };
   } catch (error) {
     console.error("Error uploading to Cloudinary", error);
     throw error;

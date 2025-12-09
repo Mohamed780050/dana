@@ -79,7 +79,7 @@ model orders {
   address        String?
   note           String?       @default("")
   orderItems     orderItems[]
-  isDelivered     Boolean?       @default(false)
+  isDelivered    Boolean?      @default(false)
 }
 
 type orderItems {

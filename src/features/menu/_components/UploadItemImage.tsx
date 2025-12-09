@@ -8,11 +8,17 @@ import { useTranslations } from "next-intl";
 export default function UploadItemImage({
   setImgURL,
   setUploading,
+  setImageName,
+  setIsError,
   uploading,
+  isPending,
 }: {
   setImgURL: (v: string) => void;
+  setImageName: (v: string) => void;
   setUploading: (v: boolean) => void;
+  setIsError: (v: boolean) => void;
   uploading: boolean;
+  isPending: boolean;
 }) {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -30,10 +36,13 @@ export default function UploadItemImage({
     reader.onloadend = async () => {
       try {
         const base64data = reader.result as string;
-        const url = await uploadToCloudinaryItemImage(base64data);
-        setImgURL(url);
+        const image = await uploadToCloudinaryItemImage(base64data);
+        setImgURL(image.url);
+        setImageName(image.name);
+        setIsError(false);
       } catch (error) {
         console.log(error);
+        setIsError(true);
       } finally {
         setUploading(false);
       }
@@ -45,7 +54,7 @@ export default function UploadItemImage({
   return (
     <div>
       <Button
-        disabled={uploading}
+        disabled={uploading || isPending}
         type="button"
         className="cursor-pointer bg-emerald-500 hover:bg-emerald-600"
         onClick={handleClick}

@@ -113,11 +113,13 @@
     "Name": "Name",
     "Price": "Price",
     "Description": "Description",
-    "Image": "Image (Optional)",
+    "Image": "Image (less than 1MB)",
     "Cancel": "Cancel",
     "Create": "Create",
     "Uploading": "Uploading",
-    "UploadYourLogo": "Upload your Logo"
+    "UploadYourLogo": "Upload your Logo",
+
+    "TooBig":"Your image is bigger than 1MB"
   },
   "RestaurantSettings": {
     "title": "Restaurant Settings",
@@ -254,7 +256,6 @@
     "AlreadyPaid": "Already Paid",
     "AlreadyDelivered": "Already Delivered",
     "MarkAsDelivered": "Mark as Delivered",
-
     "TableNumber": "Table Number"
   }
 }

@@ -32,6 +32,8 @@ export default function CategoryModalCreation({
   );
   const [imgURL, setImgURL] = useState("");
   const [uploading, setUploading] = useState(false);
+  const [imageName, setImageName] = useState("");
+  const [isError, setIsError] = useState(false);
   const t = useTranslations("Menu");
   return (
     <Dialog>
@@ -92,7 +94,12 @@ export default function CategoryModalCreation({
                   uploading={uploading}
                   setUploading={setUploading}
                   setImgURL={setImgURL}
+                  setImageName={setImageName}
+                  isPending={isPending}
+                  setIsError={setIsError}
                 />
+                {imageName}
+                {isError && <p className="text-red-500">{t("TooBig")}</p>}
                 <Input
                   className="hidden"
                   disabled={isPending}

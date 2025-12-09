@@ -16,7 +16,7 @@ export default function AddCategory() {
       <h2 className="mb-4 text-lg font-semibold text-slate-900">
         {t("AddCategory")}
       </h2>
-      <form action={action} className="flex gap-3">
+      <form action={action} className="mb-2 flex gap-3">
         <Input
           type="text"
           disabled={isPending}
