@@ -20,7 +20,7 @@ import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 
 export default function CartOrderSubmission({ userId }: { userId: string }) {
-  const initialState: CartState = { message: null, errors: {} };
+  const initialState: CartState = { message: null, errors: {}, success: null };
   const [paymentMethod, setPaymentMethod] = useState<"cash" | "Visa">("cash");
   const { orders, totalPrice } = useOrdersStore();
   const saveOrderWithData = saveOrder.bind(
@@ -37,7 +37,7 @@ export default function CartOrderSubmission({ userId }: { userId: string }) {
   const [isDeleviray, setIsDeleviray] = useState(false);
   const t = useTranslations("RestaurantPublic");
   useEffect(() => {
-    if (!state.message) {
+    if (state.success === true) {
       toast.success(t("successMessage")); // success toast
     }
 

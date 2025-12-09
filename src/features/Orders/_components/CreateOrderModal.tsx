@@ -29,9 +29,9 @@ export default function CreateOrderModal({
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-100">
                   <ShoppingBag className="h-6 w-6 text-emerald-600" />
                 </div>
-                <h2 className="text-2xl font-bold text-slate-900">
+                <div className="text-2xl font-bold text-slate-900">
                   {t("title")}
-                </h2>
+                </div>
               </div>
             </DialogTitle>
             <DialogDescription className={`${local === "ar" && "text-right"}`}>

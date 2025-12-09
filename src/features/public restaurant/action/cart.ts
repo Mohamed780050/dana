@@ -29,7 +29,10 @@ export async function saveOrder(
     });
     console.log(validate);
     if (!validate.success)
-      return { errors: z.flattenError(validate.error).fieldErrors };
+      return {
+        errors: z.flattenError(validate.error).fieldErrors,
+        success: false,
+      };
     const orgId = await getUserOrgIds(userId);
 
     const MyOrder = new Orders(
@@ -46,9 +49,9 @@ export async function saveOrder(
       orders,
     );
     await MyOrder.save();
-    return { message: null };
+    return { message: null, success: true };
   } catch (error) {
     console.log(error);
-    return { message: "server Error" };
+    return { message: "server Error", success: false };
   }
 }

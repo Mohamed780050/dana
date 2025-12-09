@@ -27,9 +27,9 @@ export default function CartSheets({
         <SheetHeader className="sticky top-0 border-b border-slate-200 bg-white">
           <SheetTitle className="flex items-center space-x-3 pt-6">
             <ShoppingCart className="h-6 w-6 text-emerald-600" />
-            <h2 className="text-xl font-bold text-slate-900">
+            <div className="text-xl font-bold text-slate-900">
               {t("YourCart")}
-            </h2>
+            </div>
           </SheetTitle>
         </SheetHeader>
         {orders.length ? (

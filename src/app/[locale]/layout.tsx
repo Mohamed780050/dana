@@ -36,17 +36,17 @@ export default async function RootLayout({
   const dir = locale === "ar" ? "rtl" : "ltr";
   const clerkLoc = locale === "ar" ? arSA : enUS;
   return (
-    <ClerkProvider localization={clerkLoc} waitlistUrl="/waitlist">
-      <NextIntlClientProvider messages={messages}>
-        <html lang={locale} dir={dir}>
-          <body
-            className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-          >
+    <html lang={locale} dir={dir}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <ClerkProvider localization={clerkLoc} waitlistUrl="/waitlist">
+          <NextIntlClientProvider messages={messages}>
             {children}
-          </body>
-          <Toaster/>
-        </html>
-      </NextIntlClientProvider>
-    </ClerkProvider>
+            <Toaster />
+          </NextIntlClientProvider>
+        </ClerkProvider>
+      </body>
+    </html>
   );
 }

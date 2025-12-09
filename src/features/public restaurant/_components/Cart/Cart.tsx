@@ -9,7 +9,7 @@ export default function Cart({ userId }: { userId: string }) {
   const t = useTranslations("RestaurantPublic");
   return (
     <div className="mb-6 flex items-center justify-between">
-      <h2 className="ml-4 text-2xl font-bold text-slate-900">{t("Menu")}</h2>
+      <div className="ml-4 text-2xl font-bold text-slate-900">{t("Menu")}</div>
       <CartSheets userId={userId}>
         <button className="relative flex transform items-center gap-2 rounded-lg bg-emerald-600 px-4 py-3 font-semibold text-white shadow-lg transition-all hover:scale-105 hover:bg-emerald-700 hover:shadow-xl">
           <ShoppingCart className="h-5 w-5" />

@@ -117,6 +117,7 @@ export interface CartState {
     address?: string[];
   };
   message?: string | null;
+  success: boolean | null;
 }
 
 export interface employees {

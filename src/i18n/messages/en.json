@@ -219,7 +219,8 @@
     "PlaceOrder": "Place Order",
     "AddToCart": "Add to Cart",
     "successMessage": "Order Placed",
-    "failMessage": "Order did not placed"
+    "failMessage": "Order did not placed",
+    "Address": "Address"
   },
   "OrdersDetails": {
     "arrow": "Back to Orders",

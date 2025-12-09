@@ -216,7 +216,8 @@
     "PlaceOrder": "إتمام الطلب",
     "AddToCart": "أضف إلى السلة",
     "successMessage": "تم تقديم الطلب",
-    "failMessage": "لم يتم تقديم الطلب"
+    "failMessage": "لم يتم تقديم الطلب",
+    "Address": "العنوان"
   },
   "OrdersDetails": {
     "arrow": "العودة إلى الطلبات",
