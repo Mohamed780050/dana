@@ -5,7 +5,7 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-   provider = "prisma-client-js"
+  provider      = "prisma-client-js"
   binaryTargets = ["native", "rhel-openssl-3.0.x"]
 }
 
@@ -73,17 +73,18 @@ model orders {
   payment_status PaymentStatus @default(unPaid)
   created_at     DateTime      @default(now())
   updatedAt      DateTime      @updatedAt
-  orgId          String        
+  orgId          String
   tableNumber    Int?
   location       location      @default(inSite)
   address        String?
   note           String?       @default("")
   orderItems     orderItems[]
+  isDelivered     Boolean?       @default(false)
 }
 
 type orderItems {
   name        String
-  description String  @default("")
+  description String @default("")
   price       Float
   quantity    Int
 }
@@ -91,21 +92,21 @@ type orderItems {
 model menu {
   id     String     @id @default(auto()) @map("_id") @db.ObjectId
   userId String
-  name   String     
+  name   String
   items  menuItem[] @relation("MenuItems")
-  orgId  String     
+  orgId  String
 }
 
 model menuItem {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
   userId      String
-  menuId      String   @db.ObjectId
-  menu        menu     @relation("MenuItems", fields: [menuId], references: [id], onDelete: Cascade)
+  menuId      String  @db.ObjectId
+  menu        menu    @relation("MenuItems", fields: [menuId], references: [id], onDelete: Cascade)
   name        String
   price       Float
   description String
   image       String?
-  orgId       String   // not unique
+  orgId       String // not unique
 }
 
 enum Currency {

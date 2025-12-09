@@ -55,3 +55,19 @@ export async function makeItCompleted(id: string) {
     throw new Error(error.message);
   }
 }
+export async function makeItDelivered(id: string) {
+  try {
+    const user = await currentUser();
+    if (!user) throw new Error("Not authorized");
+    await db.orders.update({
+      where: { id },
+      data: {
+        isDelivered: true,
+      },
+    });
+    revalidatePath("/orders");
+  } catch (error: any) {
+    console.log(error);
+    throw new Error(error.message);
+  }
+}

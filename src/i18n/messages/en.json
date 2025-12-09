@@ -240,6 +240,9 @@
     "UnitPrice": "Unit Price",
     "Subtotal": "Subtotal",
     "Total": "Total",
-    "Address":"Address"
+    "Address":"Address",
+    "DeliveryStatus":"Delivery Status",
+    "Delivered":"Delivered",
+    "NotDelivered":"not Delivered"
   }
 }

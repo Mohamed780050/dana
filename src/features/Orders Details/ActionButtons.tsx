@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { makeItCompleted, makeItPaid } from "@/lib/orders";
+import { makeItCompleted, makeItDelivered, makeItPaid } from "@/lib/orders";
 import { Check, CheckCircle, Package } from "lucide-react";
 import { useState } from "react";
 
@@ -8,10 +8,14 @@ export default function ActionButtons({
   payment_status,
   status,
   orderId,
+  isDelivered,
+  location,
 }: {
   payment_status: string;
   status: string;
   orderId: string;
+  location: string;
+  isDelivered: boolean | null;
 }) {
   const [loading, setLoading] = useState(false);
 
@@ -52,12 +56,21 @@ export default function ActionButtons({
         {status === "Completed" ? "Already Completed" : "Mark as Completed"}
       </Button>
       <Button
-        // onClick={markAsCompleted}
-        disabled={status === "Completed" || loading}
+        onClick={async () => {
+          try {
+            setLoading(true);
+            await makeItDelivered(orderId);
+          } catch (error) {
+            console.log(error);
+          } finally {
+            setLoading(false);
+          }
+        }}
+        disabled={isDelivered || loading}
         className="flex w-full items-center justify-center gap-2 rounded-lg bg-white/20 px-4 py-3 font-semibold text-white transition-colors hover:bg-white/30 disabled:cursor-not-allowed disabled:opacity-50"
       >
         <Package className="h-5 w-5" />
-        {status === "Completed" ? "Already Completed" : "Mark as Completed"}
+        {isDelivered ? "Already Delivered" : "Mark as Delivered"}
       </Button>
     </div>
   );

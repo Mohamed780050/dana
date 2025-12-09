@@ -124,11 +124,23 @@ export default async function page({
                         )}
                       </p>
                     </div>
+                    <div>
+                      <p className="text-sm text-emerald-50">
+                        {t("DeliveryStatus")}
+                      </p>
+                      <p
+                        className={`mt-2 inline-flex rounded-full px-3 py-1 text-xs font-bold ${getPaymentBadge(order.payment_status)}`}
+                      >
+                        {order.isDelivered ? t("Delivered") : t("NotDelivered")}
+                      </p>
+                    </div>
                   </div>
                   <ActionButtons
                     payment_status={order.payment_status}
                     status={order.status}
                     orderId={order.id}
+                    location={order.location}
+                    isDelivered={order.isDelivered}
                   />
                 </div>
 
@@ -164,9 +176,7 @@ export default async function page({
                           <p className="text-xs font-semibold tracking-wide text-slate-600 uppercase">
                             {t("Address")}
                           </p>
-                          <p
-                            className="mt-1 flex items-center gap-2 font-medium text-emerald-600 hover:text-emerald-700"
-                          >
+                          <p className="mt-1 flex items-center gap-2 font-medium text-emerald-600 hover:text-emerald-700">
                             <Map className="h-4 w-4" />
                             {order.address || "N/A"}
                           </p>

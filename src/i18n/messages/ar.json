@@ -238,6 +238,9 @@
     "UnitPrice": "سعر الوحدة",
     "Subtotal": "المجموع الفرعي",
     "Total": "الإجمالي",
-    "Address": "العنوان"
+    "Address": "العنوان",
+    "DeliveryStatus": "حالة التوصيل",
+    "Delivered": "تم التوصيل",
+    "NotDelivered": "لم يتم التوصيل"
   }
 }
