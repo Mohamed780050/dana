@@ -43,12 +43,34 @@ export async function makeItCompleted(id: string) {
   try {
     const user = await currentUser();
     if (!user) throw new Error("Not authorized");
+    const orgId = await getUserOrgIds(user.id);
+
+    const orderData = await db.orders.findUnique({ where: { id } });
+    if (!orderData) throw new Error("order not found");
     await db.orders.update({
       where: { id },
       data: {
         status: "Completed",
       },
     });
+
+    if (orderData.status === "Pending")
+      await db.totalOrders.update({
+        where: { orgId },
+        data: {
+          pending: { decrement: 1 },
+          completed: { increment: 1 },
+        },
+      });
+
+    if (orderData.status === "Processing")
+      await db.totalOrders.update({
+        where: { orgId },
+        data: {
+          processing: { decrement: 1 },
+          completed: { increment: 1 },
+        },
+      });
     revalidatePath("/orders");
   } catch (error: any) {
     console.log(error);

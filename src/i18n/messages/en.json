@@ -258,6 +258,8 @@
     "AlreadyPaid": "Already Paid",
     "AlreadyDelivered": "Already Delivered",
     "MarkAsDelivered": "Mark as Delivered",
-    "TableNumber": "Table Number"
+    "TableNumber": "Table Number",
+    "AlreadyCompleted": "Already Completed",
+    "MarkAsCompleted": "Mark as Completed"
   }
 }

@@ -256,6 +256,8 @@
     "AlreadyPaid": "مدفوع بالفعل",
     "AlreadyDelivered": "تم التوصيل بالفعل",
     "MarkAsDelivered": "وضع كتم التسليم",
-    "TableNumber": "رقم الطاولة"
+    "TableNumber": "رقم الطاولة",
+    "AlreadyCompleted": "تم الانتهاء بالفعل",
+    "MarkAsCompleted": "وضع كمكتمل"
   }
 }
