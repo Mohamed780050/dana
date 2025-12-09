@@ -2,7 +2,6 @@
 import { CartState, OrderItemInterface } from "@/interfaces/interface";
 import z from "zod";
 import { cartSchema } from "../schema/schema";
-import { db } from "@/lib/db";
 import { getUserOrgIds } from "@/lib/orgs";
 import Orders from "@/models/orders";
 

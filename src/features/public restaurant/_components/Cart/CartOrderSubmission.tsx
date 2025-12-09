@@ -3,7 +3,7 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@radix-ui/react-label";
 import { CreditCard, ShoppingCart } from "lucide-react";
-import { useActionState, useState } from "react";
+import { useActionState, useEffect, useState } from "react";
 import { saveOrder } from "../../action/cart";
 import { useOrdersStore } from "@/hooks/useCartItem";
 import { CartState } from "@/interfaces/interface";
@@ -17,6 +17,7 @@ import {
   SelectItem,
 } from "@/components/ui/select";
 import { useTranslations } from "next-intl";
+import { toast } from "sonner";
 
 export default function CartOrderSubmission({ userId }: { userId: string }) {
   const initialState: CartState = { message: null, errors: {} };
@@ -35,6 +36,16 @@ export default function CartOrderSubmission({ userId }: { userId: string }) {
   );
   const [isDeleviray, setIsDeleviray] = useState(false);
   const t = useTranslations("RestaurantPublic");
+  useEffect(() => {
+    if (!state.message) {
+      toast.success(t("successMessage")); // success toast
+    }
+
+    if (state.errors && Object.keys(state.errors).length > 0) {
+      toast.error(t("failMessage")); // error toast
+    }
+  }, [state]);
+
   return (
     <form className="space-y-3 pt-2" action={action}>
       <div>

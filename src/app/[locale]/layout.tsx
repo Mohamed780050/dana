@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Toaster } from "@/components/ui/sonner";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
@@ -35,7 +36,7 @@ export default async function RootLayout({
   const dir = locale === "ar" ? "rtl" : "ltr";
   const clerkLoc = locale === "ar" ? arSA : enUS;
   return (
-    <ClerkProvider localization={clerkLoc}  waitlistUrl="/waitlist">
+    <ClerkProvider localization={clerkLoc} waitlistUrl="/waitlist">
       <NextIntlClientProvider messages={messages}>
         <html lang={locale} dir={dir}>
           <body
@@ -43,6 +44,7 @@ export default async function RootLayout({
           >
             {children}
           </body>
+          <Toaster/>
         </html>
       </NextIntlClientProvider>
     </ClerkProvider>

@@ -119,7 +119,7 @@
     "Uploading": "Uploading",
     "UploadYourLogo": "Upload your Logo",
 
-    "TooBig":"Your image is bigger than 1MB"
+    "TooBig": "Your image is bigger than 1MB"
   },
   "RestaurantSettings": {
     "title": "Restaurant Settings",
@@ -217,7 +217,9 @@
     "delivery": "Delivery",
     "Processing": "Processing...",
     "PlaceOrder": "Place Order",
-    "AddToCart": "Add to Cart"
+    "AddToCart": "Add to Cart",
+    "successMessage": "Order Placed",
+    "failMessage": "Order did not placed"
   },
   "OrdersDetails": {
     "arrow": "Back to Orders",
