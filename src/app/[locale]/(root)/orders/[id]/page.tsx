@@ -33,9 +33,19 @@ export default async function page({
 
   const getPaymentBadge = (status: string) => {
     const styles = {
-      paid: "bg-emerald-100 text-emerald-700 border border-emerald-300",
-      unpaid: "bg-red-100 text-red-700 border border-red-300",
+      Paid: "bg-emerald-100 text-emerald-700 border border-emerald-300",
+      unPaid: "bg-red-100 text-red-700 border border-red-300",
       partial: "bg-amber-100 text-amber-700 border border-amber-300",
+    };
+    return (
+      styles[status as keyof typeof styles] ||
+      "bg-slate-100 text-slate-700 border border-slate-300"
+    );
+  };
+  const getDeliveryBadge = (status: string) => {
+    const styles = {
+      delivered: "bg-emerald-100 text-emerald-700 border border-emerald-300",
+      notDelivered: "bg-amber-100 text-amber-700 border border-amber-300",
     };
     return (
       styles[status as keyof typeof styles] ||
@@ -129,7 +139,7 @@ export default async function page({
                         {t("DeliveryStatus")}
                       </p>
                       <p
-                        className={`mt-2 inline-flex rounded-full px-3 py-1 text-xs font-bold ${getPaymentBadge(order.payment_status)}`}
+                        className={`mt-2 inline-flex rounded-full px-3 py-1 text-xs font-bold ${getDeliveryBadge(order.isDelivered ? "delivered" : "notDelivered")}`}
                       >
                         {order.isDelivered ? t("Delivered") : t("NotDelivered")}
                       </p>
