@@ -12,10 +12,10 @@ export default async function Filter() {
   return (
     <div className="rounded-xl border border-slate-200 bg-white p-6">
       <div className="mb-6 flex items-center justify-between">
-        <div className="flex items-center gap-2">
+        {/* <div className="flex items-center gap-2">
           <FilterIcon className="h-5 w-5 text-slate-600" />
           <h2 className="text-lg font-semibold text-slate-900">{t("title")}</h2>
-        </div>
+        </div> */}
         {orgRole !== "org:delivery" && (
           <CreateOrderModal>
             <button
