@@ -20,7 +20,7 @@ export default function CircleLocaleSwitcher({
     <button
       onClick={() => router.replace(pathname, { locale: otherLocale })}
       className={cn(
-        "fixed right-4 bottom-4 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-lg transition-colors hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700",
+        "fixed right-4 bottom-4 z-50 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-white shadow-lg transition-colors hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700",
         className,
       )}
       title={locale === "en" ? "Switch to Arabic" : "Switch to English"}

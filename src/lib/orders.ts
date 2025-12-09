@@ -39,14 +39,14 @@ export async function makeItPaid(id: string) {
     throw new Error(error.message);
   }
 }
-export async function makeItDelivered(id: string) {
+export async function makeItCompleted(id: string) {
   try {
     const user = await currentUser();
     if (!user) throw new Error("Not authorized");
     await db.orders.update({
       where: { id },
       data: {
-        payment_status: "Paid",
+        status: "Completed",
       },
     });
     revalidatePath("/orders");

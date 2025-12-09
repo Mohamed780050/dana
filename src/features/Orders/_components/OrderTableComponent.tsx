@@ -56,9 +56,6 @@ export default async function OrderTableComponent({
           <th className="px-6 py-4 text-left text-xs font-semibold tracking-wider text-slate-600 uppercase">
             {t("Date")}
           </th>
-          <th className="px-6 py-4 text-left text-xs font-semibold tracking-wider text-slate-600 uppercase">
-            {t("Action")}
-          </th>
         </tr>
       </thead>
       <tbody className="divide-y divide-slate-200">
@@ -109,16 +106,6 @@ export default async function OrderTableComponent({
               </td>
               <td className="px-6 py-4 text-sm text-slate-600">
                 {new Date(order.created_at).toLocaleDateString()}
-              </td>
-              <td className="flex gap-2 px-6 py-4 text-sm text-slate-600">
-                {orgRole === "org:cashier" && <Paid id={order.id} />}
-                {orgRole === "org:delivery" && <Delivered id={order.id} />}
-                {orgRole === "org:admin" && (
-                  <>
-                    <Delivered id={order.id} />
-                    <Paid id={order.id} />
-                  </>
-                )}
               </td>
             </tr>
           ))

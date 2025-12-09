@@ -1,3 +1,4 @@
+import ActionButtons from "@/features/Orders Details/ActionButtons";
 import NotFound from "@/features/Orders Details/NotFound";
 import { db } from "@/lib/db";
 import {
@@ -7,6 +8,7 @@ import {
   Phone,
   Calendar,
   FileText,
+  Map,
 } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
@@ -58,7 +60,7 @@ export default async function page({
             <div className="space-y-6">
               <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg">
                 <div className="bg-linear-to-r from-emerald-600 to-emerald-500 p-8 text-white">
-                  <div className="mb-6 flex items-center justify-between">
+                  <div className="mb-6 flex flex-col items-center justify-between gap-4 sm:flex-row">
                     <div>
                       <h1 className="text-4xl font-bold">
                         {t("Order")} #{order.id.slice(0, 8).toUpperCase()}
@@ -75,7 +77,7 @@ export default async function page({
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-4 border-t border-emerald-400/30 pt-6 md:grid-cols-4">
+                  <div className="grid grid-cols-1 gap-4 border-t border-emerald-400/30 pt-6 md:grid-cols-2 lg:grid-cols-4">
                     <div>
                       <p className="text-sm text-emerald-50">
                         {t("OrderStatus")}
@@ -123,6 +125,11 @@ export default async function page({
                       </p>
                     </div>
                   </div>
+                  <ActionButtons
+                    payment_status={order.payment_status}
+                    status={order.status}
+                    orderId={order.id}
+                  />
                 </div>
 
                 <div className="p-8">
@@ -152,6 +159,17 @@ export default async function page({
                             <Phone className="h-4 w-4" />
                             {order.customer_phone || "N/A"}
                           </a>
+                        </div>
+                        <div>
+                          <p className="text-xs font-semibold tracking-wide text-slate-600 uppercase">
+                            {t("Address")}
+                          </p>
+                          <p
+                            className="mt-1 flex items-center gap-2 font-medium text-emerald-600 hover:text-emerald-700"
+                          >
+                            <Map className="h-4 w-4" />
+                            {order.address || "N/A"}
+                          </p>
                         </div>
                       </div>
                     </div>

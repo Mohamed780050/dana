@@ -239,6 +239,7 @@
     "Quantity": "Quantity",
     "UnitPrice": "Unit Price",
     "Subtotal": "Subtotal",
-    "Total": "Total"
+    "Total": "Total",
+    "Address":"Address"
   }
 }
