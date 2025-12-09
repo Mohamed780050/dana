@@ -215,7 +215,7 @@
     "delivery": "Delivery",
     "Processing": "Processing...",
     "PlaceOrder": "Place Order",
-    "AddToCart":"Add to Cart"
+    "AddToCart": "Add to Cart"
   },
   "OrdersDetails": {
     "arrow": "Back to Orders",
@@ -240,9 +240,21 @@
     "UnitPrice": "Unit Price",
     "Subtotal": "Subtotal",
     "Total": "Total",
-    "Address":"Address",
-    "DeliveryStatus":"Delivery Status",
-    "Delivered":"Delivered",
-    "NotDelivered":"not Delivered"
+    "Address": "Address",
+    "DeliveryStatus": "Delivery Status",
+    "Delivered": "Delivered",
+    "NotDelivered": "not Delivered",
+    "unPaid": "unPaid",
+    "Paid": "Paid",
+    "Pending": "Pending",
+    "Processing": "Processing",
+    "Completed": "Completed",
+    "Cancelled": "Cancelled",
+    "MarkAsPaid": "Mark as Paid",
+    "AlreadyPaid": "Already Paid",
+    "AlreadyDelivered": "Already Delivered",
+    "MarkAsDelivered": "Mark as Delivered",
+
+    "TableNumber": "Table Number"
   }
 }

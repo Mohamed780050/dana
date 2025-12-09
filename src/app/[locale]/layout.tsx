@@ -35,7 +35,7 @@ export default async function RootLayout({
   const dir = locale === "ar" ? "rtl" : "ltr";
   const clerkLoc = locale === "ar" ? arSA : enUS;
   return (
-    <ClerkProvider localization={clerkLoc}>
+    <ClerkProvider localization={clerkLoc}  waitlistUrl="/waitlist">
       <NextIntlClientProvider messages={messages}>
         <html lang={locale} dir={dir}>
           <body

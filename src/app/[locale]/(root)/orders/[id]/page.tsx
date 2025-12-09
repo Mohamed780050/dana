@@ -9,8 +9,9 @@ import {
   Calendar,
   FileText,
   Map,
+  ArrowRight,
 } from "lucide-react";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import Link from "next/link";
 
 export default async function page({
@@ -55,6 +56,7 @@ export default async function page({
   const { id } = await params;
   const order = await db.orders.findUnique({ where: { id } });
   const t = await getTranslations("OrdersDetails");
+  const local = await getLocale();
   return (
     <div className="space-y-">
       {order ? (
@@ -64,7 +66,11 @@ export default async function page({
               href="/orders"
               className="mb-6 flex items-center gap-2 font-semibold text-emerald-600 transition-colors hover:text-emerald-700"
             >
-              <ArrowLeft className="h-5 w-5" />
+              {local === "ar" ? (
+                <ArrowRight className="h-5 w-5" />
+              ) : (
+                <ArrowLeft className="h-5 w-5" />
+              )}
               {t("arrow")}
             </Link>
             <div className="space-y-6">
@@ -95,7 +101,7 @@ export default async function page({
                       <p
                         className={`mt-2 inline-flex rounded-full px-3 py-1 text-xs font-bold ${getStatusBadge(order.status)}`}
                       >
-                        {order.status.toUpperCase()}
+                        {t(order.status)}
                       </p>
                     </div>
                     <div>
@@ -105,7 +111,7 @@ export default async function page({
                       <p
                         className={`mt-2 inline-flex rounded-full px-3 py-1 text-xs font-bold ${getPaymentBadge(order.payment_status)}`}
                       >
-                        {order.payment_status.toUpperCase()}
+                        {t(order.payment_status)}
                       </p>
                     </div>
                     <div>
@@ -182,15 +188,28 @@ export default async function page({
                             {order.customer_phone || "N/A"}
                           </a>
                         </div>
-                        <div>
-                          <p className="text-xs font-semibold tracking-wide text-slate-600 uppercase">
-                            {t("Address")}
-                          </p>
-                          <p className="mt-1 flex items-center gap-2 font-medium text-emerald-600 hover:text-emerald-700">
-                            <Map className="h-4 w-4" />
-                            {order.address || "N/A"}
-                          </p>
-                        </div>
+                        {order.location === "Delivery" && (
+                          <div>
+                            <p className="text-xs font-semibold tracking-wide text-slate-600 uppercase">
+                              {t("Address")}
+                            </p>
+                            <p className="mt-1 flex items-center gap-2 font-medium text-emerald-600 hover:text-emerald-700">
+                              <Map className="h-4 w-4" />
+                              {order.address || "N/A"}
+                            </p>
+                          </div>
+                        )}
+                        {order.location === "inSite" && (
+                          <div>
+                            <p className="text-xs font-semibold tracking-wide text-slate-600 uppercase">
+                              {t("TableNumber")}
+                            </p>
+                            <p className="mt-1 flex items-center gap-2 font-medium text-emerald-600 hover:text-emerald-700">
+                              <Map className="h-4 w-4" />
+                              {order.tableNumber || "N/A"}
+                            </p>
+                          </div>
+                        )}
                       </div>
                     </div>
 

@@ -241,6 +241,17 @@
     "Address": "العنوان",
     "DeliveryStatus": "حالة التوصيل",
     "Delivered": "تم التوصيل",
-    "NotDelivered": "لم يتم التوصيل"
+    "NotDelivered": "لم يتم التوصيل",
+    "Paid": "مدفوع",
+    "Pending": "قيد الانتظار",
+    "Processing": "قيد المعالجة",
+    "Completed": "مكتمل",
+    "Cancelled": "ملغى",
+    "Location": "الموقع",
+    "MarkAsPaid": "وضع كمدفوع",
+    "AlreadyPaid": "مدفوع بالفعل",
+    "AlreadyDelivered": "تم التوصيل بالفعل",
+    "MarkAsDelivered": "وضع كتم التسليم",
+    "TableNumber": "رقم الطاولة"
   }
 }

@@ -14,6 +14,8 @@ const isPublicRoute = createRouteMatcher([
   "/",
   "/(en|ar)",
   "/(en|ar)/restaurantMenu(.*)",
+  "/(en|ar)/waitlist(.*)",
+  "/waitlist(.*)",
   "/restaurantMenu(.*)",
   "/(api|trpc)(.*)",
 ]);
